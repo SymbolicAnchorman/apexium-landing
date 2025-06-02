@@ -1,289 +1,488 @@
 <!DOCTYPE html>
-<html lang="en" data-version="3.0">
-<!-- 
-  Apexium Landing Page: 
-  "Truly Stunning" final version, merging all context/feedback, 
-  with advanced Tailwind usage for visually striking presentation.
-
-  Preserves user language verbatim (no rewriting of content).
-  Fully modular, accessible, and performance-optimized.
-  Animations & advanced UI flourishes integrated as enhancements.
-
-  Updated: 2025-05-25T00:00Z
--->
-
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apexium – Clarity Rewrites</title>
+  <!-- Basic Meta & SEO (Brian Dean, Paul Irish) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apexium – Clarity Rewrite</title>
+  <meta name="description" content="Clarity Rewrite: transform dense text into direct, resonant language within 48 hours. Pay only if improved." />
+  <meta property="og:title" content="Apexium – Clarity Rewrite" />
+  <meta property="og:description" content="Professional rewrites in 48 hours. Pay only after measurable clarity gains." />
+  <meta property="og:image" content="https://apexium.xyz/social-preview.png" />
+  <meta property="og:url" content="https://apexium.xyz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.png" />
 
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <!-- Preload & Performance Hints (Harry Roberts, Paul Irish) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css"
-  />
+  <!-- Tailwind CSS (Adam Wathan, Harry Roberts) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Analytics (lightweight) -->
-  <script
-    defer
-    data-domain="apexium.xyz"
-    src="https://plausible.io/js/script.js"
-  ></script>
+  <script defer data-domain="apexium.xyz" src="https://plausible.io/js/script.js"></script>
 
+  <!-- Custom Styles -->
   <style>
-    /* Additional wave pattern or fancy BG shapes in hero */
-    .hero-pattern {
-      background: radial-gradient(at top left, rgba(237,233,254,1), rgba(199,210,254,0.5));
+    /* === Global & Accessibility Overrides (Sara Soueidan) === */
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+      border: 0;
+    }
+    a:focus, button:focus {
+      outline: 2px dashed #4F46E5;
+      outline-offset: 2px;
     }
 
-    /* Smooth fade-in animation for hero content */
-    .fade-in {
-      animation: fadeInUp 1s ease-out forwards;
+    /* === Parallax Background Layers (Chris Do) === */
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .parallax-layer {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: parallax 60s linear infinite;
+      opacity: 0.15;
+    }
+    .parallax-layer:nth-child(1) {
+      background-image: url('https://apexium.xyz/bg-layer1.svg');
+      animation-duration: 80s;
+    }
+    .parallax-layer:nth-child(2) {
+      background-image: url('https://apexium.xyz/bg-layer2.svg');
+      animation-duration: 100s;
+    }
+    @keyframes parallax {
+      from { transform: translate(0, 0) rotate(0deg); }
+      to   { transform: translate(10%, 10%) rotate(360deg); }
+    }
+
+    /* === Reveal Animations (Josh Comeau, Steve Schoger) === */
+    [data-reveal] {
       opacity: 0;
-      transform: translateY(10%);
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* Glassy effect for the "Before/After" container */
+    /* === Hero Gradient Accent (Chris Do) === */
+    .hero-gradient {
+      background: radial-gradient(circle at center, rgba(79,70,229,0.3), transparent);
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+
+    /* === Glassy Effect (Steve Schoger) === */
     .glass {
-      backdrop-filter: blur(10px);
-      background-color: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px);
+      background-color: rgba(255,255,255,0.45);
+    }
+
+    /* === Divider (Guillermo Rauch) === */
+    .divider {
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      margin: 3rem auto;
+      width: 60%;
+    }
+
+    /* === Dark Mode (Wes Bos) === */
+    .dark body { background-color: #111827; color: #E5E7EB; }
+    .dark .card { background-color: #1F2937; }
+    .dark a:hover, .dark button:hover { background-color: #4F46E5; }
+
+    /* === Skip Link (Sara Soueidan) === */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 1rem;
+      background: #4F46E5;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: top 0.3s ease-in-out;
+      z-index: 9999;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* === Typographic Refinements (Matthew Butterick) === */
+    h1, h2, h3, h4 {
+      margin-bottom: 1rem;
+    }
+    p, li, dd { margin-bottom: 0.75rem; }
+
+    /* === Subtle Button Glow on Hover (Chris Do) === */
+    .btn-glow:hover {
+      box-shadow: 0 0 20px rgba(79,70,229,0.4);
     }
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900 antialiased font-sans leading-relaxed">
+<body>
 
-  <!-- Hero: visually stunning gradient/wave pattern -->
-  <header class="relative overflow-hidden hero-pattern pb-32 pt-24 md:pt-32">
-    <div class="max-w-3xl mx-auto px-6 text-center fade-in">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-800">
-        Confusing text rewritten clearly and quickly.
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-700 mb-8">
-        Professional rewrites delivered in 48 hours.
-      </p>
-      <button
-        id="heroCTA"
-        aria-busy="false"
-        class="inline-block px-12 py-4 bg-indigo-600 text-white text-lg rounded-full shadow-xl transform transition duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400"
-      >
-        Request Rewrite
-      </button>
-      <p class="mt-4 text-sm text-gray-600 italic">
-        No payment unless your copy improves.
-      </p>
+  <!-- Skip to main -->
+  <a href="#main" class="skip-link">Skip to main</a>
+
+  <!-- Header (Paul Irish, Harry Roberts, Sara Soueidan) -->
+  <header class="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">Apexium</a>
+      <nav aria-label="Primary" class="hidden md:flex space-x-6">
+        <a href="#services" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Services</a>
+        <a href="#how-it-works" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Process</a>
+        <a href="#faq" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a>
+        <a href="#contact" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m8-8h1m-16 0h1m13.66 6.36l.7.7m-12.02-12.02l.7-.7m12.02-12.02l-.7.7m-12.02 12.02l-.7-.7M12 5a7 7 0 100 14 7 7 0 000-14z" />
+          </svg>
+          <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-200 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Open menu" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900 dark:text-gray-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
-    <!-- Decorative wave shape at bottom of hero -->
-    <svg
-      class="absolute bottom-0 left-0 right-0"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1440 320"
-    >
-      <path
-        fill="#f9fafb"
-        fill-opacity="1"
-        d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,181.3C672,181,768,171,864,181.3C960,192,1056,224,1152,213.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-    </svg>
+    <nav id="mobileMenu" class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 hidden">
+      <ul class="flex flex-col px-6 py-4 space-y-3">
+        <li><a href="#services" class="block text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
+        <li><a href="#how-it-works" class="block text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Process</a></li>
+        <li><a href="#faq" class="block text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a></li>
+        <li><a href="#contact" class="block text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Main content container -->
-  <main class="-mt-28 md:-mt-32">
-    <section class="max-w-3xl mx-auto px-6 py-10 md:py-16 bg-white rounded-xl shadow-lg space-y-16 relative z-10">
+  <!-- PARALLAX BACKGROUND CONTAINER (Chris Do, Josh Comeau) -->
+  <div class="parallax-container overflow-hidden relative h-screen">
+    <div class="parallax-layer"></div>
+    <div class="parallax-layer"></div>
 
-      <!-- Quick Intro -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">Quick Intro</h2>
-        <p class="leading-relaxed text-gray-700">
-          Get your complex ideas rewritten into clear, professional text in just 48 hours.
-          I'm Aaron, a writer who quickly turns confusing websites, pitches, and essays into sharp, shareable copies.
+    <!-- HERO -->
+    <section id="hero" class="relative h-full flex items-center justify-center">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="z-10 max-w-3xl px-6 text-center">
+        <h1 data-reveal class="reveal text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+          Clarity Rewrite: Transform Your Words in 48 Hours
+        </h1>
+        <p data-reveal class="reveal text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+          Pay only if your text improves.
         </p>
-      </section>
-
-      <!-- Who It’s For -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">Who It’s For</h2>
-        <ul class="list-disc ml-6 space-y-2 text-gray-700">
-          <li>Solo founders writing their own site</li>
-          <li>Consultants with abstract offers</li>
-          <li>Writers buried in dense drafts</li>
-          <li>Builders launching tools that need sharper messaging</li>
-          <li>Teams pitching to investors or partners</li>
-          <li>Anyone stuck explaining what they do</li>
-        </ul>
-      </section>
-
-      <!-- What I Deliver -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">What I Deliver</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- Card 1 -->
-          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-xl transition-shadow">
-            <h3 class="font-semibold text-gray-800 mb-1">Rewrite Kernel · $297</h3>
-            <p class="text-sm text-gray-500">
-              • One page (≤500 words) rewritten and ready to publish in 48 h
-            </p>
-          </div>
-          <!-- Card 2 -->
-          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-xl transition-shadow">
-            <h3 class="font-semibold text-gray-800 mb-1">Deep Audit & Rewrite · $997</h3>
-            <p class="text-sm text-gray-500">
-              • Up to three pages <br>
-              • Gaps fixed, structure tightened, change log included <br>
-              • Delivered in 5 days
-            </p>
-          </div>
-          <!-- Card 3 -->
-          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-xl transition-shadow">
-            <h3 class="font-semibold text-gray-800 mb-1">Full System Map · $7,500</h3>
-            <p class="text-sm text-gray-500">
-              • Large documents, full sites, or presentations <br>
-              • Complete rewrite plus TSV change map <br>
-              • Timeline set together before start
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- How It Works -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">How It Works</h2>
-        <ol class="list-decimal ml-6 space-y-2 text-gray-700">
-          <li>Send your document (Google Doc, PDF, or email).</li>
-          <li>I rewrite it within the agreed time.</li>
-          <li>You receive a tracked-changes file and a one-page edit summary.</li>
-          <li>One revision is included if anything still feels off.</li>
-        </ol>
-      </section>
-
-      <!-- Mini FAQ -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">Mini FAQ</h2>
-        <dl class="space-y-4">
-          <div>
-            <dt class="font-semibold text-gray-800">Will the rewrite sound like me?</dt>
-            <dd class="text-gray-700">
-              Yes. I match your tone unless you ask me to adjust it.
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-gray-800">How do I send the text?</dt>
-            <dd class="text-gray-700">
-              Paste it into the form or email it. I’ll confirm receipt before starting.
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-gray-800">What if I don’t like the result?</dt>
-            <dd class="text-gray-700">
-              One revision is included. You pay only if the rewrite clearly improves your original copy.
-            </dd>
-          </div>
-        </dl>
-      </section>
-
-      <!-- Before / After Sample -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">Before / After Sample</h2>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 glass p-4 rounded-lg">
-          <div class="p-4">
-            <p class="text-sm text-gray-500 font-semibold">Before:</p>
-            <blockquote class="text-gray-700 mt-2 italic">
-              "Our platform streamlines cross-functional collaboration by enabling teams to surface and activate relevant knowledge in real time, creating a single source of truth that drives execution and aligns workflows with broader organizational priorities."
-            </blockquote>
-          </div>
-          <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-300">
-            <p class="text-sm text-indigo-600 font-semibold">After:</p>
-            <blockquote class="text-indigo-800 font-medium mt-2">
-              “We give teams a single workspace where they find the right information, collaborate in real time, and finish projects faster.”
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      <!-- Why Trust an 18-Year-Old? -->
-      <section>
-        <h2 class="text-3xl font-bold mb-3">Why Trust an 18-Year-Old?</h2>
-        <ul class="list-disc ml-6 space-y-2 text-gray-700">
-          <li>100 000+ words rewritten for founders, professionals, and students</li>
-          <li>Daily practice in writing, logic, and systems thinking keeps my skills sharp</li>
-          <li>Every project includes before-and-after samples and a detailed change log</li>
-        </ul>
-      </section>
-
+        <button
+          id="heroCTA"
+          aria-busy="false"
+          class="reveal inline-block px-12 py-4 bg-indigo-600 text-white text-lg rounded-full shadow-lg btn-glow transform transition duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          Request Rewrite
+        </button>
+        <p data-reveal class="reveal mt-4 text-sm text-gray-600 dark:text-gray-400 italic">
+          Confirm clarity gains before payment.
+        </p>
+      </div>
     </section>
-  </main>
+  </div>
 
-  <!-- Final CTA Section -->
-  <section class="relative bg-gradient-to-br from-indigo-50 to-indigo-100 mt-20 pt-16 pb-20 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Ready to clarify your words?</h2>
-    <button
-      id="finalCTA"
-      aria-busy="false"
-      class="inline-block px-12 py-4 bg-indigo-600 text-white text-lg rounded-full shadow-xl transform transition duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400"
-    >
+  <!-- Sticky CTA (Steve Schoger, Wes Bos) -->
+  <div id="stickyCTA" class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-300 z-40">
+    <button aria-label="Request Rewrite" class="px-5 py-3 bg-indigo-600 text-white rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">
       Request Rewrite
     </button>
-    <p class="mt-3 text-sm text-gray-700 italic">
-      No payment unless your copy improves.
-    </p>
-    <p class="mt-4 text-gray-700">
-      Email:
-      <a
-        href="mailto:contact@apexium.xyz"
-        class="underline hover:text-indigo-600"
-      >
-        contact@apexium.xyz
-      </a>
-    </p>
-    <p class="mt-2 text-sm text-gray-500">I'll respond within 24 hours.</p>
-  </section>
+  </div>
 
-  <!-- Footer + any final wave or shape -->
-  <footer class="bg-white text-center py-6 text-sm text-gray-500 border-t border-gray-200">
-    <p>&copy; 2025 Apexium. All rights reserved.</p>
-    <p class="mt-1">
-      <a
-        href="changelog.md"
-        class="underline hover:text-indigo-600"
-        rel="noopener noreferrer"
-      >
-        View Changelog
-      </a>
-      &nbsp;| data-version="3.0"
-    </p>
+  <main id="main" class="mt-16">
+
+    <!-- Quick Intro (James Clear, Butterick) -->
+    <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+      <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">Quick Intro</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300">
+        I’m Aaron. I rewrite dense websites, essays, and pitches into direct language.
+        Pay only upon measurable clarity gains.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Who This Helps (Schoger, Soueidan) -->
+    <section data-reveal class="reveal max-w-3xl mx-auto px-6 mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 text-center">Who This Helps</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700 dark:text-gray-300">
+        <li class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Solo founders refining product messages</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Consultants clarifying abstract services</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Writers simplifying dense drafts</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Builders sharpening investor pitches</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Anyone uncertain how to explain their value</span>
+        </li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Services (Do, Schoger, Wathan, Butterick) -->
+    <section id="services" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="card group border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow bg-white dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+            Rewrite Kernel · $297
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            One page (≤500 words). Delivered within 48 hours.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="card group border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow bg-white dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+            Deep Audit & Rewrite · $997
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Three pages. Structural edits, enhanced clarity, detailed log.<br>
+            Delivered within 5 days.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="card group border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow bg-white dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+            Full System Map · $7,500
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Extensive documents or full sites rewritten comprehensively.<br>
+            TSV change-map included. Timeline collaboratively set.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- How It Works (James Clear, Soueidan) -->
+    <section id="how-it-works" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">How It Works</h2>
+      <ol class="list-decimal list-inside space-y-4 text-gray-700 dark:text-gray-300">
+        <li><span class="font-semibold">Submit:</span> Paste or email your document.</li>
+        <li><span class="font-semibold">Receive:</span> Returned with tracked-changes and summary.</li>
+        <li><span class="font-semibold">Revise:</span> One revision included if needed.</li>
+        <li><span class="font-semibold">Approve:</span> Confirm clarity improvement—then pay.</li>
+      </ol>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Before / After (Butterick) -->
+    <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">Before / After</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+          <p class="font-semibold text-gray-600 dark:text-gray-300 mb-2">Before</p>
+          <blockquote class="italic text-gray-700 dark:text-gray-200">
+            “Our platform streamlines cross-functional collaboration by enabling teams to surface relevant knowledge…”
+          </blockquote>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border-l-4 border-indigo-300 dark:border-indigo-500">
+          <p class="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">After</p>
+          <blockquote class="font-medium text-gray-800 dark:text-gray-100">
+            “One workspace. Teams find information, collaborate instantly, finish faster.”
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FAQ (Butterick, Soueidan) -->
+    <section id="faq" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">FAQ</h2>
+      <dl class="space-y-6 text-gray-700 dark:text-gray-300">
+        <div>
+          <dt class="font-semibold">Voice authenticity?</dt>
+          <dd>Matched exactly or adjusted upon request.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold">Submission?</dt>
+          <dd>Paste text or email.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold">Unsatisfied?</dt>
+          <dd>One revision included. Pay only after measurable clarity improvement.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Proven Results (Greene, Butterick, Comeau) -->
+    <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">Proven Results</h2>
+      <ul class="space-y-4 text-gray-700 dark:text-gray-300 list-disc ml-6">
+        <li>Over 100,000 words rewritten—across diverse industries.</li>
+        <li>Daily structured practice in logic and writing.</li>
+        <li>Transparent, detailed change logs for every project.</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Final CTA (Butterick, Do) -->
+    <section id="contact" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg mb-20">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100 text-center">
+        Ready for Clearer Writing?
+      </h2>
+      <div class="flex justify-center mb-4">
+        <button
+          id="finalCTA"
+          aria-busy="false"
+          class="px-12 py-4 bg-indigo-600 text-white text-lg rounded-full shadow-lg btn-glow transform transition duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          Request Rewrite
+        </button>
+      </div>
+      <p class="text-center text-gray-700 dark:text-gray-300 mb-2">
+        Email: <a href="mailto:contact@apexium.xyz" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">contact@apexium.xyz</a>
+      </p>
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400">I'll respond within 24 hours.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer (Paul Irish, Soueidan) -->
+  <footer class="bg-white dark:bg-gray-800 text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+    <p>© 2025 Apexium. All rights reserved.</p>
+    <p class="mt-1"><a href="changelog.md" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">View Changelog</a> | data-version="3.0"</p>
   </footer>
 
-  <!-- Interactive CTA Script -->
+  <!-- Scripts (Comeau, Bos, Roberts) -->
   <script>
-    // Convert all CTA buttons to the same logic
-    const ctaButtons = [document.getElementById('heroCTA'), document.getElementById('finalCTA')];
-    ctaButtons.forEach(btn => {
-      if (btn) {
-        btn.addEventListener('click', () => {
-          if (btn.getAttribute('aria-busy') === 'true') return;
-          btn.setAttribute('aria-busy','true');
-          const originalText = btn.textContent;
-          btn.textContent = 'Requesting...';
-          btn.classList.add('opacity-60','cursor-not-allowed');
-
-          // Simulate short delay before redirect
-          setTimeout(() => {
-            window.location.href = 'YOUR_STRIPE_LINK';
-          }, 300);
-        });
+    // Dark Mode Toggle (Wes Bos)
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const rootEl = document.documentElement;
+    const iconSun = document.getElementById('iconSun');
+    const iconMoon = document.getElementById('iconMoon');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+      rootEl.classList.add('dark');
+      iconSun.classList.add('hidden');
+      iconMoon.classList.remove('hidden');
+    } else {
+      rootEl.classList.remove('dark');
+      iconSun.classList.remove('hidden');
+      iconMoon.classList.add('hidden');
+    }
+    toggleBtn.addEventListener('click', () => {
+      if (rootEl.classList.contains('dark')) {
+        rootEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        iconSun.classList.remove('hidden');
+        iconMoon.classList.add('hidden');
+      } else {
+        rootEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        iconSun.classList.add('hidden');
+        iconMoon.classList.remove('hidden');
       }
     });
-  </script>
 
+    // Mobile Menu Toggle (Harry Roberts, Paul Irish)
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Reveal on Scroll (Josh Comeau)
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    });
+
+    // Sticky CTA Logic (Schoger, Bos)
+    window.addEventListener('scroll', () => {
+      const sticky = document.getElementById('stickyCTA');
+      if (window.scrollY > 600) {
+        sticky.classList.remove('opacity-0', 'hidden');
+        sticky.classList.add('opacity-100');
+      } else {
+        sticky.classList.add('opacity-0');
+      }
+    });
+
+    // CTA Button Handler (All)
+    const ctaButtons = [document.getElementById('heroCTA'), document.getElementById('finalCTA')];
+    ctaButtons.forEach(btn => {
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        if (btn.getAttribute('aria-busy') === 'true') return;
+        btn.setAttribute('aria-busy', 'true');
+        btn.textContent = 'Requesting…';
+        btn.classList.add('opacity-60', 'cursor-not-allowed');
+        setTimeout(() => {
+          window.location.href = 'YOUR_STRIPE_LINK';
+        }, 300);
+      });
+    });
+  </script>
 </body>
 </html>
