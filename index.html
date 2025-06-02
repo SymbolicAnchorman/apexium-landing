@@ -133,6 +133,54 @@
     from { transform: translateZ(0)   scale(1)   rotate(0deg); }
     to   { transform: translateZ(-0.5px) scale(1.1) rotate(360deg); }
     }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.2;
+        }
+        50% {
+            transform: scale(1.02);
+            opacity: 0.25;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0.2;
+        }
+    }
+
+        @keyframes subtleCognitiveGlow {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-subtleCognitiveGlow {
+        animation: subtleCognitiveGlow 1s ease-out forwards;
+        }
+
+        @keyframes semanticPulse {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.6; }
+        }
+
+        .animate-semanticPulse {
+        animation: semanticPulse 4s infinite ease-in-out;
+        }
+
+        /* Neurological Validation Glow (Minimal yet perceptible glow indicating cognitive validation) */
+        .reveal:hover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(129, 140, 248, 0.25), transparent 60%);
+        animation: neurologicalGlow 3s ease-out forwards;
+        pointer-events: none;
+        }
+
+        @keyframes neurologicalGlow {
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1.1); }
+        }    
+
     @media (prefers-reduced-motion: reduce) {
     .parallax-layer {
         animation: none;
@@ -802,6 +850,79 @@
     mix-blend-mode: screen;
     opacity: 0.7;
     }
+
+    @keyframes clickEcho {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .animate-clickEcho {
+    animation: clickEcho 0.5s forwards;
+    }
+
+    @keyframes fractalPulse {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.1; }
+    100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .group-active\:animate-fractalPulse:active {
+    animation: fractalPulse 0.7s ease-out forwards;
+    }
+
+    .btn-glow {
+    box-shadow: 0 0 12px rgba(79, 70, 229, 0.8);
+    }
+
+    .animate-buttonPulse {
+    animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 12px rgba(79, 70, 229, 0.7); }
+    50% { box-shadow: 0 0 20px rgba(79, 70, 229, 1); }
+    }
+
+    /* Semantic Micro-Fractal Typography (micro-kerning and weight adjustment) */
+    .reveal {
+    transition: letter-spacing 0.3s ease-out, font-weight 0.3s ease-out;
+    }
+
+    .reveal:hover {
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    }
+
+
+    @keyframes neurologicalFractalPulse {
+    0%, 100% { transform: scale(1); opacity: 0.05; }
+    50% { transform: scale(1.1); opacity: 0.15; }
+    }
+
+    .animate-neurologicalFractalPulse {
+    animation: neurologicalFractalPulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes bayesianPulse {
+    0%, 100% { transform: scale(0.95); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.6; }
+    }
+
+    .animate-bayesianPulse {
+    animation: bayesianPulse 4s infinite ease-in-out;
+    }
+
+    /* Micro-fractal Typographic Precision (Butterick, Schoger) */
+    .group:hover span {
+    letter-spacing: 0.06em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Emotional Cognitive Alignment Gradient (Do) */
+    .group:hover {
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
     </style>
 
 </head>
@@ -945,6 +1066,82 @@
         </nav>
 
         <script>
+
+        // Dark Mode Toggle (Wes Bos)
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const rootEl = document.documentElement;
+        const iconSun = document.getElementById('iconSun');
+        const iconMoon = document.getElementById('iconMoon');
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+        rootEl.classList.add('dark');
+        iconSun.classList.add('hidden');
+        iconMoon.classList.remove('hidden');
+        } else {
+        rootEl.classList.remove('dark');
+        iconSun.classList.remove('hidden');
+        iconMoon.classList.add('hidden');
+        }
+        toggleBtn.addEventListener('click', () => {
+        if (rootEl.classList.contains('dark')) {
+            rootEl.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            iconSun.classList.remove('hidden');
+            iconMoon.classList.add('hidden');
+        } else {
+            rootEl.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            iconSun.classList.add('hidden');
+            iconMoon.classList.remove('hidden');
+        }
+        });
+
+        // Mobile Menu Toggle (Harry Roberts, Paul Irish)
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        });
+
+        // Reveal on Scroll (Josh Comeau)
+        document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+        });
+
+        // Sticky CTA Logic (Schoger, Bos)
+        window.addEventListener('scroll', () => {
+        const sticky = document.getElementById('stickyCTA');
+        if (window.scrollY > 600) {
+            sticky.classList.remove('opacity-0', 'hidden');
+            sticky.classList.add('opacity-100');
+        } else {
+            sticky.classList.add('opacity-0');
+        }
+        });
+
+        // CTA Button Handler (All)
+        const ctaButtons = [document.getElementById('heroCTA'), document.getElementById('finalCTA')];
+        ctaButtons.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            if (btn.getAttribute('aria-busy') === 'true') return;
+            btn.setAttribute('aria-busy', 'true');
+            btn.textContent = 'Requesting…';
+            btn.classList.add('opacity-60', 'cursor-not-allowed');
+            setTimeout(() => {
+            window.location.href = 'YOUR_STRIPE_LINK';
+            }, 300);
+        });
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             const btn   = document.getElementById('mobileMenuBtn');
             const menu  = document.getElementById('mobileMenu');
@@ -966,58 +1163,105 @@
             shutI.classList.toggle('opacity-0',  open);
             });
         });
+
+        // Sticky CTA Visibility & Recursive Semantic Echo Calibration (Irish, Roberts, Wathan)
+        document.addEventListener('scroll', () => {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const revealPoint = 400; // Neurological Action Predictability Calibration
+        const currentlyVisible = !stickyCTA.classList.contains('hidden');
+
+        if (window.scrollY > revealPoint && !currentlyVisible) {
+            stickyCTA.classList.remove('hidden');
+            requestAnimationFrame(() => stickyCTA.classList.remove('opacity-0'));
+        } else if (window.scrollY <= revealPoint && currentlyVisible) {
+            stickyCTA.classList.add('opacity-0');
+            setTimeout(() => stickyCTA.classList.add('hidden'), 500);
+        }
+        });
+
+        // Recursive Habitual Validation Rhythm & Neurological Click Rhythm (Clear, Comeau)
+        document.querySelector('#stickyCTA button').addEventListener('click', function(e) {
+        const button = e.currentTarget;
+        button.setAttribute('aria-busy', 'true');
+        button.classList.add('active:scale-95');
+        setTimeout(() => {
+            button.setAttribute('aria-busy', 'false');
+            button.classList.remove('active:scale-95');
+        }, 600); // Optimal micro-delay to reinforce habitual loops
+        });
         </script>
 
 
   <!-- PARALLAX BACKGROUND CONTAINER (Chris Do, Josh Comeau, Steve Schoger, Guillermo Rauch, Adam Wathan, Paul Irish, Harry Roberts, Sara Soueidan) -->
-    <div class="parallax-container relative overflow-hidden w-full">
-    <div class="parallax-layer bg-[url('/bg-layer1.svg')] opacity-10"></div>
-    <div class="parallax-layer bg-[url('/bg-layer2.svg')] opacity-5"></div>
-    <div class="parallax-layer bg-[url('/bg-layer3.svg')] opacity-3"></div>
+    <div class="parallax-container absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer1.svg')] opacity-10 bg-cover bg-center transform translate-y-0"></div>
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer2.svg')] opacity-5 bg-cover bg-center transform translate-y-0"></div>
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer3.svg')] opacity-3 bg-cover bg-center transform translate-y-0"></div>
     </div>
 
-    <!-- HERO SECTION (Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Do, Bos, Comeau, Irish, Roberts) -->
-    <section id="hero" class="relative flex items-center justify-center overflow-hidden py-12">
+    <!-- HERO SECTION (Collaboratively Optimized: Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Do, Bos, Comeau, Irish, Roberts) -->
+    <section id="hero" class="relative flex flex-col items-center justify-center overflow-hidden py-20 px-4 text-center">
 
-    <!-- Adaptive Neurological Framing Gradient & Micro-Recursive Validation (Rauch, Schoger, Do) -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-transparent animate-slowPulse"></div>
+    <!-- Adaptive Neurological Framing Gradient & Micro-Recursive Validation (Rauch, Schoger, Do, Greene, Wathan, Dean, Clear, Butterick, Soueidan, Irish, Roberts, Bos, Comeau) -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/25 via-transparent to-transparent animate-[pulse_10s_ease-in-out_infinite_alternate] scale-105"></div>
 
     <div class="z-10 max-w-3xl px-6 text-center space-y-6">
 
-        <!-- Dialectical Emotional Triggering Headline & Semantic SEO Fractalization (Greene, Dean, Butterick) -->
+        <!-- Dialectical Emotional Triggering & Semantic SEO Fractalization (Greene, Rauch, Schoger, Wathan, Dean, Butterick, Clear, Soueidan, Do, Bos, Comeau, Irish, Roberts, Hannah) -->
         <h1 data-reveal class="reveal text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight drop-shadow-sm leading-snug animate-gentleFadeIn">
-        Professional Rewrite for Clearer, More Impactful Communication in 48 Hours
+        Clear Writing. Better Results. Guaranteed in 48 Hours.
         </h1>
 
-        <!-- Incremental Semantic Anticipation Animation & Typographic Integrity (Comeau, Butterick) -->
+        <!-- Semantic Fractalization, Typographic Integrity & Emotional Dialectics (Greene, Rauch, Schoger, Wathan, Dean, Butterick, Clear, Soueidan, Do, Bos, Comeau, Irish, Roberts, Hannah) -->
         <p data-reveal class="reveal text-lg md:text-xl font-medium text-gray-600 dark:text-gray-300 drop-shadow-sm animate-subtleLiftDelay">
-        Simplify your message effortlessly. Pay only when your clarity improves.
+        Clear message first. Pay after clarity.
         </p>
 
-        <!-- Habitualized Click Comfort & Recursive Validation (Clear, Wathan, Schoger, Irish, Roberts) -->
+        <!-- Neurological Click Rhythm, Recursive Semantic Echoes & Hypersemantic Comfort Zone (Clear, Wathan, Schoger, Irish, Roberts, Greene, Rauch, Dean, Butterick, Soueidan, Do, Bos, Comeau, Hannah) -->
         <button
         id="heroCTA"
         aria-busy="false"
-        class="reveal inline-block px-12 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-2xl transition duration-300 ease-out hover:scale-105 hover:bg-indigo-700 active:scale-95 active:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-500 animate-buttonPulse btn-glow"
+        class="reveal inline-block px-12 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-2xl transition duration-300 ease-out hover:scale-105 hover:bg-indigo-700 active:scale-95 active:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-500 animate-buttonPulse btn-glow group relative overflow-hidden"
         >
-        Simplify My Words
+        <span class="relative z-10">Simplify My Words</span>
+        <!-- Recursive Semantic Echo Layer -->
+        <span class="absolute inset-0 bg-gradient-to-br from-indigo-500/50 via-indigo-400/30 to-transparent opacity-0 group-active:opacity-100 transition-opacity duration-500 ease-out animate-clickEcho"></span>
+        <!-- Neurological Fractal Resonance Pulse -->
+        <span class="absolute inset-0 rounded-full border border-indigo-300 opacity-0 group-active:animate-fractalPulse"></span>
         </button>
 
-        <!-- Immediate Cognitive Validation & Accessibility Integration (Soueidan, Clear) -->
-        <p data-reveal class="reveal text-sm text-gray-500 dark:text-gray-400 italic animate-fadeInDelay">
+        <!-- Immediate Cognitive Validation, Neurological Typographic Anchoring & Semantic Fractalization (Soueidan, Clear, Greene, Wathan, Dean, Schoger, Butterick, Do, Rauch, Roberts) --> 
+        <p data-reveal aria-live="polite" class="reveal text-sm text-gray-500 dark:text-gray-400 italic animate-subtleCognitiveGlow relative overflow-hidden">
         See measurable clarity before you commit.
+        <span class="absolute inset-0 bg-gradient-to-r from-indigo-200/40 to-transparent animate-semanticPulse opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none"></span>
         </p>
     </div>
 
     </section>
 
 
-  <!-- Sticky CTA (Steve Schoger, Wes Bos) -->
-  <div id="stickyCTA" class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-300 z-40">
-    <button aria-label="Request Rewrite" class="px-5 py-3 bg-indigo-600 text-white rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">
-      Request Rewrite
+    <!-- Sticky CTA: Recursive Habitual Validation, Semantic Neurological Fidelity & Dialectical Click Assurance (Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Bos, Do, Irish, Roberts, Comeau) -->
+    <div id="stickyCTA" class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-500 ease-in-out z-50">
+    <button
+        aria-label="Request Professional Rewrite: Clarify Your Message"
+        aria-live="polite"
+        class="relative inline-flex items-center justify-center px-7 py-3 font-semibold tracking-tight text-white rounded-full bg-indigo-600 shadow-2xl transition duration-300 ease-out transform hover:bg-indigo-700 active:bg-indigo-800 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-500 overflow-hidden group"
+    >
+        <!-- Recursive Semantic Text Layer -->
+        <span class="relative z-10 transition-all duration-500 ease-in-out group-hover:tracking-wide">
+        Request Rewrite
+        </span>
+
+        <!-- Neurological Translucency Anchors (Bos, Rauch) -->
+        <span class="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 opacity-0 group-hover:opacity-15 transition-opacity duration-500 animate-neurologicalFractalPulse"></span>
+
+        <!-- Bayesian Neurological Certainty Loop (Dean, Do) -->
+        <span class="absolute inset-[-5px] rounded-full border border-indigo-200 opacity-0 group-hover:opacity-75 animate-bayesianPulse transition-opacity duration-700"></span>
+
+        <!-- Recursive Micro-frictional Cueing & Dialectical Click Assurance (Irish, Clear) -->
+        <span class="absolute inset-0 rounded-full ring-1 ring-indigo-300 opacity-0 group-active:opacity-60 transition-opacity duration-300"></span>
     </button>
-  </div>
+    </div>
 
   <main id="main" class="mt-16">
 
@@ -1208,83 +1452,5 @@
     <p>© 2025 Apexium. All rights reserved.</p>
     <p class="mt-1"><a href="changelog.md" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">View Changelog</a> | data-version="3.0"</p>
   </footer>
-
-  <!-- Scripts (Comeau, Bos, Roberts) -->
-  <script>
-    // Dark Mode Toggle (Wes Bos)
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const rootEl = document.documentElement;
-    const iconSun = document.getElementById('iconSun');
-    const iconMoon = document.getElementById('iconMoon');
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-      rootEl.classList.add('dark');
-      iconSun.classList.add('hidden');
-      iconMoon.classList.remove('hidden');
-    } else {
-      rootEl.classList.remove('dark');
-      iconSun.classList.remove('hidden');
-      iconMoon.classList.add('hidden');
-    }
-    toggleBtn.addEventListener('click', () => {
-      if (rootEl.classList.contains('dark')) {
-        rootEl.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-        iconSun.classList.remove('hidden');
-        iconMoon.classList.add('hidden');
-      } else {
-        rootEl.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-        iconSun.classList.add('hidden');
-        iconMoon.classList.remove('hidden');
-      }
-    });
-
-    // Mobile Menu Toggle (Harry Roberts, Paul Irish)
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Reveal on Scroll (Josh Comeau)
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-    });
-
-    // Sticky CTA Logic (Schoger, Bos)
-    window.addEventListener('scroll', () => {
-      const sticky = document.getElementById('stickyCTA');
-      if (window.scrollY > 600) {
-        sticky.classList.remove('opacity-0', 'hidden');
-        sticky.classList.add('opacity-100');
-      } else {
-        sticky.classList.add('opacity-0');
-      }
-    });
-
-    // CTA Button Handler (All)
-    const ctaButtons = [document.getElementById('heroCTA'), document.getElementById('finalCTA')];
-    ctaButtons.forEach(btn => {
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        if (btn.getAttribute('aria-busy') === 'true') return;
-        btn.setAttribute('aria-busy', 'true');
-        btn.textContent = 'Requesting…';
-        btn.classList.add('opacity-60', 'cursor-not-allowed');
-        setTimeout(() => {
-          window.location.href = 'YOUR_STRIPE_LINK';
-        }, 300);
-      });
-    });
-  </script>
 </body>
 </html>
