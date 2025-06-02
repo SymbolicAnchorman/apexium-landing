@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Apexium – Clarity Rewrite</title>
   <meta name="description" content="Clarity Rewrite: transform dense text into direct, resonant language within 48 hours. Pay only if improved." />
-  <meta property="og:title" content="Apexium – Clarity Rewrite" />
+  <meta property="og:title" content="Apexium Clear Writing" />
   <meta property="og:description" content="Professional rewrites in 48 hours. Pay only after measurable clarity gains." />
   <meta property="og:image" content="https://apexium.xyz/social-preview.png" />
   <meta property="og:url" content="https://apexium.xyz" />
@@ -600,10 +600,80 @@
     opacity: 1;
     }
 
-    /* === Subtle Button Glow on Hover (Chris Do) === */
-    .btn-glow:hover {
-      box-shadow: 0 0 20px rgba(79,70,229,0.4);
+    /* === Subtle Button Glow on Hover (Chris Do, Steve Schoger, Guillermo Rauch, Adam Wathan, Sara Soueidan, Josh Comeau, Wes Bos, Brian Dean, Robert Greene, James Clear, Matthew Butterick) === */
+
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 150ms ease-in-out,
+        box-shadow 200ms ease-in-out,
+        background-color 200ms ease-in-out;
+    will-change: transform, box-shadow, background-color;
     }
+
+    .btn-glow::before,
+    .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms ease, transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Recursive Fidelity Aura (James Clear, Steve Schoger) */
+    .btn-glow::before {
+    box-shadow:
+        0 0 8px rgba(79,70,229,0.2),
+        0 0 16px rgba(79,70,229,0.15),
+        0 0 24px rgba(79,70,229,0.1),
+        inset 0 0 8px rgba(255,255,255,0.1);
+    transform: scale(1.1);
+    }
+
+    /* Subconscious Attention Pulse (Robert Greene, Guillermo Rauch) */
+    .btn-glow::after {
+    border: 1px solid rgba(79,70,229,0.3);
+    transform: scale(0.85);
+    }
+
+    /* Dialectical Symmetry & Recursive Cognitive Convergence (Adam Wathan, Brian Dean, Matthew Butterick) */
+    .btn-glow:hover, .btn-glow:focus-visible {
+    transform: translateY(-2px) scale(1.02);
+    background-color: rgba(79,70,229,0.95);
+    box-shadow:
+        0 2px 8px rgba(79,70,229,0.25),
+        0 4px 16px rgba(79,70,229,0.2),
+        0 8px 32px rgba(79,70,229,0.15),
+        inset 0 0 6px rgba(255,255,255,0.2);
+    }
+
+    /* Implicit Multi-Modal Accessibility Layering (Sara Soueidan) */
+    .btn-glow:hover::before,
+    .btn-glow:focus-visible::before,
+    .btn-glow:hover::after,
+    .btn-glow:focus-visible::after {
+    opacity: 1;
+    transform: scale(1);
+    }
+
+    /* Neurological Plausibility Gate (Josh Comeau, Wes Bos) */
+    @media (prefers-reduced-motion: reduce) {
+    .btn-glow, .btn-glow::before, .btn-glow::after {
+        transition: none;
+        transform: none;
+    }
+    }
+
+    /* Identity-First Anchoring Integration & Optimized Semantic Gatekeeping (James Clear, Matthew Butterick) */
+    .btn-glow:active {
+    transform: scale(0.98);
+    box-shadow:
+        0 1px 4px rgba(79,70,229,0.3),
+        inset 0 2px 4px rgba(0,0,0,0.15);
+    }
+
   </style>
 </head>
 
