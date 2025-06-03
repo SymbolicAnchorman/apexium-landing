@@ -923,6 +923,50 @@
     box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
     }
 
+/* Explicitly Remove Glass Background for Readability */
+.no-glass {
+  backdrop-filter: none !important;
+  background-color: transparent !important;
+}
+
+/* Decisive CTA Button Glow for Clear Neurological Anchoring (Hormozi, Greene, Comeau) */
+.btn-glow {
+  box-shadow:
+    0 4px 16px rgba(79,70,229,0.5),
+    0 0 30px rgba(79,70,229,0.25),
+    inset 0 0 6px rgba(255,255,255,0.2);
+}
+
+/* Explicit readability improvement (Butterick, Schoger, Hormozi, Greene) */
+#hero p {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Explicitly preserve lavender gradient animations & subtle depth */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.02); opacity: 0.25; }
+}
+
+.animate-subtleLiftDelay {
+  animation: subtleLiftDelay 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes subtleLiftDelay {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-subtleCognitiveGlow {
+  animation: subtleCognitiveGlow 1s ease-out forwards;
+}
+
+@keyframes subtleCognitiveGlow {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
     </style>
 
 </head>
@@ -1194,74 +1238,58 @@
 
   <!-- PARALLAX BACKGROUND CONTAINER (Chris Do, Josh Comeau, Steve Schoger, Guillermo Rauch, Adam Wathan, Paul Irish, Harry Roberts, Sara Soueidan) -->
     <div class="parallax-container absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer1.svg')] opacity-10 bg-cover bg-center transform translate-y-0"></div>
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer2.svg')] opacity-5 bg-cover bg-center transform translate-y-0"></div>
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer3.svg')] opacity-3 bg-cover bg-center transform translate-y-0"></div>
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer1.svg')] opacity-20 bg-cover bg-center"></div>
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer2.svg')] opacity-15 bg-cover bg-center"></div>
+        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer3.svg')] opacity-10 bg-cover bg-center"></div>
     </div>
 
-    <!-- HERO SECTION (Collaboratively Optimized: Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Do, Bos, Comeau, Irish, Roberts) -->
-    <section id="hero" class="relative flex flex-col items-center justify-center overflow-hidden py-20 px-4 text-center">
+    <!-- HERO SECTION (Greene, Hormozi, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Do, Bos, Comeau, Irish, Roberts) -->
+    <section id="hero" class="relative flex flex-col items-center justify-center overflow-hidden py-28 px-4 text-center">
 
-    <!-- Adaptive Neurological Framing Gradient & Micro-Recursive Validation (Rauch, Schoger, Do, Greene, Wathan, Dean, Clear, Butterick, Soueidan, Irish, Roberts, Bos, Comeau) -->
+    <!-- Adaptive Neurological Framing Gradient (Preserved lavender gradient explicitly) -->
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/25 via-transparent to-transparent animate-[pulse_10s_ease-in-out_infinite_alternate] scale-105"></div>
 
-    <div class="z-10 max-w-3xl px-6 text-center space-y-6">
+    <div class="z-10 max-w-3xl px-6 text-center space-y-8">
 
-        <!-- Dialectical Emotional Triggering & Semantic SEO Fractalization (Greene, Rauch, Schoger, Wathan, Dean, Butterick, Clear, Soueidan, Do, Bos, Comeau, Irish, Roberts, Hannah) -->
-        <h1 data-reveal class="reveal text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight drop-shadow-sm leading-snug animate-gentleFadeIn">
-        Clear Writing. Better Results. Guaranteed in 48 Hours.
+        <!-- Strategic Authority Headline (Greene, Butterick, Schoger) -->
+        <h1 data-reveal class="text-5xl font-extrabold text-white leading-snug drop-shadow-xl animate-gentleFadeIn no-glass">
+        Clear Writing. Better Results.<br>Guaranteed in 48 Hours.
         </h1>
 
-        <!-- Semantic Fractalization, Typographic Integrity & Emotional Dialectics (Greene, Rauch, Schoger, Wathan, Dean, Butterick, Clear, Soueidan, Do, Bos, Comeau, Irish, Roberts, Hannah) -->
-        <p data-reveal class="reveal text-lg md:text-xl font-medium text-gray-600 dark:text-gray-300 drop-shadow-sm animate-subtleLiftDelay">
-        Clear message first. Pay after clarity.
+        <!-- Decisive Semantic Assurance (Hormozi, Dean, Wathan, Clear) -->
+        <p data-reveal class="text-xl font-medium text-gray-200 animate-subtleLiftDelay no-glass">
+        Get clarity first. Pay only after measurable improvements.
         </p>
 
-        <!-- Neurological Click Rhythm, Recursive Semantic Echoes & Hypersemantic Comfort Zone (Clear, Wathan, Schoger, Irish, Roberts, Greene, Rauch, Dean, Butterick, Soueidan, Do, Bos, Comeau, Hannah) -->
-        <button
-        id="heroCTA"
-        aria-busy="false"
-        class="reveal inline-block px-12 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-2xl transition duration-300 ease-out hover:scale-105 hover:bg-indigo-700 active:scale-95 active:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-500 animate-buttonPulse btn-glow group relative overflow-hidden"
-        >
-        <span class="relative z-10">Simplify My Words</span>
-        <!-- Recursive Semantic Echo Layer -->
-        <span class="absolute inset-0 bg-gradient-to-br from-indigo-500/50 via-indigo-400/30 to-transparent opacity-0 group-active:opacity-100 transition-opacity duration-500 ease-out animate-clickEcho"></span>
-        <!-- Neurological Fractal Resonance Pulse -->
-        <span class="absolute inset-0 rounded-full border border-indigo-300 opacity-0 group-active:animate-fractalPulse"></span>
+        <!-- Explicit Conversion Activation Button (Hormozi, Greene, Comeau, Bos, Schoger) -->
+        <button id="heroCTA" aria-busy="false"
+        class="inline-block px-16 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-2xl hover:bg-indigo-700 active:scale-95 transition transform duration-300 ease-out btn-glow">
+        Simplify My Words Now
         </button>
 
-        <!-- Immediate Cognitive Validation, Neurological Typographic Anchoring & Semantic Fractalization (Soueidan, Clear, Greene, Wathan, Dean, Schoger, Butterick, Do, Rauch, Roberts) --> 
-        <p data-reveal aria-live="polite" class="reveal text-sm text-gray-500 dark:text-gray-400 italic animate-subtleCognitiveGlow relative overflow-hidden">
-        See measurable clarity before you commit.
-        <span class="absolute inset-0 bg-gradient-to-r from-indigo-200/40 to-transparent animate-semanticPulse opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none"></span>
+        <!-- Cognitive Assurance Clearly Visible (Clear, Soueidan, Hormozi, Greene) -->
+        <p data-reveal aria-live="polite" class="text-sm text-gray-100 italic drop-shadow-md animate-subtleCognitiveGlow no-glass">
+        See measurable clarity improvements before committing.
         </p>
+
     </div>
 
     </section>
 
 
+
+
+
     <!-- Sticky CTA: Recursive Habitual Validation, Semantic Neurological Fidelity & Dialectical Click Assurance (Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Bos, Do, Irish, Roberts, Comeau) -->
     <div id="stickyCTA" class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-500 ease-in-out z-50">
     <button
-        aria-label="Request Professional Rewrite: Clarify Your Message"
-        aria-live="polite"
-        class="relative inline-flex items-center justify-center px-7 py-3 font-semibold tracking-tight text-white rounded-full bg-indigo-600 shadow-2xl transition duration-300 ease-out transform hover:bg-indigo-700 active:bg-indigo-800 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-500 overflow-hidden group"
+        aria-label="Request Professional Rewrite"
+        class="px-7 py-3 text-white rounded-full bg-indigo-600 shadow-lg hover:bg-indigo-700 active:bg-indigo-800 hover:scale-105 active:scale-95 transition duration-300 ease-out"
     >
-        <!-- Recursive Semantic Text Layer -->
-        <span class="relative z-10 transition-all duration-500 ease-in-out group-hover:tracking-wide">
         Request Rewrite
-        </span>
-
-        <!-- Neurological Translucency Anchors (Bos, Rauch) -->
-        <span class="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 opacity-0 group-hover:opacity-15 transition-opacity duration-500 animate-neurologicalFractalPulse"></span>
-
-        <!-- Bayesian Neurological Certainty Loop (Dean, Do) -->
-        <span class="absolute inset-[-5px] rounded-full border border-indigo-200 opacity-0 group-hover:opacity-75 animate-bayesianPulse transition-opacity duration-700"></span>
-
-        <!-- Recursive Micro-frictional Cueing & Dialectical Click Assurance (Irish, Clear) -->
-        <span class="absolute inset-0 rounded-full ring-1 ring-indigo-300 opacity-0 group-active:opacity-60 transition-opacity duration-300"></span>
     </button>
     </div>
+
 
   <main id="main" class="mt-16">
 
@@ -1269,8 +1297,8 @@
     <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
       <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">Quick Intro</h2>
       <p class="text-lg text-gray-700 dark:text-gray-300">
-        I’m Aaron. I rewrite dense websites, essays, and pitches into direct language.
-        Pay only upon measurable clarity gains.
+        I'm Aaron. I rewrite complicated text into language that's clear and easy to understand.
+        Pay only after measurable clarity.
       </p>
     </section>
 
