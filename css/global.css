@@ -57,6 +57,20 @@ GENERIC UTILITY
 }
 
 /*============================================================
+MAILTO LINKS – INTERACTIVE & ACCESSIBLE
+============================================================*/
+a[href^="mailto:"] {
+  color: var(--clr-indigo-400);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a[href^="mailto:"]:hover,
+a[href^="mailto:"]:focus {
+  color: var(--clr-indigo-300);
+}
+
+/*============================================================
 PREFER-REDUCED-MOTION OVERRIDE
 ============================================================*/
 @media (prefers-reduced-motion: reduce) {
