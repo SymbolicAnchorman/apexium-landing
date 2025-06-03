@@ -1,1755 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
 <head>
-  <!-- Basic Meta & SEO (Brian Dean, Paul Irish) -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Apexium Clear Writing</title>
-  <meta name="description" content="Clarity Rewrite: transform dense text into direct, resonant language within 48 hours. Pay only if improved." />
-  <meta property="og:title" content="Apexium Clear Writing" />
-  <meta property="og:description" content="Professional rewrites in 48 hours. Pay only after measurable clarity gains." />
-  <meta property="og:image" content="https://apexium.xyz/social-preview.png" />
-  <meta property="og:url" content="https://apexium.xyz" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/favicon.png" />
-
-  <!-- Preload & Performance Hints (Harry Roberts, Paul Irish) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS (Adam Wathan, Harry Roberts) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Analytics (lightweight) -->
-  <script defer data-domain="apexium.xyz" src="https://plausible.io/js/script.js"></script>
-
-  <!-- Custom Styles -->
-    <style>
-    /*============================================================
-    ROOT VARIABLES & GLOBALS                [Clarity Rewrite, SemanticCompression, RecursiveFidelity]
-    ============================================================*/
-    :root {
-    /* ─── Color Palette ─────────────────────────────────────────── */
-    --clr-indigo-500:   #4F46E5;  /* Primary call-to-action */
-    --clr-indigo-600:   #4338CA;
-    --clr-indigo-700:   #3730A3;
-    --clr-purple-600:   #8B5CF6;  /* Hero deep accent */
-    --clr-blue-500:     #3B82F6;  /* Soft accent */
-    --clr-blue-600:     #2563EB;  /* Hover accent */
-    --clr-gray-900:     #0D1117;  /* Dark-mode background */
-    --clr-gray-800:     #161B22;  /* Dark containers */
-    --clr-gray-700:     #1F2937;  /* Dark inputs */
-    --clr-gray-600:     #374151;  /* Scrollbar thumb */
-    --clr-gray-500:     #4B5563;  /* Scrollbar hover */
-    --clr-gray-300:     #D1D5DB;  /* Dark-mode text */
-    --clr-white:        #FFFFFF;
-
-    /* ─── Typography & Spacing ─────────────────────────────────── */
-    --font-body:       'Inter', sans-serif;
-    --lh-body:         1.6;
-    --lh-heading:      1.2;
-    --spacing-unit:    0.75rem;    /* Base spacing multiplier */
-    --letter-tight:    -0.015em;
-    --letter-normal:   -0.005em;
-
-    /* ─── Easing & Timing ─────────────────────────────────────── */
-    --ease-default:    cubic-bezier(0.22, 1, 0.36, 1);
-    --dur-fast:        150ms ease-in-out;
-    --dur-med:         250ms ease-in-out;
-    --dur-slow:        400ms ease-in-out;
-    --reveal-delay:    0.15s;
-
-    /* ─── Opacities ───────────────────────────────────────────── */
-    --op-low:          0.15;
-    --op-med:          0.7;
-    --op-high:         0.9;
-    }
-
-    /*============================================================
-    GLOBAL & ACCESSIBILITY OVERRIDES         [Sara Soueidan, James Clear]
-    ============================================================*/
-    html {
-    scroll-behavior: smooth;
-    }
-    body {
-    margin: 0;
-    font-family: var(--font-body);
-    line-height: var(--lh-body);
-    color: var(--clr-gray-900);
-    background-color: var(--clr-white);
-    transition: background-color 0.5s ease, color 0.5s ease;
-    }
-    .sr-only {
-    position: absolute;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0);
-    white-space: nowrap; border: 0;
-    }
-    a:focus,
-    button:focus {
-    outline: 2px dashed var(--clr-indigo-500);
-    outline-offset: 2px;
-    }
-
-    /*============================================================
-    PARALLAX BACKGROUND LAYERS               [Chris Do, Josh Comeau, Steve Schoger]
-    ============================================================*/
-    .parallax-container {
-    position: relative;
-    overflow: hidden;
-    perspective: 1px;
-    perspective-origin: center;
-    }
-    .parallax-layer {
-    position: absolute;
-    inset: 0;
-    width: 200%;
-    height: 200%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: var(--op-low);
-    transform-origin: center;
-    animation: recursiveParallax ease-in-out infinite alternate;
-    }
-    .parallax-layer:nth-child(1) {
-    background-image: url('https://apexium.xyz/bg-layer1.svg');
-    animation-duration: 100s;
-    transform: translateZ(-0.5px) scale(1.5);
-    }
-    .parallax-layer:nth-child(2) {
-    background-image: url('https://apexium.xyz/bg-layer2.svg');
-    animation-duration: 120s;
-    transform: translateZ(-1px)   scale(2);
-    }
-    .parallax-layer:nth-child(3) {
-    background-image: url('https://apexium.xyz/bg-layer3.svg');
-    animation-duration: 150s;
-    transform: translateZ(-1.5px) scale(2.5);
-    }
-    @keyframes recursiveParallax {
-    from { transform: translateZ(0)   scale(1)   rotate(0deg); }
-    to   { transform: translateZ(-0.5px) scale(1.1) rotate(360deg); }
-    }
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-            opacity: 0.2;
-        }
-        50% {
-            transform: scale(1.02);
-            opacity: 0.25;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 0.2;
-        }
-    }
-
-        @keyframes subtleCognitiveGlow {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-subtleCognitiveGlow {
-        animation: subtleCognitiveGlow 1s ease-out forwards;
-        }
-
-        @keyframes semanticPulse {
-        0%, 100% { opacity: 0; }
-        50% { opacity: 0.6; }
-        }
-
-        .animate-semanticPulse {
-        animation: semanticPulse 4s infinite ease-in-out;
-        }
-
-        /* Neurological Validation Glow (Minimal yet perceptible glow indicating cognitive validation) */
-        .reveal:hover::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at center, rgba(129, 140, 248, 0.25), transparent 60%);
-        animation: neurologicalGlow 3s ease-out forwards;
-        pointer-events: none;
-        }
-
-        @keyframes neurologicalGlow {
-        0% { opacity: 0; transform: scale(0.9); }
-        100% { opacity: 1; transform: scale(1.1); }
-        }    
-
-    @media (prefers-reduced-motion: reduce) {
-    .parallax-layer {
-        animation: none;
-        transform: none;
-    }
-    }
-
-    /*============================================================
-    REVEAL ANIMATIONS                         [Josh Comeau, Steve Schoger, Adam Wathan, Guillermo Rauch]
-    ============================================================*/
-    [data-reveal] {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-    filter: blur(6px);
-    transition:
-        opacity 0.65s var(--ease-default),
-        transform 0.65s var(--ease-default),
-        filter  0.65s ease-out;
-    will-change: opacity, transform, filter;
-    pointer-events: none;
-    user-select: none;
-    }
-    [data-reveal].revealed {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-    filter: blur(0);
-    }
-    [data-reveal] {
-    --delay: var(--reveal-delay);
-    }
-    [data-reveal]:nth-child(1) { transition-delay: calc(1 * var(--delay)); }
-    [data-reveal]:nth-child(2) { transition-delay: calc(2 * var(--delay)); }
-    [data-reveal]:nth-child(3) { transition-delay: calc(3 * var(--delay)); }
-    [data-reveal]:nth-child(4) { transition-delay: calc(4 * var(--delay)); }
-    [data-reveal]:nth-child(5) { transition-delay: calc(5 * var(--delay)); }
-    @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
-        transition: none;
-        transform: none;
-        opacity: 1;
-        filter: none;
-    }
-    }
-    @supports (backdrop-filter: blur(0)) {
-    /* Give reveals a subtle frosted-glass background if supported */
-    [data-reveal] {
-        backdrop-filter: blur(3px);
-        background-color: rgba(255,255,255,0.75);
-        border-radius: 8px;
-    }
-    }
-    [data-reveal].highlighted.revealed {
-    box-shadow: 0 20px 40px rgba(79,70,229,0.15);
-    transform: translate3d(0, -5px, 0);
-    }
-
-    /*============================================================
-    HERO GRADIENT ACCENT                       [James Clear, Robert Greene, Brian Dean]
-    ============================================================*/
-    .hero-gradient {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--op-high);
-    transform: scale(1.1);
-    background: radial-gradient(
-        ellipse at top center,
-        rgba(139,  92, 246, 0.55) 0%,    /* deep purple */
-        rgba( 79,  70, 229, 0.40) 50%,   /* vivid purple-blue */
-        rgba( 59, 130, 246, 0.20) 75%,   /* soft blue accent */
-        rgba(255, 255, 255, 0.00)100%    /* transparent fade */
-    );
-    mix-blend-mode: screen;
-    backdrop-filter: blur(15px) saturate(200%);
-    mask-image: radial-gradient(
-        ellipse at top center,
-        rgba(0,0,0,0.9)  30%,
-        transparent      80%
-    );
-    animation: fractalPulse 20s infinite alternate ease-in-out;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    @keyframes fractalPulse {
-    from { transform: scale(1.05) translateY(-2%); }
-    to   { transform: scale(1.20) translateY(2%); }
-    }
-    .hero-gradient:hover {
-    opacity: 1;
-    transform: scale(1.25) translateY(-4%);
-    }
-
-    /*============================================================
-    DIVIDER WITH FLARE & PULSE                    [Guillermo Rauch, Steve Schoger, Matthew Butterick]
-    ============================================================*/
-    .divider {
-    width: clamp(40%, 4vw + 50%, 80%);
-    height: 1px;
-    margin: 4rem auto;
-    position: relative;
-    overflow: visible;
-    opacity: var(--op-med);
-    transform-origin: center;
-    background: linear-gradient(
-        to right,
-        rgba(79,70,229,0)  0%,
-        rgba(79,70,229,0.2)50%,
-        rgba(79,70,229,0)100%
-    );
-    transition:
-        transform 0.6s cubic-bezier(0.16,1,0.3,1),
-        opacity   0.4s ease-out;
-    }
-    .divider::before,
-    .divider::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 25%;
-    height: 100%;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(79,70,229,0.15),
-        transparent 70%
-    );
-    transition: all 0.5s ease-in-out;
-    pointer-events: none;
-    }
-    .divider::before {
-    left: -30%;
-    }
-    .divider::after {
-    right: -30%;
-    }
-    .divider:hover::before,
-    .divider:hover::after {
-    width: 35%;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(79,70,229,0.25),
-        transparent 80%
-    );
-    }
-    @media (prefers-reduced-motion: reduce) {
-    .divider,
-    .divider::before,
-    .divider::after {
-        transition: none;
-        transform: none;
-        opacity: 1;
-    }
-    }
-    .divider[data-active-section] {
-    opacity: 0.9;
-    transform: scaleX(1.05);
-    background: linear-gradient(
-        to right,
-        rgba(79,70,229,0.1),
-        rgba(79,70,229,0.5)50%,
-        rgba(79,70,229,0.1)
-    );
-    }
-    .divider::selection {
-    background: none;
-    }
-    .divider[data-depth="subtle"] {
-    height: 0.5px;
-    opacity: 0.4;
-    }
-    .divider[data-depth="bold"] {
-    height: 2px;
-    opacity: 0.9;
-    }
-    @keyframes dividerPulse {
-    0%   { transform: scaleX(1); }
-    50%  { transform: scaleX(1.02); }
-    100% { transform: scaleX(1); }
-    }
-    .divider[data-pulse] {
-    animation: dividerPulse 4s infinite ease-in-out;
-    }
-    .divider[data-focus-point]:hover {
-    opacity: 1;
-    transform: scaleX(1.08);
-    }
-
-    /*============================================================
-    TYPOGRAPHY REFINEMENTS                      [Matthew Butterick, Steve Schoger, James Clear, Guillermo Rauch]
-    ============================================================*/
-    h1, h2, h3, h4, h5, h6 {
-    margin-block-start: 1.5rem;
-    margin-block-end:   1rem;
-    line-height:        var(--lh-heading);
-    letter-spacing:     var(--letter-tight);
-    }
-    p, li, dd, dt, blockquote, pre {
-    margin-block-start: 0.75rem;
-    margin-block-end:   0.75rem;
-    line-height:        1.65;
-    letter-spacing:     var(--letter-normal);
-    }
-    :is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
-    scroll-margin-top: 2rem;
-    transition: margin 0.2s ease-out, opacity 0.2s ease-out;
-    }
-    @media (max-width: 640px) {
-    h1, h2, h3, h4, h5, h6 {
-        margin-block-start: 1.25rem;
-        margin-block-end:   0.75rem;
-    }
-    p, li, dd, dt, blockquote, pre {
-        margin-block-start: 0.5rem;
-        margin-block-end:   0.5rem;
-    }
-    }
-    @media (prefers-reduced-motion: reduce) {
-    :is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
-        transition: none;
-    }
-    }
-    /* Recursive margin anchoring */
-    .typography-anchor {
-    --margin-unit: var(--spacing-unit);
-    }
-    h1 { margin-block-end: calc(var(--margin-unit)*2); }
-    h2 { margin-block-end: calc(var(--margin-unit)*1.75); }
-    h3, h4 { margin-block-end: calc(var(--margin-unit)*1.5); }
-    p, li, dd, dt, blockquote, pre {
-    margin-block-end: var(--margin-unit);
-    }
-    /* Font-weight hierarchy */
-    h1, h2 { font-weight: 700; }
-    h3, h4 { font-weight: 600; }
-    p, li, dd, dt, blockquote, pre { font-weight: 400; }
-    /* Slight fade then full on hover */
-    h1, h2, h3, h4, p, li, dd, dt {
-    opacity: 0.96;
-    transition: opacity 0.2s ease-out;
-    }
-    :is(h1,h2,h3,h4,p,li,dd,dt):hover {
-    opacity: 1;
-    }
-    /* Max content width for reading comfort */
-    .content-body {
-    max-width: 65ch;
-    margin-inline: auto;
-    }
-
-    /*============================================================
-    BUTTON “GLOW” & PRIMARY CTA                [Adam Wathan, Steve Schoger, Josh Comeau, Wes Bos, Robert Greene]
-    ============================================================*/
-    .btn-glow {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--clr-indigo-500);
-    color: var(--clr-white);
-    border: none;
-    border-radius: 9999px;         /* Fully rounded */
-    padding: 1.25rem 4rem;         /* Generous, decisive padding */
-    font-weight: 600;              /* Strong, authoritative text */
-    cursor: pointer;
-    box-shadow:
-        0 4px 16px rgba(79,70,229,0.5),
-        0 0 30px rgba(79,70,229,0.25),
-        inset 0 0 8px rgba(255,255,255,0.1); /* Layered depth */
-    transition:
-        transform 0.3s cubic-bezier(0.22,1,0.36,1),
-        box-shadow 0.3s cubic-bezier(0.22,1,0.36,1),
-        background-color 0.3s ease;
-    will-change: transform, box-shadow, background-color;
-    }
-    .btn-glow::before,
-    .btn-glow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    /* ─── Neurological aura glow behind button ───────────────── */
-    .btn-glow::before {
-    box-shadow:
-        0 0 12px rgba(79,70,229,0.6),
-        0 0 20px rgba(79,70,229,0.4),
-        inset 0 0 10px rgba(255,255,255,0.15);
-    transform: scale(1.1);
-    }
-    /* ─── Thin interactive outline pulse ─────────────────────── */
-    .btn-glow::after {
-    border: 2px solid rgba(79,70,229,0.4);
-    transform: scale(0.85);
-    }
-    .btn-glow:hover,
-    .btn-glow:focus-visible {
-    transform: translateY(-3px) scale(1.05);   /* Lift on hover */
-    background-color: var(--clr-indigo-600);  /* Darker shade */
-    box-shadow:
-        0 8px 24px rgba(79,70,229,0.6),
-        inset 0 0 10px rgba(255,255,255,0.2);
-    }
-    .btn-glow:hover::before,
-    .btn-glow:focus-visible::before,
-    .btn-glow:hover::after,
-    .btn-glow:focus-visible::after {
-    opacity: 1;
-    transform: scale(1);
-    }
-    .btn-glow:active {
-    transform: translateY(0) scale(0.95);  /* Pressed‐in effect */
-    box-shadow:
-        0 3px 8px rgba(79,70,229,0.5),
-        inset 0 0 6px rgba(0,0,0,0.2);
-    }
-    /* ─── Pulsing glow animation behind CTA ──────────────────── */
-    @keyframes buttonPulse {
-    0%, 100% {
-        box-shadow:
-        0 0 10px rgba(79,70,229,0.6),
-        0 0 20px rgba(79,70,229,0.4),
-        inset 0 0 8px rgba(255,255,255,0.1);
-    }
-    50% {
-        box-shadow:
-        0 0 15px rgba(79,70,229,0.9),
-        0 0 30px rgba(79,70,229,0.6),
-        inset 0 0 12px rgba(255,255,255,0.15);
-    }
-    }
-    .animate-buttonPulse {
-    animation: buttonPulse 3s infinite ease-in-out;
-    }
-    @media (prefers-reduced-motion: reduce) {
-    .btn-glow,
-    .btn-glow::before,
-    .btn-glow::after {
-        transition: none;
-        animation: none;
-        transform: none;
-    }
-    }
-
-
-    /*============================================================
-    SKIP-LINK FOR ACCESSIBILITY                  [Sara Soueidan, Matthew Butterick]
-    ============================================================*/
-    .skip-link {
-    position: absolute;
-    top: -60px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    background-color: #6366F1;
-    color: var(--clr-white);
-    padding: 0.6rem 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    opacity: 0;
-    box-shadow: 0 4px 16px rgba(99,102,241,0.3);
-    backdrop-filter: blur(6px);
-    z-index: 9999;
-    pointer-events: none;
-    transition:
-        top 0.35s cubic-bezier(0.25,1,0.5,1),
-        opacity 0.35s cubic-bezier(0.25,1,0.5,1),
-        transform 0.35s cubic-bezier(0.25,1,0.5,1),
-        box-shadow 0.35s ease,
-        backdrop-filter 0.35s ease;
-    }
-    .skip-link:focus {
-    top: 1.5rem;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-    box-shadow: 0 8px 24px rgba(99,102,241,0.5), 0 0 0 3px rgba(255,255,255,0.3);
-    outline: none;
-    }
-    .skip-link:active {
-    transform: translateX(-50%) scale(0.98);
-    box-shadow: 0 6px 20px rgba(99,102,241,0.4), inset 0 0 2px rgba(0,0,0,0.1);
-    }
-    .skip-link::before {
-    content: "↳";
-    display: inline-block;
-    margin-right: 0.4rem;
-    transform: rotate(90deg);
-    transition: transform 0.3s ease-out;
-    }
-    .skip-link:focus::before {
-    transform: rotate(0deg);
-    }
-    .skip-link:hover {
-    background-color: var(--clr-indigo-500);
-    box-shadow: 0 6px 20px rgba(79,70,229,0.4), 0 0 0 3px rgba(255,255,255,0.3);
-    cursor: pointer;
-    }
-    .skip-link:focus-visible {
-    animation: focusPulse 1.5s infinite alternate ease-in-out;
-    }
-    @keyframes focusPulse {
-    0%   { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
-    100% { box-shadow: 0 0 0 10px rgba(99,102,241,0); }
-    }
-
-    /*============================================================
-    DARK MODE OVERRIDES                          [Robert Greene, Matthew Butterick, Guillermo Rauch, Brian Dean]
-    ============================================================*/
-    .dark body {
-    background-color: var(--clr-gray-900);
-    color: var(--clr-gray-300);
-    }
-    .dark h1,
-    .dark p,
-    .dark button {
-    color: var(--clr-white);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-    .dark header,
-    .dark footer {
-    background-color: #111827;
-    border-color: rgba(255,255,255,0.05);
-    }
-    .dark .card,
-    .dark section,
-    .dark .glass {
-    background-color: var(--clr-gray-800);
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(16px);
-    }
-    .dark a,
-    .dark button {
-    color: #93C5FD;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .dark a:hover,
-    .dark button:hover {
-    background-color: var(--clr-blue-600);
-    color: var(--clr-white);
-    box-shadow: 0 0 12px rgba(37,99,235,0.6);
-    }
-    .dark input,
-    .dark textarea,
-    .dark select {
-    background-color: var(--clr-gray-700);
-    color: #E5E7EB;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .dark input:focus,
-    .dark textarea:focus,
-    .dark select:focus {
-    border-color: var(--clr-blue-600);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.3);
-    }
-    .dark table {
-    background-color: var(--clr-gray-800);
-    border-collapse: collapse;
-    }
-    .dark th,
-    .dark td {
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 12px;
-    }
-    .dark tr:nth-child(even) {
-    background-color: rgba(255,255,255,0.02);
-    }
-    .dark ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    }
-    .dark ::-webkit-scrollbar-track {
-    background: var(--clr-gray-900);
-    }
-    .dark ::-webkit-scrollbar-thumb {
-    background: var(--clr-gray-600);
-    border-radius: 4px;
-    }
-    .dark ::-webkit-scrollbar-thumb:hover {
-    background: var(--clr-gray-500);
-    }
-    .dark .divider {
-    background-color: rgba(255,255,255,0.05);
-    }
-    @media (prefers-reduced-motion: reduce) {
-    .dark *,
-    .dark *::before,
-    .dark *::after {
-        transition: none;
-    }
-    }
-
-    /*============================================================
-    EXTRA PULSES & FADE-INS FOR MICRO-INTERACTIONS     [Chris Do, Wes Bos]
-    ============================================================*/
-    /* Slow “underwater” pulse for subtle backgrounds, icons, etc. */
-    @keyframes slowPulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50%      { opacity: 0.6; transform: scale(1.05); }
-    }
-    .animate-slowPulse {
-    animation: slowPulse 15s ease-in-out infinite;
-    }
-
-    /* Gentle fade-in from below */
-    @keyframes gentleFadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to   { opacity: 1; transform: translateY(0);  }
-    }
-    .animate-gentleFadeIn {
-    animation: gentleFadeIn 1.2s var(--ease-default) forwards;
-    }
-
-    /* Slight lift with a small delay */
-    @keyframes subtleLiftDelay {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0);  }
-    }
-    .animate-subtleLiftDelay {
-    animation: subtleLiftDelay 1.5s var(--ease-default) forwards;
-    animation-delay: 0.3s;
-    }
-
-    /* Pulsing button highlight */
-    @keyframes buttonPulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(79,70,229,0.3); }
-    50%      { box-shadow: 0 0 25px rgba(79,70,229,0.5); }
-    }
-    .animate-buttonPulse {
-    animation: buttonPulse 4s ease-in-out infinite;
-    }
-
-    /* Simple fade-in with longer delay */
-    @keyframes fadeInDelay {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-    }
-    .animate-fadeInDelay {
-    animation: fadeInDelay 1.8s var(--ease-default) forwards;
-    animation-delay: 0.6s;
-    }
-
-    /*============================================================
-    HERO CONTAINER FOR READABILITY                [Robert Greene, Josh Comeau, Sara Soueidan, Brian Dean]
-    ============================================================*/
-    /* Primary “hero” wrapper so text is always legible over background */
-    /*============================================================
-    KEYFRAMES & BASE ANIMATIONS
-    ——————————————————————————————————————————————————————————
-    Define all custom animations once, with unique names
-    ============================================================*/
-
-    /* Slow “underwater” pulse for subtle backgrounds/icons */
-    @keyframes slowPulse {
-    0%, 100% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.05);
-    }
-    }
-    .animate-slowPulse {
-    animation: slowPulse 15s ease-in-out infinite;
-    }
-
-    /* Gentle fade-in from below */
-    @keyframes gentleFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    }
-    .animate-gentleFadeIn {
-    animation: gentleFadeIn 1.2s var(--ease-default) forwards;
-    }
-
-    /* Slight lift with a small delay */
-    @keyframes subtleLiftDelay {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    }
-    .animate-subtleLiftDelay {
-    animation: subtleLiftDelay 1.5s var(--ease-default) forwards;
-    animation-delay: 0.3s;
-    }
-
-    /* Subtle cognitive glow on reveal text */
-    @keyframes subtleCognitiveGlow {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    }
-    .animate-subtleCognitiveGlow {
-    animation: subtleCognitiveGlow 1s ease-out forwards;
-    }
-
-    /* Pulsing glow for primary buttons */
-    @keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 12px rgba(79, 70, 229, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(79, 70, 229, 1);
-    }
-    }
-    .animate-buttonPulse {
-    animation: pulseGlow 3s infinite ease-in-out;
-    }
-
-    /* Click echo effect */
-    @keyframes clickEcho {
-    0% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
-    }
-    .animate-clickEcho {
-    animation: clickEcho 0.5s forwards;
-    }
-
-    /* Fractal pulse on active */
-    @keyframes fractalPulse {
-    0% {
-        transform: scale(0.9);
-        opacity: 0.5;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.1;
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
-    }
-    .group-active\:animate-fractalPulse:active {
-    animation: fractalPulse 0.7s ease-out forwards;
-    }
-
-    /* Neurological fractal pulse (text emphasis) */
-    @keyframes neurologicalFractalPulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.05;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.15;
-    }
-    }
-    .animate-neurologicalFractalPulse {
-    animation: neurologicalFractalPulse 2.5s infinite ease-in-out;
-    }
-
-    /* Bayesian pulse (soft emphasis) */
-    @keyframes bayesianPulse {
-    0%, 100% {
-        transform: scale(0.95);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.6;
-    }
-    }
-    .animate-bayesianPulse {
-    animation: bayesianPulse 4s infinite ease-in-out;
-    }
-
-    /* Simple fade-in with longer delay */
-    @keyframes fadeInDelay {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-    }
-    .animate-fadeInDelay {
-    animation: fadeInDelay 1.8s var(--ease-default) forwards;
-    animation-delay: 0.6s;
-    }
-
-    /*============================================================
-    REVEAL & TYPOGRAPHIC MICRO-INTERACTIONS
-    ——————————————————————————————————————————————————————————
-    Text‐reveal effects, micro-kerning, etc.
-    ============================================================*/
-
-    /* Basic “reveal on scroll” setup: hidden until .revealed */
-    [data-reveal] {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-    filter: blur(6px);
-    transition:
-        opacity 0.65s var(--ease-default),
-        transform 0.65s var(--ease-default),
-        filter 0.65s ease-out;
-    will-change: opacity, transform, filter;
-    pointer-events: none;
-    user-select: none;
-    }
-    [data-reveal].revealed {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    filter: blur(0);
-    }
-    /* Staggered delays based on child index */
-    [data-reveal] {
-    --delay: var(--reveal-delay);
-    }
-    [data-reveal]:nth-child(1) { transition-delay: calc(1 * var(--delay)); }
-    [data-reveal]:nth-child(2) { transition-delay: calc(2 * var(--delay)); }
-    [data-reveal]:nth-child(3) { transition-delay: calc(3 * var(--delay)); }
-    [data-reveal]:nth-child(4) { transition-delay: calc(4 * var(--delay)); }
-    [data-reveal]:nth-child(5) { transition-delay: calc(5 * var(--delay)); }
-    /* Reduced-motion fallback */
-    @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
-        transition: none;
-        transform: none;
-        opacity: 1;
-        filter: none;
-    }
-    }
-
-    /* Micro‐fractal typography on .reveal hover (kerning & weight) */
-    .reveal {
-    transition: letter-spacing 0.3s ease-out, font-weight 0.3s ease-out;
-    }
-    .reveal:hover {
-    letter-spacing: 0.02em;
-    font-weight: 600;
-    }
-
-    /* Additional text emphasis on group hover */
-    .group:hover span {
-    letter-spacing: 0.06em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-    /* Emotional cognitive alignment shadow on .group hover */
-    .group:hover {
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
-    }
-
-    /*============================================================
-    HERO LAYOUT & TYPOGRAPHY
-    ——————————————————————————————————————————————————————————
-    Styles for the #hero section, including adaptive backgrounds
-    ============================================================*/
-
-    /* Primary “hero” wrapper: legible over busy backgrounds */
-    .hero {
-    position: relative;
-    background-color: rgba(10, 15, 25, 0.6); /* cognitive-contrast base */
-    backdrop-filter: blur(12px) saturate(150%);
-    border-radius: 12px;
-    padding: 2rem;
-    margin: 1rem auto;
-    max-width: 80ch; /* ideal reading width */
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.2),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1);
-    transition:
-        background-color var(--dur-slow),
-        backdrop-filter var(--dur-slow),
-        box-shadow var(--dur-slow);
-    }
-    .hero:hover {
-    background-color: rgba(15, 22, 38, 0.75);
-    backdrop-filter: blur(14px) saturate(170%);
-    }
-
-    /* Hero heading and paragraph text */
-    .hero h1,
-    .hero p {
-    color: var(--clr-white);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-    opacity: 0.98;
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-    transition: text-shadow 0.2s ease, opacity 0.2s ease;
-    }
-    .hero h1:hover,
-    .hero p:hover {
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
-    opacity: 1;
-    }
-
-    /* Primary CTA inside hero */
-    .btn-primary {
-    background: linear-gradient(145deg, var(--clr-indigo-500), var(--clr-purple-600));
-    color: var(--clr-white);
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.6);
-    background: linear-gradient(145deg, var(--clr-purple-600), var(--clr-indigo-500));
-    }
-
-    /* Accessibility: remove all transitions/animations if user prefers reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-    .hero,
-    .hero:hover,
-    .hero h1,
-    .hero p,
-    .btn-primary,
-    .btn-primary:hover,
-    .btn-primary:focus {
-        transition: none;
-        transform: none;
-    }
-    }
-
-    /*============================================================
-    HERO VISIBILITY FIX (Light & Dark)
-    ——————————————————————————————————————————————————————————
-    Ensure hero text is always legible under different modes
-    ============================================================*/
-    #hero {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark-mode base */
-    backdrop-filter: blur(5px);
-    color: var(--clr-white);
-    }
-    .light #hero {
-    background-color: rgba(255, 255, 255, 0.7); /* Light-mode base */
-    color: black;
-    }
-    #hero h1,
-    #hero p {
-    color: inherit; /* Inherit whichever mode applies */
-    }
-    #hero .z-10 {
-    position: relative;
-    z-index: 10;
-    }
-
-    /* Optional gradient overlay within hero */
-    .hero-gradient {
-    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.3), transparent 80%);
-    mix-blend-mode: screen;
-    opacity: 0.7;
-    }
-
-    /*============================================================
-    BUTTON “GLOW” OVERRIDE (Integrated Decisive CTA Glow)
-    ——————————————————————————————————————————————————————————
-    Enhance any .btn-glow with these glow‐centric shadows
-    ============================================================*/
-    .btn-glow {
-    box-shadow:
-        0 4px 16px rgba(79, 70, 229, 0.5),
-        0 0 30px rgba(79, 70, 229, 0.25),
-        inset 0 0 6px rgba(255, 255, 255, 0.2);
-    }
-
-    /* Support for .btn-glow hover (if additional rules are defined elsewhere) */
-    .btn-glow:hover {
-    box-shadow: 0 0 15px rgba(79, 70, 229, 0.7), 0 0 25px rgba(79, 70, 229, 0.4);
-    }
-
-    /*============================================================
-    TYPOGRAPHY ADJUSTMENTS & LIST STYLES
-    ——————————————————————————————————————————————————————————
-    Global text refinements for reading comfort
-    ============================================================*/
-
-    /* Section headings & body text spacing */
-    section {
-    letter-spacing: 0.02em;
-    line-height: 1.75;
-    }
-    h2, h3 {
-    letter-spacing: -0.015em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    color: white;
-    }
-    p, li, dd, dt {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    color: #D1D5DB;
-    }
-
-    /* List items with custom checkmark alignment */
-    section ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0 auto;
-    max-width: 100%;
-    }
-    section li {
-    position: relative;
-    padding-left: 2rem;
-    display: flex;
-    align-items: flex-start;
-    }
-    section li svg {
-    position: absolute;
-    left: 0;
-    top: 0.25rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #6366F1;
-    flex-shrink: 0;
-    }
-    section li span {
-    line-height: 1.6;
-    font-size: 1rem;
-    }
-
-    /*============================================================
-    CARD & SECTION INTERACTIONS
-    ——————————————————————————————————————————————————————————
-    Glass/blur background, hover lifts, divider flare, etc.
-    ============================================================*/
-
-    /* Base card styling (used in “Services” cards, etc.) */
-    .card {
-    padding: 2.5rem;
-    background-color: rgba(15, 23, 35, 0.97); /* Dark, translucent backdrop */
-    border-left: 5px solid rgba(99, 102, 241, 0.5);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    border-radius: 0.75rem;
-    margin-block: 2.5rem;
-    transition:
-        transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform, box-shadow, opacity;
-    }
-    .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(99, 102, 241, 0.55);
-    }
-    .card h2 {
-    margin-bottom: 1rem;
-    color: #FFFFFF;
-    font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    .card p {
-    color: #D1D5DB;
-    line-height: 1.7;
-    letter-spacing: 0.015em;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Glassy sections (if used) share similar backdrop-filter */
-    section,
-    .card {
-    background-color: rgba(17, 24, 39, 0.9);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 4px rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px) saturate(160%);
-    }
-    section:hover,
-    .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25), inset 0 2px 6px rgba(255, 255, 255, 0.15);
-    }
-
-    /* Divider with subtle flare & hover pulse */
-    .divider {
-    opacity: 0.5;
-    height: 1px;
-    margin: 5rem auto;
-    background: linear-gradient(to right, transparent, rgba(79, 70, 229, 0.3), transparent);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    .divider:hover {
-    opacity: 0.8;
-    transform: scaleX(1.05);
-    }
-
-    /*============================================================
-    QUICK INTRO & MISCELLANEOUS LAYOUT STYLES
-    ——————————————————————————————————————————————————————————
-    Special styling for the quick intro, spacing, etc.
-    ============================================================*/
-
-    /* Quick intro section styling */
-    .quick-intro {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #E5E7EB;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    line-height: 1.65;
-    max-width: 55ch;
-    margin-inline: auto;
-    padding: 2rem; /* ensure some padding if needed */
-    background-color: rgba(17, 24, 39, 0.9);
-    border-radius: 0.75rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 4px rgba(255, 255, 255, 0.1);
-    }
-
-    /* General section vertical spacing (applies to most sections) */
-    section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    }
-
-    /* Utility class for generic transitions */
-    .transition {
-    transition: all 0.3s ease;
-    }
-
-    /*============================================================
-    ACCESSIBILITY / OVERRIDES
-    ——————————————————————————————————————————————————————————
-    Remove glass effects, ensure text visibility, etc.
-    ============================================================*/
-
-    /* Explicitly remove backdrop-filter for certain elements */
-    .no-glass {
-    backdrop-filter: none !important;
-    background-color: transparent !important;
-    }
-
-    /* Hero paragraph text‐shadow override for readability */
-    #hero p {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    /*============================================================
-    SUMMARY
-    ——————————————————————————————————————————————————————————
-    1. All keyframes collected at top (no duplicates).
-    2. Reveal logic and typographic micro-interactions next.
-    3. Hero container & typography grouped together.
-    4. Button glow overrides consolidated.
-    5. Card & section hover effects in one place.
-    6. Quick intro and general layout adjustments.
-    7. Accessibility overrides last.
-    ============================================================*/
-
-    </style>
-
+  <meta name="description" content="Rewrite dense text into direct, resonant language within 48 hours—pay only if it improves.">
+  <meta property="og:title"       content="Apexium Clear Writing">
+  <meta property="og:description" content="Professional rewrites in 48 hours. Pay only after measurable clarity gains.">
+  <meta property="og:image"       content="https://apexium.xyz/social-preview.png">
+  <meta property="og:url"         content="https://apexium.xyz">
+  <meta name="twitter:card"       content="summary_large_image">
+  <link rel="icon" href="/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- 🌐 Project‐scoped CSS (variables first, overrides last) -->
+  <link rel="stylesheet" href="css/root-variables.css">   <!-- custom-properties -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/cards-sections.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/parallax.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+
+  <!-- JS utilities -->
+  <script defer src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/ax-core.js"></script>     <!-- dark-mode toggle, nav, reveal, parallax -->
+  <script defer src="js/cta.js"></script>      <!-- sticky CTA + checkout -->
+
+  <!-- Analytics -->
+  <script defer data-domain="apexium.xyz"
+          src="https://plausible.io/js/script.js"></script>
 </head>
 
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Skip to main -->
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<!-- Header (Irish, Roberts, Soueidan, Schoger, Rauch, Wathan, Do, Greene) -->
-<header class="sticky top-0 bg-white dark:bg-gray-900 backdrop-filter backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 shadow-sm z-50">
-  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-
-    <!-- Brand Identity Anchor -->
-    <a href="#hero" aria-label="Go to Apexium home" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-500 transition duration-200 ease-out focus:ring-2 focus:ring-indigo-300 rounded-md transform hover:-translate-y-0.5 active:translate-y-0.5">
-      Apexium
-    </a>
-
-    <!-- Recursive Semantic Navigation -->
-    <nav aria-label="Primary navigation" class="hidden md:flex space-x-8 font-medium">
-      <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200 relative after:absolute after:inset-x-0 after:bottom-[-4px] after:h-0.5 after:bg-indigo-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-200">
-        Services
+  <!-- Header -->
+  <header class="sticky top-0 bg-white dark:bg-gray-900 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 shadow-sm z-50">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#hero" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-500 focus:ring-2 focus:ring-indigo-300 rounded-md">
+        Apexium
       </a>
-      <a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200 relative after:absolute after:inset-x-0 after:bottom-[-4px] after:h-0.5 after:bg-indigo-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-200">
-        Process
-      </a>
-      <a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200 relative after:absolute after:inset-x-0 after:bottom-[-4px] after:h-0.5 after:bg-indigo-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-200">
-        FAQ
-      </a>
-      <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200 relative after:absolute after:inset-x-0 after:bottom-[-4px] after:h-0.5 after:bg-indigo-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-200">
-        Contact
-      </a>
-    </nav>
 
-    <!-- Interactive Cognitive Optimization Zone -->
-    <div class="flex items-center space-x-4">
+      <nav aria-label="Primary" class="hidden md:flex space-x-8 font-medium">
+        <a href="#services"     class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">Process</a>
+        <a href="#faq"          class="nav-link">FAQ</a>
+        <a href="#contact"      class="nav-link">Contact</a>
+      </nav>
 
-      <!-- Optimized Neurological Framing Dark Mode Toggle -->
-      <button
-        id="darkModeToggle"
-        aria-label="Activate dark mode"
-        aria-pressed="false"
-        class="p-2 rounded-md transition duration-300 ease-out bg-transparent hover:bg-indigo-50 dark:hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-300 focus:outline-none relative overflow-hidden group"
-      >
-        <!-- Sun Icon (Light Mode) -->
-        <svg
-          id="iconSun"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-gray-900 dark:hidden transition-transform duration-500 ease-out group-hover:rotate-180"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 3v1m0 16v1m8-8h1m-16 0h1m13.66 6.36l.7.7m-12.02-12.02l.7-.7M12 5a7 7 0 100 14 7 7 0 000-14z"
-          />
-        </svg>
-
-            <!-- Moon Icon (Dark Mode) -->
-            <svg
-            id="iconMoon"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-200 hidden dark:block transition-transform duration-500 ease-out group-hover:rotate-180"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-            />
-            </svg>
-
-            <!-- Emotional Anchor Tooltip -->
-            <span
-            class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 text-xs rounded-full backdrop-blur-md bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100 group-focus:opacity-100"
-            >
-            Comfort your eyes
-            </span>
+      <div class="flex items-center space-x-4">
+        <!-- Dark-mode toggle -->
+        <button id="darkModeToggle" aria-pressed="false" class="icon-btn group">
+          <svg id="iconSun"  class="h-6 w-6 text-gray-900 dark:hidden group-hover:rotate-180 transition"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 3v1m0 16v1m8-8h1M4 12H3m15.66 6.36l.7.7m-12.02-12.02l.7-.7M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+          </svg>
+          <svg id="iconMoon" class="h-6 w-6 text-gray-200 hidden dark:block group-hover:rotate-180 transition"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
         </button>
 
-        <!-- Optimized Mobile Menu Toggle -->
-        <button
-        id="mobileMenuBtn"
-        aria-label="Reveal navigation"
-        aria-expanded="false"
-        class="md:hidden p-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-700 transition duration-300 ease-out focus:ring-2 focus:ring-indigo-300 focus:outline-none relative overflow-hidden group"
-        >
-        <!-- Menu icon -->
-        <svg
-            id="menuIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-900 dark:text-gray-200 transition-transform duration-300 group-hover:scale-110"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-
-        <!-- Close icon -->
-        <svg
-            id="closeIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 absolute inset-0 m-auto text-gray-900 dark:text-gray-200 opacity-0 transition-opacity duration-300 pointer-events-none"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-
-        <!-- Tooltip -->
-        <span
-            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 text-xs bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-full opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100"
-        >
-            Clarify your path
-        </span>
+        <!-- Mobile nav toggle -->
+        <button id="mobileMenuBtn" aria-expanded="false" class="icon-btn md:hidden group">
+          <svg id="menuIcon"  class="h-6 w-6 text-gray-900 dark:text-gray-200 group-hover:scale-110 transition"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="closeIcon" class="h-6 w-6 absolute inset-0 m-auto text-gray-900 dark:text-gray-200 opacity-0 transition"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"/>
+          </svg>
         </button>
-
-        </div> <!-- close flex items -->
-        </div> <!-- close container -->
-
-        <!-- Mobile menu -->
-        <nav
-        id="mobileMenu"
-        class="hidden md:hidden opacity-0 scale-95 bg-white dark:bg-gray-900 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 shadow-lg transition-all duration-300 ease-out"
-        aria-label="Mobile navigation"
-        >
-        <ul class="flex flex-col space-y-5 p-6 text-lg font-medium text-gray-700 dark:text-gray-300">
-            <li><a href="#services" class="hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
-            <li><a href="#how-it-works" class="hover:text-indigo-600 dark:hover:text-indigo-400">Process</a></li>
-            <li><a href="#faq"       class="hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a></li>
-            <li><a href="#contact"   class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
-        </ul>
-        </nav>
-
-        <script>
-
-        ;(function() {
-        'use strict';
-
-        //============================================================
-        // 1) UTILITY FUNCTIONS
-        //============================================================
-        // Simple selectors to avoid repeatedly typing document.querySelector(...)
-        function $(selector) {
-            return document.querySelector(selector);
-        }
-        function $all(selector) {
-            return Array.from(document.querySelectorAll(selector));
-        }
-
-        //============================================================
-        // 2) UNIVERSAL CTA CLICK HANDLER
-        //    - Disables the button, shows "Requesting…", then
-        //      redirects to your Stripe checkout after a short delay.
-        //============================================================
-        function handleCTA(event) {
-            var btn = event.currentTarget;
-            // Prevent double‐clicks
-            if (btn.getAttribute('aria-busy') === 'true') return;
-
-            // Mark as busy
-            btn.setAttribute('aria-busy', 'true');
-            btn.textContent = 'Requesting…';
-            btn.classList.add('opacity-60', 'cursor-not-allowed');
-
-            // After 500ms, navigate to the Stripe URL. 🔥 Replace this with your REAL link:
-            setTimeout(function() {
-            window.location.href = 'YOUR_STRIPE_CHECKOUT_URL';
-            // Example: 'https://buy.stripe.com/test_xyz123abc'
-            }, 500);
-        }
-
-        //============================================================
-        // 3) MOBILE MENU TOGGLE LOGIC (Harry Roberts, Paul Irish)
-        //    - When #mobileMenuBtn is clicked, toggle visibility of #mobileMenu.
-        //    - Also swaps the “open” and “close” icons.
-        //============================================================
-        function initMobileMenu() {
-            var btn       = $('#mobileMenuBtn');
-            var menu      = $('#mobileMenu');
-            var openIcon  = $('#menuIcon');
-            var closeIcon = $('#closeIcon');
-            if (!btn || !menu) return;
-
-            btn.addEventListener('click', function() {
-            var isOpen = menu.classList.contains('block');
-
-            if (isOpen) {
-                // Hide the menu
-                menu.classList.remove('block');
-                menu.classList.add('hidden');
-                if (openIcon)  openIcon.classList.remove('hidden');
-                if (closeIcon) closeIcon.classList.add('hidden');
-                btn.setAttribute('aria-expanded', 'false');
-                btn.setAttribute('aria-label', 'Reveal navigation');
-            } else {
-                // Show the menu
-                menu.classList.remove('hidden');
-                menu.classList.add('block');
-                if (openIcon)  openIcon.classList.add('hidden');
-                if (closeIcon) closeIcon.classList.remove('hidden');
-                btn.setAttribute('aria-expanded', 'true');
-                btn.setAttribute('aria-label', 'Close navigation');
-            }
-            });
-        }
-
-        //============================================================
-        // 4) REVEAL ON SCROLL (Josh Comeau)
-        //    - Uses IntersectionObserver to fade‐in elements with [data-reveal].
-        //    - Falls back to showing all if IntersectionObserver is unavailable.
-        //============================================================
-        function initRevealOnScroll() {
-            var revealElems = $all('[data-reveal]');
-            if ('IntersectionObserver' in window) {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
-                });
-            }, { threshold: 0.1 });
-
-            revealElems.forEach(function(el) {
-                observer.observe(el);
-            });
-            } else {
-            // Fallback for older browsers: reveal everything immediately
-            revealElems.forEach(function(el) {
-                el.classList.add('revealed');
-            });
-            }
-        }
-
-        //============================================================
-        // 5) STICKY CTA SHOW/HIDE ON SCROLL (Schoger, Bos, Irish, Roberts, Wathan)
-        //    - Shows #stickyCTA after scrolling past a threshold.
-        //    - Hides it again when above the threshold.
-        //    - Also attaches a click listener on its button for a brief “busy” state.
-        //============================================================
-        function initStickyCTA() {
-            var sticky = $('#stickyCTA');
-            if (!sticky) return;
-
-            // Initially hide it
-            sticky.classList.add('hidden', 'opacity-0');
-
-            var isTicking    = false;
-            var revealPoint  = 400; // Y‐offset at which the sticky CTA appears
-
-            window.addEventListener('scroll', function() {
-            if (!isTicking) {
-                isTicking = true;
-                window.requestAnimationFrame(function() {
-                var scrollY = window.scrollY || window.pageYOffset;
-                var currentlyVisible = !sticky.classList.contains('hidden');
-
-                if (scrollY > revealPoint && !currentlyVisible) {
-                    // Show sticky CTA
-                    sticky.classList.remove('hidden');
-                    requestAnimationFrame(function() {
-                    sticky.classList.remove('opacity-0');
-                    });
-                } else if (scrollY <= revealPoint && currentlyVisible) {
-                    // Hide sticky CTA
-                    sticky.classList.add('opacity-0');
-                    setTimeout(function() {
-                    sticky.classList.add('hidden');
-                    }, 300);
-                }
-
-                isTicking = false;
-                });
-            }
-            }, { passive: true });
-
-            // If the sticky CTA has a <button> inside, mark it busy on click briefly
-            var stickyBtn = sticky.querySelector('button');
-            if (stickyBtn) {
-            stickyBtn.addEventListener('click', function(e) {
-                var btn = e.currentTarget;
-                if (btn.getAttribute('aria-busy') === 'true') return;
-                btn.setAttribute('aria-busy', 'true');
-                btn.classList.add('active:scale-95');
-                setTimeout(function() {
-                btn.setAttribute('aria-busy', 'false');
-                btn.classList.remove('active:scale-95');
-                }, 600);
-            });
-            }
-        }
-
-        //============================================================
-        // 6) ATTACH ALL LISTENERS ON DOMContentLoaded
-        //    - Hero CTA, Final CTA, Mobile menu, Reveal on scroll, Sticky CTA.
-        //============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // A) ATTACH CTA HANDLERS
-            var heroCTA  = $('#heroCTA');
-            var finalCTA = $('#finalCTA');
-            if (heroCTA)  heroCTA.addEventListener('click', handleCTA);
-            if (finalCTA) finalCTA.addEventListener('click', handleCTA);
-
-            // B) MOBILE MENU SETUP
-            initMobileMenu();
-
-            // C) REVEAL ON SCROLL SETUP
-            initRevealOnScroll();
-
-            // D) STICKY CTA SETUP
-            initStickyCTA();
-        });
-
-        })();
-
-        </script>
-
-
-  <!-- PARALLAX BACKGROUND CONTAINER (Chris Do, Josh Comeau, Steve Schoger, Guillermo Rauch, Adam Wathan, Paul Irish, Harry Roberts, Sara Soueidan) -->
-    <div class="parallax-container absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer1.svg')] opacity-20 bg-cover bg-center"></div>
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer2.svg')] opacity-15 bg-cover bg-center"></div>
-        <div class="parallax-layer absolute inset-0 bg-[url('/bg-layer3.svg')] opacity-10 bg-cover bg-center"></div>
+      </div>
     </div>
 
-    <!-- HERO SECTION (Greene, Hormozi, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Do, Bos, Comeau, Irish, Roberts) -->
-    <section id="hero" class="relative flex flex-col items-center justify-center overflow-hidden py-28 px-4 text-center">
+    <!-- Mobile menu -->
+    <nav id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 shadow-lg transition">
+      <ul class="flex flex-col space-y-5 p-6 text-lg font-medium text-gray-700 dark:text-gray-300">
+        <li><a href="#services"     class="hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
+        <li><a href="#how-it-works" class="hover:text-indigo-600 dark:hover:text-indigo-400">Process</a></li>
+        <li><a href="#faq"          class="hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a></li>
+        <li><a href="#contact"      class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Adaptive Neurological Framing Gradient (Preserved lavender gradient explicitly) -->
+  <!-- Parallax background -->
+  <div class="parallax-container pointer-events-none -z-10">
+    <div class="parallax-layer"></div>
+    <div class="parallax-layer"></div>
+    <div class="parallax-layer"></div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" class="relative flex flex-col items-center justify-center py-28 px-4 text-center">
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/25 via-transparent to-transparent animate-[pulse_10s_ease-in-out_infinite_alternate] scale-105"></div>
 
-    <div class="z-10 max-w-3xl px-6 text-center space-y-8">
-
-        <!-- Strategic Authority Headline (Greene, Butterick, Schoger) -->
-        <h1 data-reveal class="text-5xl font-extrabold text-white leading-snug drop-shadow-xl animate-gentleFadeIn no-glass">
+    <div class="relative z-10 max-w-3xl space-y-8">
+      <h1 data-reveal class="text-5xl font-extrabold text-white leading-snug drop-shadow-xl">
         Clear Writing. Better Results.<br>Guaranteed in 48 Hours.
-        </h1>
-
-        <!-- Decisive Semantic Assurance (Hormozi, Dean, Wathan, Clear) -->
-        <p data-reveal class="text-xl font-medium text-gray-200 animate-subtleLiftDelay no-glass">
+      </h1>
+      <p data-reveal class="text-xl text-gray-200">
         Get clarity first. Pay only after measurable improvements.
-        </p>
+      </p>
 
-        <!-- Explicit Conversion Activation Button (Hormozi, Greene, Comeau, Bos, Schoger) -->
-        <button id="heroCTA" aria-busy="false"
-        class="inline-block px-16 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-2xl hover:bg-indigo-700 active:scale-95 transition transform duration-300 ease-out btn-glow">
+      <button data-ax-cta data-href="YOUR_STRIPE_CHECKOUT_URL"
+              class="btn-glow px-16 py-4 text-lg font-semibold">
         Simplify My Words Now
-        </button>
+      </button>
 
-        <!-- Cognitive Assurance Clearly Visible (Clear, Soueidan, Hormozi, Greene) -->
-        <p data-reveal aria-live="polite" class="text-sm text-gray-100 italic drop-shadow-md animate-subtleCognitiveGlow no-glass">
+      <p data-reveal class="text-sm italic text-gray-100">
         See measurable clarity improvements before committing.
-        </p>
-
+      </p>
     </div>
+  </section>
 
-    </section>
-
-
-
-
-
-    <!-- Sticky CTA: Recursive Habitual Validation, Semantic Neurological Fidelity & Dialectical Click Assurance (Greene, Rauch, Schoger, Wathan, Dean, Clear, Butterick, Soueidan, Bos, Do, Irish, Roberts, Comeau) -->
-    <div id="stickyCTA" class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-500 ease-in-out z-50">
-    <button
-        aria-label="Request Professional Rewrite"
-        class="px-7 py-3 text-white rounded-full bg-indigo-600 shadow-lg hover:bg-indigo-700 active:bg-indigo-800 hover:scale-105 active:scale-95 transition duration-300 ease-out"
-    >
-        Request Rewrite
+  <!-- Sticky CTA -->
+  <div id="stickyCTA"
+       class="fixed bottom-6 right-6 hidden opacity-0 transition-opacity duration-300 z-50">
+    <button data-ax-cta data-href="YOUR_STRIPE_CHECKOUT_URL"
+            class="btn-glow px-7 py-3">
+      Request Rewrite
     </button>
-    </div>
+  </div>
 
-
-    <main id="main" class="mt-16">
+  <main id="main" class="mt-16">
 
     <!-- Quick Intro -->
-    <section data-reveal class="quick-intro reveal max-w-3xl mx-auto px-8 py-12 bg-gray-800 rounded-xl shadow-xl mb-16 no-glass">
-        <h2 class="text-3xl font-bold mb-4 text-white">Quick Intro</h2>
-        <p class="text-lg text-gray-300">
-        I'm Aaron. I rewrite complicated text into clear, easy-to-understand language. You pay only after measurable clarity is achieved.
-        </p>
+    <section data-reveal class="quick-intro max-w-3xl mx-auto px-8 py-12 mb-16">
+      <h2 class="text-3xl font-bold mb-4 text-white">Quick Intro</h2>
+      <p class="text-lg text-gray-300">
+        I'm Aaron. I rewrite complicated text into clear, easy-to-understand language.
+        You pay only after measurable clarity is achieved.
+      </p>
     </section>
 
     <div class="divider"></div>
 
     <!-- Who This Helps -->
-    <section data-reveal class="reveal max-w-3xl mx-auto px-8 py-12 bg-gray-800 rounded-xl shadow-xl mb-16 no-glass">
-        <h2 class="text-3xl font-bold mb-6 text-white text-center">Who This Helps</h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <li class="flex items-start space-x-3">
-            <svg class="w-6 h-6 text-indigo-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-300">Solo founders refining product messages</span>
+    <section data-reveal class="max-w-3xl mx-auto px-8 py-12 mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-white text-center">Who This Helps</h2>
+      <ul class="grid gap-6 sm:grid-cols-2">
+        <li class="flex space-x-3">
+          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-gray-300">Solo founders refining product messages</span>
         </li>
-        <li class="flex items-start space-x-3">
-            <svg class="w-6 h-6 text-indigo-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-300">Consultants clarifying abstract services</span>
+        <li class="flex space-x-3">
+          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-gray-300">Consultants clarifying abstract services</span>
         </li>
-        <li class="flex items-start space-x-3">
-            <svg class="w-6 h-6 text-indigo-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-300">Writers simplifying dense drafts</span>
+        <li class="flex space-x-3">
+          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-gray-300">Writers simplifying dense drafts</span>
         </li>
-        <li class="flex items-start space-x-3">
-            <svg class="w-6 h-6 text-indigo-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-300">Builders sharpening investor pitches</span>
+        <li class="flex space-x-3">
+          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-gray-300">Builders sharpening investor pitches</span>
         </li>
-        <li class="flex items-start space-x-3">
-            <svg class="w-6 h-6 text-indigo-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-300">Anyone uncertain how to explain their value</span>
+        <li class="flex space-x-3">
+          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="text-gray-300">Anyone uncertain how to explain their value</span>
         </li>
-        </ul>
+      </ul>
     </section>
 
     <div class="divider"></div>
 
     <!-- Services -->
-    <section id="services" data-reveal class="reveal max-w-3xl mx-auto px-8 py-12 bg-gray-800 rounded-xl shadow-xl mb-16 no-glass">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center">Services</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="card bg-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow">
-            <h3 class="text-xl font-semibold text-white mb-2">Rewrite Kernel · $297</h3>
-            <p class="text-gray-300">One page (≤500 words). Delivered within 48 hours.</p>
+    <section id="services" data-reveal class="max-w-3xl mx-auto px-8 py-12 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center">Services</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="card">
+          <h3 class="text-xl font-semibold text-white mb-2">Rewrite Kernel · $297</h3>
+          <p class="text-gray-300">One page (≤ 500 words). Delivered within 48 hours.</p>
         </div>
-        <!-- Card 2 -->
-        <div class="card bg-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow">
-            <h3 class="text-xl font-semibold text-white mb-2">Deep Audit & Rewrite · $997</h3>
-            <p class="text-gray-300">Three pages, structural edits, enhanced clarity. Delivered within 5 days.</p>
+        <div class="card">
+          <h3 class="text-xl font-semibold text-white mb-2">Deep Audit & Rewrite · $997</h3>
+          <p class="text-gray-300">Three pages, structural edits, enhanced clarity. Delivered within 5 days.</p>
         </div>
-        <!-- Card 3 -->
-        <div class="card bg-gray-700 rounded-lg p-6 hover:shadow-2xl transition-shadow">
-            <h3 class="text-xl font-semibold text-white mb-2">Full System Map · $7,500</h3>
-            <p class="text-gray-300">Extensive documents or full sites rewritten comprehensively. Timeline collaboratively set.</p>
+        <div class="card">
+          <h3 class="text-xl font-semibold text-white mb-2">Full System Map · $7 500</h3>
+          <p class="text-gray-300">Extensive documents or full sites rewritten comprehensively. Timeline set collaboratively.</p>
         </div>
-        </div>
+      </div>
     </section>
 
     <div class="divider"></div>
 
     <!-- How It Works -->
-    <section id="how-it-works" data-reveal class="reveal max-w-3xl mx-auto px-8 py-12 bg-gray-800 rounded-xl shadow-xl mb-16 no-glass">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center">How It Works</h2>
-        <ol class="list-decimal list-inside space-y-4 text-gray-300">
+    <section id="how-it-works" data-reveal class="max-w-3xl mx-auto px-8 py-12 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center">How It Works</h2>
+      <ol class="list-decimal list-inside space-y-4 text-gray-300">
         <li><span class="font-semibold">Submit:</span> Paste or email your document.</li>
-        <li><span class="font-semibold">Receive:</span> Tracked-changes & summary.</li>
+        <li><span class="font-semibold">Receive:</span> Tracked changes and summary.</li>
         <li><span class="font-semibold">Revise:</span> One revision included.</li>
         <li><span class="font-semibold">Approve:</span> Confirm improvement, then pay.</li>
-        </ol>
+      </ol>
     </section>
 
     <div class="divider"></div>
 
-    <!-- Before / After (Butterick) -->
-    <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-16 mb-20 space-y-8">
-    
-    <h2 class="text-3xl font-bold text-center text-gray-100">Before / After</h2>
-
-    <div class="grid md:grid-cols-2 gap-8">
-        
-        <!-- Before -->
-        <div class="p-8 rounded-xl bg-gray-800 shadow-md transition hover:shadow-lg">
-        <p class="text-md font-semibold text-red-400 mb-2">Before</p>
-        <blockquote class="text-gray-300 italic text-lg leading-relaxed">
-            “Our platform streamlines cross-functional collaboration by enabling teams to surface relevant knowledge…”
-        </blockquote>
+    <!-- Before / After -->
+    <section data-reveal class="max-w-3xl mx-auto px-6 py-16 space-y-8">
+      <h2 class="text-3xl font-bold text-center text-gray-100">Before / After</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="p-8 bg-gray-800 rounded-xl shadow-md">
+          <p class="font-semibold text-red-400 mb-2">Before</p>
+          <blockquote class="italic text-gray-300 leading-relaxed">“Our platform streamlines cross-functional collaboration by enabling teams to surface relevant knowledge…”</blockquote>
         </div>
-
-        <!-- After -->
-        <div class="p-8 rounded-xl bg-gray-800 border-l-4 border-indigo-500 shadow-xl transition hover:shadow-2xl">
-        <p class="text-md font-semibold text-indigo-400 mb-2">After</p>
-        <blockquote class="text-white font-medium text-lg leading-relaxed">
-            “One workspace. Teams find information, collaborate instantly, finish faster.”
-        </blockquote>
+        <div class="p-8 bg-gray-800 rounded-xl border-l-4 border-indigo-500 shadow-xl">
+          <p class="font-semibold text-indigo-400 mb-2">After</p>
+          <blockquote class="font-medium text-white leading-relaxed">“One workspace. Teams find information, collaborate instantly, finish faster.”</blockquote>
         </div>
-        
-    </div>
-
+      </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- FAQ (Butterick, Soueidan) -->
-    <section id="faq" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+    <!-- FAQ -->
+    <section id="faq" data-reveal class="max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
       <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">FAQ</h2>
       <dl class="space-y-6 text-gray-700 dark:text-gray-300">
         <div>
           <dt class="font-semibold">Voice authenticity?</dt>
-          <dd>Matched exactly or adjusted upon request.</dd>
+          <dd>Matched exactly or adjusted on request.</dd>
         </div>
         <div>
           <dt class="font-semibold">Submission?</dt>
@@ -1764,45 +264,52 @@
 
     <div class="divider"></div>
 
-    <!-- Proven Results (Greene, Butterick, Comeau) -->
-    <section data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+    <!-- Proven Results -->
+    <section data-reveal class="max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
       <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 text-center">Proven Results</h2>
-      <ul class="space-y-4 text-gray-700 dark:text-gray-300 list-disc ml-6">
-        <li>Over 100,000 words rewritten—across diverse industries.</li>
-        <li>Daily structured practice in logic and writing.</li>
-        <li>Transparent, detailed change logs for every project.</li>
+      <ul class="space-y-4 list-disc ml-6 text-gray-700 dark:text-gray-300">
+        <li>100 000+ words rewritten across diverse industries</li>
+        <li>Daily structured practice in logic and writing</li>
+        <li>Transparent, detailed change logs for every project</li>
       </ul>
     </section>
 
     <div class="divider"></div>
 
-    <!-- Final CTA (Butterick, Do) -->
-    <section id="contact" data-reveal class="reveal max-w-3xl mx-auto px-6 py-12 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg mb-20">
+    <!-- Final CTA -->
+    <section id="contact" data-reveal class="max-w-3xl mx-auto px-6 py-12 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg mb-20">
       <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100 text-center">
         Ready for Clearer Writing?
       </h2>
 
-        <div class="flex justify-center mb-6">
-            <button id="finalCTA"
-                    aria-busy="false"
-                    class="btn-glow inline-block px-16 py-5 text-lg font-semibold bg-indigo-600 text-white rounded-full shadow-xl transition duration-300 transform hover:bg-indigo-700 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400 animate-buttonPulse">
-                Request Rewrite
-            </button>
+      <div class="flex justify-center mb-6">
+        <button data-ax-cta data-href="YOUR_STRIPE_CHECKOUT_URL"
+                class="btn-glow px-16 py-5 text-lg font-semibold animate-buttonPulse">
+          Request Rewrite
+        </button>
+      </div>
 
-        </div>
-
-      <p class="text-center text-gray-700 dark:text-gray-300 mb-2">
-        Email: <a href="mailto:contact@apexium.xyz" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">contact@apexium.xyz</a>
+        <p class="text-center text-gray-700 dark:text-gray-300 mb-2">
+        Email :
+        <a 
+            href="mailto:contact@apexium.xyz"
+            class="underline hover:text-indigo-600 dark:hover:text-indigo-400"
+            aria-label="Send email to contact@apexium.xyz"
+        >
+            contact@apexium.xyz
+        </a>
+        </p>
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400">
+        Response within 24 hours.
       </p>
-      <p class="text-center text-sm text-gray-500 dark:text-gray-400">I'll respond within 24 hours.</p>
     </section>
-
   </main>
 
-  <!-- Footer (Paul Irish, Soueidan) -->
   <footer class="bg-white dark:bg-gray-800 text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
     <p>© 2025 Apexium. All rights reserved.</p>
-    <p class="mt-1"><a href="changelog.md" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">View Changelog</a> | data-version="3.0"</p>
+    <p class="mt-1">
+      <a href="changelog.md" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">Changelog</a> | v3.0
+    </p>
   </footer>
 </body>
 </html>

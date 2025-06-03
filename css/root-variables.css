@@ -1,0 +1,39 @@
+/*============================================================
+ROOT VARIABLES & GLOBALS [Clarity Rewrite, SemanticCompression, RecursiveFidelity]
+============================================================*/
+:root {
+  /* ─── Color Palette ─────────────────────────────────────────── */
+  --clr-indigo-500:#4F46E5;
+  --clr-indigo-600:#4338CA;
+  --clr-indigo-700:#3730A3;
+  --clr-purple-600:#8B5CF6;
+  --clr-blue-500:#3B82F6;
+  --clr-blue-600:#2563EB;
+  --clr-gray-900:#0D1117;
+  --clr-gray-800:#161B22;
+  --clr-gray-700:#1F2937;
+  --clr-gray-600:#374151;
+  --clr-gray-500:#4B5563;
+  --clr-gray-300:#D1D5DB;
+  --clr-white:#FFFFFF;
+
+  /* ─── Typography & Spacing ─────────────────────────────────── */
+  --font-body:'Inter',sans-serif;
+  --lh-body:1.6;
+  --lh-heading:1.2;
+  --spacing-unit:0.75rem;
+  --letter-tight:-0.015em;
+  --letter-normal:-0.005em;
+
+  /* ─── Easing & Timing ─────────────────────────────────────── */
+  --ease-default:cubic-bezier(0.22,1,0.36,1);
+  --dur-fast:150ms ease-in-out;
+  --dur-med:250ms ease-in-out;
+  --dur-slow:400ms ease-in-out;
+  --reveal-delay:0.15s;
+
+  /* ─── Opacities ───────────────────────────────────────────── */
+  --op-low:0.15;
+  --op-med:0.7;
+  --op-high:0.9;
+}

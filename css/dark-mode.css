@@ -1,0 +1,135 @@
+/*============================================================
+DARK-MODE OVERRIDES – scope via .dark on <html> or <body>
+============================================================*/
+
+/*------------------------------------------------------------
+Foundational Colors
+------------------------------------------------------------*/
+.dark body {
+  background-color: var(--clr-gray-900);
+  color: var(--clr-gray-300);
+}
+
+/*------------------------------------------------------------
+Typography & Interactive Text
+------------------------------------------------------------*/
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p,
+.dark li,
+.dark dd,
+.dark dt,
+.dark button {
+  color: var(--clr-white);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.40);
+}
+
+.dark a,
+.dark button {
+  color: #93C5FD;                                  /* soft blue */
+  transition: color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out,
+              box-shadow       0.2s ease-in-out;
+}
+.dark a:hover,
+.dark button:hover {
+  background-color: var(--clr-blue-600);
+  color: var(--clr-white);
+  box-shadow: 0 0 12px rgba(37,99,235,0.60);
+}
+
+/*------------------------------------------------------------
+Structural Elements
+------------------------------------------------------------*/
+.dark header,
+.dark footer {
+  background-color: #111827;
+  border-color: rgba(255,255,255,0.05);
+}
+
+/*------------------------------------------------------------
+Glass / Card Surfaces
+------------------------------------------------------------*/
+.dark .card,
+.dark section,
+.dark .glass {
+  background-color: var(--clr-gray-800);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+}
+
+/*------------------------------------------------------------
+Input Controls
+------------------------------------------------------------*/
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--clr-gray-700);
+  color: #E5E7EB;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: border-color 0.2s ease,
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: var(--clr-blue-600);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.30);
+}
+
+/*------------------------------------------------------------
+Tables
+------------------------------------------------------------*/
+.dark table {
+  background-color: var(--clr-gray-800);
+  border-collapse: collapse;
+}
+.dark th,
+.dark td {
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 12px;
+}
+.dark tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.02);
+}
+
+/*------------------------------------------------------------
+Custom Scrollbar
+------------------------------------------------------------*/
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: var(--clr-gray-900);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--clr-gray-600);
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-gray-500);
+}
+
+/*------------------------------------------------------------
+Divider Accent
+------------------------------------------------------------*/
+.dark .divider {
+  background-color: rgba(255,255,255,0.05);
+}
+
+/*------------------------------------------------------------
+Reduced-Motion: remove transitions within dark scope
+------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .dark *,
+  .dark *::before,
+  .dark *::after {
+    transition: none !important;
+  }
+}

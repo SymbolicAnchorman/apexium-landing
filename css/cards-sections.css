@@ -1,0 +1,154 @@
+/*============================================================
+CARDS & SECTION CONTAINERS
+============================================================*/
+
+/*------------------------------------------------------------
+Universal Glassy Section / Card Surface
+------------------------------------------------------------*/
+section,
+.card {
+  background-color: rgba(17, 24, 39, 0.9);                /* deep translucent */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.40),
+              inset 0 1px 4px rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px) saturate(160%);
+  transition:
+    transform   0.2s cubic-bezier(0.22,1,0.36,1),
+    box-shadow  0.2s cubic-bezier(0.22,1,0.36,1);
+  will-change: transform, box-shadow, opacity;
+}
+
+/* Elevate on hover */
+section:hover,
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(79,70,229,0.25),
+              inset 0 2px 6px rgba(255,255,255,0.15);
+}
+
+/*------------------------------------------------------------
+Card Component
+------------------------------------------------------------*/
+.card {
+  padding: 2.5rem;
+  border-left: 5px solid rgba(99,102,241,0.50);
+  margin-block: 2.5rem;
+}
+
+/* Typography inside card */
+.card h2 {
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.card p {
+  color: #D1D5DB;
+  line-height: 1.7;
+  letter-spacing: 0.015em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.30);
+}
+
+/*------------------------------------------------------------
+Divider with Flare & Pulse
+------------------------------------------------------------*/
+.divider {
+  width: clamp(40%, 4vw + 50%, 80%);
+  height: 1px;
+  margin: 4rem auto;
+  position: relative;
+  opacity: var(--op-med);
+  transform-origin: center;
+  background: linear-gradient(
+    to right,
+    rgba(79,70,229,0) 0%,
+    rgba(79,70,229,0.2) 50%,
+    rgba(79,70,229,0) 100%);
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1),
+              opacity   0.4s ease-out;
+}
+
+/* Halo ends */
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 25%;
+  height: 100%;
+  background: radial-gradient(ellipse at center,
+              rgba(79,70,229,0.15), transparent 70%);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+.divider::before { left: -30%; }
+.divider::after  { right: -30%; }
+
+/* Hover flare */
+.divider:hover::before,
+.divider:hover::after {
+  width: 35%;
+  background: radial-gradient(ellipse at center,
+              rgba(79,70,229,0.25), transparent 80%);
+}
+.divider:hover {
+  opacity: 0.8;
+  transform: scaleX(1.05);
+}
+
+/* Active section modifier */
+.divider[data-active-section] {
+  opacity: 0.9;
+  transform: scaleX(1.05);
+  background: linear-gradient(
+    to right,
+    rgba(79,70,229,0.1),
+    rgba(79,70,229,0.5) 50%,
+    rgba(79,70,229,0.1));
+}
+
+/* Depth variants */
+.divider[data-depth="subtle"] { height: 0.5px; opacity: 0.4; }
+.divider[data-depth="bold"]   { height: 2px;   opacity: 0.9; }
+
+/* Pulse option */
+@keyframes dividerPulse {
+  0%   { transform: scaleX(1); }
+  50%  { transform: scaleX(1.02); }
+  100% { transform: scaleX(1); }
+}
+.divider[data-pulse] {
+  animation: dividerPulse 4s infinite ease-in-out;
+}
+
+/*------------------------------------------------------------
+Quick-Intro Block
+------------------------------------------------------------*/
+.quick-intro {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #E5E7EB;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.30);
+  line-height: 1.65;
+  max-width: 55ch;
+  margin-inline: auto;
+  padding: 2rem;
+  background-color: rgba(17,24,39,0.90);
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.40),
+              inset 0 1px 4px rgba(255,255,255,0.10);
+}
+
+/*------------------------------------------------------------
+Reduced-Motion Safety
+------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  section:hover,
+  .card:hover,
+  .divider,
+  .divider::before,
+  .divider::after {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

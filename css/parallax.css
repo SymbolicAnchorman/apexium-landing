@@ -1,0 +1,64 @@
+/*============================================================
+PARALLAX BACKGROUND LAYERS
+============================================================*/
+
+/*------------------------------------------------------------
+Wrapper  (.parallax-container)
+------------------------------------------------------------*/
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  perspective: 1px;               /* creates subtle depth */
+  perspective-origin: center;
+}
+
+/*------------------------------------------------------------
+Layer  (.parallax-layer)
+------------------------------------------------------------*/
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  width: 200%;
+  height: 200%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: var(--op-low);
+  transform-origin: center;
+  animation: recursiveParallax ease-in-out infinite alternate;
+}
+
+/* Individual depth presets (1 = nearest) */
+.parallax-layer:nth-child(1) {
+  background-image: url('https://apexium.xyz/bg-layer1.svg');
+  animation-duration: 100s;
+  transform: translateZ(-0.5px) scale(1.5);
+}
+.parallax-layer:nth-child(2) {
+  background-image: url('https://apexium.xyz/bg-layer2.svg');
+  animation-duration: 120s;
+  transform: translateZ(-1px) scale(2);
+}
+.parallax-layer:nth-child(3) {
+  background-image: url('https://apexium.xyz/bg-layer3.svg');
+  animation-duration: 150s;
+  transform: translateZ(-1.5px) scale(2.5);
+}
+
+/*------------------------------------------------------------
+Keyframe – slow alternate rotation / translate
+------------------------------------------------------------*/
+@keyframes recursiveParallax {
+  from { transform: translateZ(0)      scale(1)   rotate(0deg); }
+  to   { transform: translateZ(-0.5px) scale(1.1) rotate(360deg); }
+}
+
+/*------------------------------------------------------------
+Reduced-motion fallback
+------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    animation: none !important;
+    transform: none !important;
+  }
+}

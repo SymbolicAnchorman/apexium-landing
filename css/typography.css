@@ -1,0 +1,127 @@
+/*============================================================
+TYPOGRAPHY – BASE RULES & MICRO-REFINEMENTS
+============================================================*/
+
+/*------------------------------------------------------------
+Global Heading & Text Rhythm
+------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  margin-block-start: 1.5rem;
+  margin-block-end:   1rem;
+  line-height:        var(--lh-heading);
+  letter-spacing:     var(--letter-tight);
+}
+p, li, dd, dt, blockquote, pre {
+  margin-block-start: 0.75rem;
+  margin-block-end:   0.75rem;
+  line-height:        1.65;
+  letter-spacing:     var(--letter-normal);
+}
+
+/* Ensure smooth anchor scrolling offset */
+:is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
+  scroll-margin-top: 2rem;
+  transition: margin 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+/* Responsive rhythm for ≤640 px */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    margin-block-start: 1.25rem;
+    margin-block-end:   0.75rem;
+  }
+  p, li, dd, dt, blockquote, pre {
+    margin-block-start: 0.5rem;
+    margin-block-end:   0.5rem;
+  }
+}
+
+/* Reduced-motion: drop transitions */
+@media (prefers-reduced-motion: reduce) {
+  :is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
+    transition: none;
+  }
+}
+
+/*------------------------------------------------------------
+Hierarchical Margin Utility
+------------------------------------------------------------*/
+.typography-anchor { --margin-unit: var(--spacing-unit); }
+h1 { margin-block-end: calc(var(--margin-unit) * 2);      }
+h2 { margin-block-end: calc(var(--margin-unit) * 1.75);   }
+h3, h4 { margin-block-end: calc(var(--margin-unit) * 1.5); }
+p, li, dd, dt, blockquote, pre {
+  margin-block-end: var(--margin-unit);
+}
+
+/*------------------------------------------------------------
+Font-Weight Ladder
+------------------------------------------------------------*/
+h1, h2 { font-weight: 700; }
+h3, h4 { font-weight: 600; }
+p, li, dd, dt, blockquote, pre { font-weight: 400; }
+
+/*------------------------------------------------------------
+Hover Fade-In Accent
+------------------------------------------------------------*/
+h1, h2, h3, h4, p, li, dd, dt {
+  opacity: 0.96;
+  transition: opacity 0.2s ease-out;
+}
+:is(h1,h2,h3,h4,p,li,dd,dt):hover {
+  opacity: 1;
+}
+
+/*------------------------------------------------------------
+Readable Body Width
+------------------------------------------------------------*/
+.content-body {
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+/*------------------------------------------------------------
+Section Heading & Body Tint (dark glass cards)
+------------------------------------------------------------*/
+section {
+  letter-spacing: 0.02em;
+  line-height: 1.75;
+}
+h2, h3 {
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  color: white;
+}
+p, li, dd, dt {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  color: #D1D5DB;
+}
+
+/*------------------------------------------------------------
+List – Custom Checkmark Layout
+------------------------------------------------------------*/
+section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+  max-width: 100%;
+}
+section li {
+  position: relative;
+  padding-left: 2rem;
+  display: flex;
+  align-items: flex-start;
+}
+section li svg {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #6366F1;
+  flex-shrink: 0;
+}
+section li span {
+  line-height: 1.6;
+  font-size: 1rem;
+}
