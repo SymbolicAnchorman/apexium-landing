@@ -91,41 +91,52 @@
     <div class="divider"></div>
 
     <!-- Who This Helps -->
-    <section data-reveal class="max-w-3xl mx-auto px-6 py-12 mb-16">
-      <h2 class="text-3xl font-bold mb-6 text-white text-center">Who This Helps</h2>
-      <ul class="grid gap-6 sm:grid-cols-2">
-        <li class="flex space-x-3">
-          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-gray-300">Solo founders refining product messages</span>
+
+    <section id="who-this-helps"
+            data-reveal
+            class="who-this-helps max-w-3xl mx-auto px-6 py-12 mb-16 rounded-lg
+                    backdrop-blur-md bg-gray-900/80 shadow-lg">
+
+    <h2 class="text-center text-3xl font-semibold text-white mb-8">
+        Who&nbsp;This&nbsp;Helps
+    </h2>
+
+    <!-- Note: role="list" sets proper semantics without default bullets -->
+    <ul role="list" class="grid gap-y-6 gap-x-10 sm:grid-cols-2">
+
+        <!-- 1 -->
+        <li class="flex items-start gap-3">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="text-gray-300">Solo founders refining product messages</span>
         </li>
-        <li class="flex space-x-3">
-          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-gray-300">Consultants clarifying abstract services</span>
+
+        <!-- 2 -->
+        <li class="flex items-start gap-3">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="text-gray-300">Consultants clarifying abstract services</span>
         </li>
-        <li class="flex space-x-3">
-          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-gray-300">Writers simplifying dense drafts</span>
+
+        <!-- 3 -->
+        <li class="flex items-start gap-3">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="text-gray-300">Writers simplifying dense drafts</span>
         </li>
-        <li class="flex space-x-3">
-          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-gray-300">Builders sharpening investor pitches</span>
+
+        <!-- 4 -->
+        <li class="flex items-start gap-3">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="text-gray-300">Builders sharpening investor pitches</span>
         </li>
-        <li class="flex space-x-3">
-          <svg class="w-6 h-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span class="text-gray-300">Anyone uncertain how to explain their value</span>
+
+        <!-- 5 (spans full width on small screens) -->
+        <li class="flex items-start gap-3 sm:col-span-2">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="text-gray-300">Anyone unsure how to explain their value</span>
         </li>
-      </ul>
+
+    </ul>
     </section>
+
 
     <div class="divider"></div>
 
@@ -151,15 +162,19 @@
     <div class="divider"></div>
 
     <!-- How It Works -->
-    <section id="how-it-works" data-reveal class="max-w-3xl mx-auto px-6 py-12 mb-16">
-      <h2 class="text-3xl font-bold mb-8 text-white text-center">How It Works</h2>
-      <ol class="list-decimal list-inside space-y-4 text-gray-300">
-        <li><span class="font-semibold">Submit:</span> Paste or email your document.</li>
-        <li><span class="font-semibold">Receive:</span> Tracked changes and summary.</li>
-        <li><span class="font-semibold">Revise:</span> One revision included.</li>
-        <li><span class="font-semibold">Approve:</span> Confirm improvement, then pay.</li>
-      </ol>
+
+    <section id="how-it-works" class="how-it-works">
+    <h2>How It Works</h2>
+    <ol class="hiw-list">
+        <li><span class="label">Submit</span> Paste or email your document.</li>
+        <li><span class="label">Receive</span> Tracked changes and a summary.</li>
+        <li><span class="label">Revise</span> One revision included.</li>
+        <li><span class="label">Approve</span> Confirm improvement, then pay.</li>
+    </ol>
     </section>
+
+
+
 
     <div class="divider"></div>
 
@@ -209,7 +224,7 @@
     </h2>
     <ul>
         <li class="mb-6 text-gray-300">
-        100 000+ words rewritten across diverse industries
+        100,000+ words rewritten across diverse industries
         </li>
         <li class="mb-6 text-gray-300">
         Daily structured practice in logic and writing
