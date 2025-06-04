@@ -1,39 +1,127 @@
 /*============================================================
-ROOT VARIABLES & GLOBALS [Clarity Rewrite, SemanticCompression, RecursiveFidelity]
+ROOT VARIABLES — MASTER, “FAIL-SAFE”
+[Max-Integration • Non-Redundant • All References Resolved]
 ============================================================*/
 :root {
-  /* ─── Color Palette ─────────────────────────────────────────── */
-  --clr-indigo-500:#4F46E5;
-  --clr-indigo-600:#4338CA;
-  --clr-indigo-700:#3730A3;
-  --clr-purple-600:#8B5CF6;
-  --clr-blue-500:#3B82F6;
-  --clr-blue-600:#2563EB;
-  --clr-gray-900:#0D1117;
-  --clr-gray-800:#161B22;
-  --clr-gray-700:#1F2937;
-  --clr-gray-600:#374151;
-  --clr-gray-500:#4B5563;
-  --clr-gray-300:#D1D5DB;
-  --clr-white:#FFFFFF;
+  /* ─── COLOR PALETTE ─────────────────────────────────────── */
+  /* Base / Brand */
+  --clr-indigo-300: #818CF8;
+  --clr-indigo-500: #4F46E5;
+  --clr-indigo-600: #4338CA;
+  --clr-indigo-700: #3730A3;
 
-  /* ─── Typography & Spacing ─────────────────────────────────── */
-  --font-body:'Inter',sans-serif;
-  --lh-body:1.6;
-  --lh-heading:1.2;
-  --spacing-unit:0.75rem;
-  --letter-tight:-0.015em;
-  --letter-normal:-0.005em;
+  --clr-purple-600: #8B5CF6;
 
-  /* ─── Easing & Timing ─────────────────────────────────────── */
-  --ease-default:cubic-bezier(0.22,1,0.36,1);
-  --dur-fast:150ms ease-in-out;
-  --dur-med:250ms ease-in-out;
-  --dur-slow:400ms ease-in-out;
-  --reveal-delay:0.15s;
+  --clr-blue-500: #3B82F6;
+  --clr-blue-600: #2563EB;
 
-  /* ─── Opacities ───────────────────────────────────────────── */
-  --op-low:0.15;
-  --op-med:0.7;
-  --op-high:0.9;
+  /* Neutrals */
+  --clr-gray-900: #0D1117;
+  --clr-gray-800: #161B22;
+  --clr-gray-700: #1F2937;
+  --clr-gray-600: #374151;
+  --clr-gray-500: #4B5563;
+  --clr-gray-300: #D1D5DB;
+  --clr-white:     #FFFFFF;
+
+  /* Surface / Glass */
+  --card-bg:       rgba(31, 41, 55, 0.80); /* default card */
+  --card-bg-alt:   rgba(24, 30, 47, 0.80); /* nth-even cards */
+  --glass-bg:      rgba(17, 24, 39, 0.90);
+
+  /* ─── TYPOGRAPHY & SPACING ──────────────────────────────── */
+  --font-body:     'Inter', sans-serif;
+
+  /* Line-height */
+  --lh-body:       1.6;
+  --lh-heading:    1.2;
+
+  /* Letter-spacing */
+  --letter-tight:  -0.015em;
+  --letter-normal: -0.005em;
+
+  /* Font-sizes */
+  --font-size-xs:  0.75rem;  /* 12px */
+  --font-size-sm:  0.875rem; /* 14px */
+  --font-size-md:  1rem;     /* 16px */
+  --font-size-lg:  1.25rem;  /* 20px */
+  --font-size-xl:  1.5rem;   /* 24px */
+  --font-size-2xl: 2rem;     /* 32px */
+  --font-size-3xl: 2.5rem;   /* 40px */
+  --font-size-4xl: 3rem;     /* 48px */
+  --font-size-5xl: 4rem;     /* 64px */
+
+  /* Spacing scale (multiple of base 0.75 rem) */
+  --spacing-unit:  0.75rem;
+  --space-xs:      0.5rem;
+  --space-sm:      0.75rem;
+  --space-md:      1rem;
+  --space-lg:      1.5rem;
+  --space-xl:      2rem;
+  --space-2xl:     3rem;
+
+  /* ─── RADII ─────────────────────────────────────────────── */
+  --radius-sm:     0.50rem;  /* 8px  */
+  --radius-md:     0.75rem;  /* 12px */
+  --radius-lg:     1rem;     /* 16px */
+  --radius-full:   9999px;   /* pill */
+
+  /* Aliases used in components */
+  --radius-small:   var(--radius-sm);
+  --radius-default: var(--radius-md);
+
+  /* ─── SHADOWS ───────────────────────────────────────────── */
+  /* Base tiers */
+  --shadow-sm:         0 2px 4px  rgba(0, 0, 0, 0.05);
+  --shadow-md:         0 4px 8px  rgba(0, 0, 0, 0.10);
+  --shadow-lg:         0 6px 20px rgba(0, 0, 0, 0.20);
+  --shadow-inset-md:   inset 0 1px 4px rgba(255, 255, 255, 0.10);
+
+  /* Component-level */
+  --shadow-card:       0 6px 15px  rgba(0, 0, 0, 0.20);
+  --shadow-card-hover: 0 12px 24px rgba(0, 0, 0, 0.30);
+  --shadow-header:     0 2px 6px   rgba(0, 0, 0, 0.05);
+  --shadow-btn:        0 4px 10px  rgba(79, 70, 229, 0.40);
+  --shadow-glow:       0 0 15px    rgba(79, 70, 229, 0.10);
+  --glass-shadow:      0 6px 20px rgba(0,0,0,0.40), var(--shadow-inset-md);
+
+  /* ─── EASING & TIMING ───────────────────────────────────── */
+  --ease-default:  cubic-bezier(0.22, 1, 0.36, 1);
+
+  --dur-fast:      150ms ease-in-out;
+  --dur-med:       250ms ease-in-out;
+  --dur-slow:      400ms ease-in-out;
+  --reveal-delay:  0.15s;
+
+  /* ─── OPACITIES ─────────────────────────────────────────── */
+  --op-low:   0.15;
+  --op-med:   0.70;
+  --op-high:  0.90;
+
+  /* ─── BREAKPOINTS ───────────────────────────────────────── */
+  --bp-sm:   640px;
+  --bp-md:   768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+
+  /* ─── Z-INDEX LAYERS ────────────────────────────────────── */
+  --z-base:     1;
+  --z-dropdown: 100;
+  --z-fixed:    1000;
+  --z-modal:    1100;
+  --z-tooltip:  1200;
+
+  /* ─── CONTAINER WIDTHS ─────────────────────────────────── */
+  --max-width-section: 60rem;
+  --max-width-hero:    80ch;
+  --max-width-content: 65ch;
+
+  /* ─── UTILITIES / SHORTCUTS ─────────────────────────────── */
+  --btn-padding:      0.75rem 1.5rem;
+  --btn-radius:       var(--radius-sm);
+  --link-hover-color: var(--clr-indigo-300);
+
+  /* ─── ACCESSIBILITY DEFAULTS ───────────────────────────── */
+  --focus-outline: 2px dashed var(--clr-indigo-500);
+  --focus-offset:  2px;
 }

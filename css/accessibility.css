@@ -1,57 +1,55 @@
 /*============================================================
-ACCESSIBILITY – A11Y UTILITIES & SKIP-LINK
+ACCESSIBILITY — A11Y UTILITIES & SKIP-LINK
 ============================================================*/
 
 /*------------------------------------------------------------
-Screen-reader only helper  (.sr-only is already in global.css)
-------------------------------------------------------------*/
-/* (left intentionally not duplicated) */
-
-/*------------------------------------------------------------
-Skip to Content Link  (.skip-link)
+Skip to Content Link (.skip-link)
 ------------------------------------------------------------*/
 .skip-link {
   position: absolute;
-  top: -60px;                                 /* off-screen by default */
+  top: -4rem;                            /* off-screen */
   left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  background-color: #6366F1;                  /* indigo */
+  transform: translateX(-50%) translateY(-0.625rem);
+  background-color: var(--clr-indigo-500);
   color: var(--clr-white);
   padding: 0.6rem 1.2rem;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   opacity: 0;
-  box-shadow: 0 4px 16px rgba(99,102,241,0.30);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.30);
   backdrop-filter: blur(6px);
-  z-index: 9999;
+  z-index: var(--z-modal);
   pointer-events: none;
   transition:
-    top         0.35s cubic-bezier(0.25,1,0.5,1),
-    opacity     0.35s cubic-bezier(0.25,1,0.5,1),
-    transform   0.35s cubic-bezier(0.25,1,0.5,1),
+    top         0.35s var(--ease-default),
+    opacity     0.35s var(--ease-default),
+    transform   0.35s var(--ease-default),
     box-shadow  0.35s ease,
     backdrop-filter 0.35s ease;
 }
 
-/* Becomes visible when keyboard-focused */
-.skip-link:focus {
+/* Visible on keyboard focus */
+.skip-link:focus-visible {
   top: 1.5rem;
   opacity: 1;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
-  box-shadow: 0 8px 24px rgba(99,102,241,0.50),
-              0 0 0   3px rgba(255,255,255,0.30);
+  box-shadow:
+    0 8px 24px rgba(79, 70, 229, 0.50),
+    0 0 0 3px rgba(255, 255, 255, 0.30);
   outline: none;
+  animation: focusPulse 1.5s infinite alternate ease-in-out;
 }
 
 /* Pressed state */
 .skip-link:active {
   transform: translateX(-50%) scale(0.98);
-  box-shadow: 0 6px 20px rgba(99,102,241,0.40),
-              inset 0 0 2px rgba(0,0,0,0.10);
+  box-shadow:
+    0 6px 20px rgba(79, 70, 229, 0.40),
+    inset 0 0 2px rgba(0, 0, 0, 0.10);
 }
 
-/* Leading arrow icon (rotates on focus) */
+/* Leading arrow icon */
 .skip-link::before {
   content: "↳";
   display: inline-block;
@@ -59,49 +57,50 @@ Skip to Content Link  (.skip-link)
   transform: rotate(90deg);
   transition: transform 0.3s ease-out;
 }
-.skip-link:focus::before {
+
+.skip-link:focus-visible::before {
   transform: rotate(0deg);
 }
 
-/* Hover visual feedback */
+/* Hover feedback */
 .skip-link:hover {
-  background-color: var(--clr-indigo-500);
-  box-shadow: 0 6px 20px rgba(79,70,229,0.40),
-              0 0 0 3px rgba(255,255,255,0.30);
+  background-color: var(--clr-indigo-600);
+  box-shadow:
+    0 6px 20px rgba(79, 70, 229, 0.40),
+    0 0 0 3px rgba(255, 255, 255, 0.30);
   cursor: pointer;
 }
 
-/* Optional infinite focus pulse */
+/*------------------------------------------------------------
+Focus Pulse Animation
+------------------------------------------------------------*/
 @keyframes focusPulse {
-  0%   { box-shadow: 0 0 0 0   rgba(99,102,241,0.40); }
-  100% { box-shadow: 0 0 0 10px rgba(99,102,241,0);   }
-}
-.skip-link:focus-visible {
-  animation: focusPulse 1.5s infinite alternate ease-in-out;
+  0%   { box-shadow: 0 0 0 0   rgba(79, 70, 229, 0.40); }
+  100% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);    }
 }
 
 /*------------------------------------------------------------
-Glass Removal Utility  (.no-glass)
+Glass Removal Utility (.no-glass)
 ------------------------------------------------------------*/
 .no-glass {
-  backdrop-filter: none !important;
   background-color: transparent !important;
+  backdrop-filter: none !important;
 }
 
 /*------------------------------------------------------------
-High-contrast Focus Ring for generic elements
+High-contrast Focus Ring
 ------------------------------------------------------------*/
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px dashed var(--clr-indigo-500);
-  outline-offset: 2px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
 }
 
 /*------------------------------------------------------------
-Motion-safe overrides
+Motion-safe Overrides
 ------------------------------------------------------------*/
 @media (prefers-reduced-motion: reduce) {
   .skip-link,

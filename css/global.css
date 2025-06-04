@@ -9,6 +9,8 @@ GLOBAL RESET & BASE
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-display: swap;
 }
 
 body {
@@ -21,11 +23,12 @@ body {
 }
 
 /*============================================================
-SECTIONS – UNIVERSAL VERTICAL RHYTHM
+SECTION CONTAINERS — UNIVERSAL VERTICAL RHYTHM & WIDTH
 ============================================================*/
 section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 1rem;
 }
 
 /*============================================================
@@ -43,8 +46,8 @@ FOCUS & ACCESSIBILITY HELPERS
   border: 0;
 }
 
-a:focus,
-button:focus {
+a:focus-visible,
+button:focus-visible {
   outline: 2px dashed var(--clr-indigo-500);
   outline-offset: 2px;
 }
@@ -57,7 +60,7 @@ GENERIC UTILITY
 }
 
 /*============================================================
-MAILTO LINKS – INTERACTIVE & ACCESSIBLE
+MAILTO LINKS — INTERACTIVE & ACCESSIBLE
 ============================================================*/
 a[href^="mailto:"] {
   color: var(--clr-indigo-400);
@@ -66,7 +69,7 @@ a[href^="mailto:"] {
 }
 
 a[href^="mailto:"]:hover,
-a[href^="mailto:"]:focus {
+a[href^="mailto:"]:focus-visible {
   color: var(--clr-indigo-300);
 }
 
@@ -81,4 +84,45 @@ PREFER-REDUCED-MOTION OVERRIDE
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/*============================================================
+FOUNDATION IMAGES & MEDIA
+============================================================*/
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/*============================================================
+MICRO-SECTION REFINEMENTS
+============================================================*/
+.who-this-helps li {
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.how-it-works li {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 0;
+}
+
+.faq .question {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq .answer {
+  padding-left: 1rem;
+  opacity: 0.9;
+}
+
+.proven-results ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  opacity: 0.9;
 }
