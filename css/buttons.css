@@ -66,8 +66,8 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
   background-color: var(--clr-indigo-600);
   color: #FFFFFF;
   border-radius: 9999px; /* pill shape */
-  padding: 1rem 3rem; /* refined for balance */
-  font-size: 1rem;
+  padding: 0.85rem 2.25rem; /* adjusted for balance */
+  font-size: 1.0625rem; /* 17px equivalent for legibility */
   font-weight: 700;
   position: relative;
   overflow: hidden;
@@ -79,6 +79,12 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
     box-shadow 0.15s cubic-bezier(0.22,1,0.36,1),
     background-color 0.15s ease-out;
   will-change: transform, box-shadow;
+}
+
+/* Add clear focus-visible outline for accessibility */
+.btn-glow:focus-visible {
+  outline: 3px solid var(--clr-indigo-500);
+  outline-offset: 3px;
 }
 
 .btn-glow::before,
@@ -112,8 +118,8 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
 .btn-glow:hover,
 .btn-glow:focus-visible {
   transform: translateY(-1px) scale(1.01);
-  background-color: var(--clr-indigo-700);
-  box-shadow: 0 5px 12px rgba(79,70,229,0.30);
+  background-color: var(--clr-indigo-800); /* darker for deeper contrast */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.20);
 }
 
 .btn-glow:hover::before,
@@ -126,7 +132,7 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
 
 /* Active Interaction – Predictable Semantic State (Greene, Wathan) */
 .btn-glow:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(1px) scale(0.98); /* subtle downward motion */
   box-shadow:
     0 2px 6px rgba(79,70,229,0.20),
     inset 0 0 4px rgba(0,0,0,0.05);

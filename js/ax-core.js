@@ -5,10 +5,6 @@
   const CONFIG = {
     selectors: {
       darkToggle:      '#darkModeToggle',
-      mobileMenuBtn:   '#mobileMenuBtn',
-      mobileMenu:      '#mobileMenu',
-      openIcon:        '#menuIcon',
-      closeIcon:       '#closeIcon',
       revealItems:     '[data-reveal]',
       parallaxLayers:  '.parallax-layer',
       stickyCTA:       '#stickyCTA'
@@ -48,8 +44,8 @@
   function initDarkMode() {
     const btn = $(CONFIG.selectors.darkToggle);
     if (!btn) return;
-    const root  = document.documentElement;
-    const key   = CONFIG.storageKey;
+    const root   = document.documentElement;
+    const key    = CONFIG.storageKey;
     const stored = JSON.parse(localStorage.getItem(key) || '{}');
     const initial = stored.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const applyTheme = (theme) => {
@@ -68,21 +64,15 @@
   }
 
   function initMobileMenu() {
-    const toggle   = $(CONFIG.selectors.mobileMenuBtn);
-    const menu     = $(CONFIG.selectors.mobileMenu);
-    const openIcon = $(CONFIG.selectors.openIcon);
-    const closeIcon= $(CONFIG.selectors.closeIcon);
-    if (!toggle || !menu || !openIcon || !closeIcon) return;
+    const toggle = document.getElementById('navToggle');
+    const menu   = document.getElementById('primaryNav');
+    if (!toggle || !menu) return;
+
     toggle.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      const next   = isOpen ? 'close' : 'open';
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('opacity-0', next === 'open');
-      menu.classList.toggle('scale-95', next === 'open');
-      openIcon.classList.toggle('opacity-0', next === 'open');
-      closeIcon.classList.toggle('opacity-0', next === 'close');
-      toggle.setAttribute('aria-expanded', String(next === 'open'));
-      log.info('Mobile menu toggled', { state: next });
+      const isOpen = !menu.classList.contains('open');
+      menu.classList.toggle('open', isOpen);
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
 
@@ -161,7 +151,6 @@
     btn.dataset.busy = '1';
     btn.setAttribute('aria-disabled', 'true');
     btn.classList.add('opacity-60', 'cursor-not-allowed');
-    const orig = btn.textContent;
     btn.textContent = 'Requesting…';
     setTimeout(() => {
       window.location.href = href;

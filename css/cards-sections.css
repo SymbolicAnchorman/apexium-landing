@@ -1,4 +1,4 @@
-/*====================================================================
+/*==================================================================== 
 CARDS-SECTIONS.CSS  •  SURFACE MODULES, FLOW, INTERACTION
 ====================================================================*/
 
@@ -66,50 +66,155 @@ CARDS-SECTIONS.CSS  •  SURFACE MODULES, FLOW, INTERACTION
   pointer-events: none;
 }
 
-/*—— Quick Intro ————————————————————————————————*/
+/*—— Services Section — Unified & Polished ———————————————————*/
+
+
+.services-section {
+  max-width: var(--max-width-section);
+  margin: 0 auto;
+  padding-block: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to bottom, var(--clr-gray-700), var(--clr-gray-900));
+  box-shadow: var(--shadow-card-hover);
+}
+
+.services-section h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: var(--letter-tight);
+  color: var(--clr-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.services-section .services-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* ensure equal card heights */
+  gap: var(--space-xl);
+  margin-inline: auto;
+}
+
+.services-section .card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px) saturate(180%);
+  transition: transform var(--dur-med), box-shadow var(--dur-med);
+  cursor: default;
+}
+
+.services-section .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), inset 0 1px 6px rgba(255, 255, 255, 0.2);
+}
+
+.services-section .card h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: var(--letter-normal);
+  margin: 0 0 var(--space-xs);
+  line-height: 1.2;
+  min-height: calc( (var(--font-size-xl) * 1.2) * 2 ); 
+  /* reserves space for two lines of heading */
+}
+
+.services-section .card .price {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--clr-indigo-300);
+  margin: 0 0 var(--space-xs);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.services-section .card p {
+  font-size: var(--font-size-md);
+  color: var(--clr-gray-300);
+  line-height: 1.5;
+  letter-spacing: var(--letter-normal);
+  margin: 0;
+  text-align: left;
+  opacity: 0.9;
+  flex: 1; /* ensures cards align in height */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-section .card,
+  .services-section .card:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: var(--bp-md)) {
+  .services-section .services-container {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .services-section .card {
+    padding: var(--space-lg);
+  }
+}
+
+
+
 
 /*================================================================
 QUICK-INTRO • BALANCED, CENTERED, HIGH-READABILITY CARD
-Copy-replace this block in cards-sections.css
 ================================================================*/
-
 .quick-intro {
-  max-width: 50ch;                 /* narrower → easier scan width   */
+  max-widt.quick-intro {
+  max-width: var(--max-width-section);
   margin-inline: auto;
-  padding: 1.75rem;                /* trimmed vertical whitespace    */
-  text-align: center;              /* align body copy for symmetry   */
-
-  font-size: 1.25rem;              /* perceptible size upgrade       */
-  line-height: 1.55;               /* tighter but comfortable flow   */
-  letter-spacing: var(--letter-spacing-normal);
-  font-weight: 500;
-  color: #E5E7EB;
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
 
   background-color: var(--card-bg);
   backdrop-filter: blur(12px) saturate(160%);
   border-radius: var(--radius-default);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.30),
-              inset 0 1px 4px rgba(255,255,255,0.10);
-
-  margin-block: 2rem;
+  box-shadow: var(--glass-shadow);
   transition:
-    transform 0.25s var(--ease-default),
-    box-shadow 0.25s var(--ease-default);
+    transform var(--dur-med),
+    box-shadow var(--dur-med);
+}
+
+.quick-intro h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-bottom: var(--space-sm);
+}
+
+/* OVERRIDE paragraph defaults from typography.css */
+.quick-intro p {
+  font-size: var(--font-size-lg);    /* larger */
+  font-weight: 500;                  /* bolder than base 400 */
+  line-height: 1.6;                  /* slightly tighter than 1.65 */
+  margin-block-start: var(--space-sm);
+  margin-block-end: var(--space-sm);
+  color: var(--clr-gray-300);        /* card-text color */
+  text-shadow: none;                 /* remove faint shadow */
+  max-width: none;                   /* full width within card */
+  margin-inline: auto;
+  text-align: center;
 }
 
 .quick-intro:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(79,70,229,0.25),
-              inset 0 2px 6px rgba(255,255,255,0.15);
+  box-shadow: var(--shadow-btn), inset 0 2px 6px rgba(255, 255, 255, 0.15);
 }
 
-/*—— Dark-mode tweak ———————————————————————————*/
 .dark .quick-intro {
   color: #CBD5E1;
-  background-color: rgba(17,24,39,0.85);
+  background-color: rgba(17, 24, 39, 0.85);
 }
 
-/*—— Reduced-motion ———————————————————————————*/
 @media (prefers-reduced-motion: reduce) {
   .quick-intro,
   .quick-intro:hover {
@@ -118,27 +223,46 @@ Copy-replace this block in cards-sections.css
   }
 }
 
+@media (max-width: var(--bp-md)) {
+  .quick-intro {
+    padding: var(--space-lg);
+  }
+}
 
 
-/*—— Generic Card Headings ———————————————————————————————*/
+
+/*================================================================
+GENERIC CARD HEADINGS & PARAGRAPHS (Unified)
+================================================================*/
 .card h2,
 .card h3 {
-  color: #FFFFFF;
+  color: var(--clr-white);
   font-weight: var(--font-weight-bold);
-  margin-bottom: 0.75rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: var(--letter-tight);
 }
 
-/*—— Generic Card Paragraph ———————————————————————————————*/
+/* Ensure all card headings have consistent font-size */
+.card h2 {
+  font-size: var(--font-size-2xl);
+}
+.card h3 {
+  font-size: var(--font-size-xl);
+}
+
+/* Generic card paragraphs */
 .card p {
-  color: #D1D5DB;
+  color: var(--clr-gray-300);
   line-height: 1.7;
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: var(--letter-normal);
   max-width: 60ch;
+  margin-top: var(--space-sm);
 }
 
-/*—— Interactive Divider Utility (Within Card Context) ——————————————*/
+/*================================================================
+INTERACTIVE DIVIDER UTILITY (Within Card Context)
+================================================================*/
 .divider {
   width: clamp(40%, 50% + 4vw, 80%);
   height: 1px;
@@ -171,8 +295,12 @@ Copy-replace this block in cards-sections.css
   transition: width 0.5s ease-in-out;
 }
 
-.divider::before { left: -25%; }
-.divider::after  { right: -25%; }
+.divider::before {
+  left: -25%;
+}
+.divider::after {
+  right: -25%;
+}
 
 .divider:hover {
   opacity: 0.9;
@@ -184,17 +312,17 @@ Copy-replace this block in cards-sections.css
   width: 30%;
 }
 
-/*—— Dark Mode Adjustments ———————————————————————————————*/
+/* Dark Mode Adjustments */
 .dark .card h2,
 .dark .card h3 {
-  color: #FFFFFF;
+  color: var(--clr-white);
 }
 
 .dark .card p {
   color: #CBD5E1;
 }
 
-/*—— Reduced Motion Accessibility ————————————————————————————*/
+/* Reduced Motion Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .divider,
   .divider::before,
@@ -205,362 +333,550 @@ Copy-replace this block in cards-sections.css
   }
 }
 
-/*—— How-It-Works ———————————————————————————————*/ 
-
-/*——————————————————————————————————————————
-  How-It-Works • FINAL REPLACEMENT RULESET
-——————————————————————————————————————————*/
-:root{
-  /* subtle indigo tones for number badges */
-  --hiw-circle-idle : #4f46e5; /* indigo-700 */
-  --hiw-circle-hover: #6366f1; /* indigo-500 */
+/*================================================================
+HOW-IT-WORKS • FINAL REPLACEMENT RULESET
+================================================================*/
+:root {
+  --hiw-circle-idle:  #4F46E5; /* Indigo-700 */
+  --hiw-circle-hover: #6366F1; /* Indigo-500 */
 }
 
-/* container */
-.how-it-works{
-  background-color:var(--card-bg);
-  backdrop-filter:blur(12px) saturate(160%);
-  border-radius:var(--radius-default);
-  box-shadow:var(--shadow-card);
-  padding:2.5rem;
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
-  max-width:48rem;          /* match sibling cards */
-}
-
-/* heading */
-.how-it-works h2{
-  letter-spacing:.03em;
-  text-align:center;
-  color:#fff;
-  font-size:2rem;
-  font-weight:700;
-}
-
-/* ordered list */
-.hiw-list{
-  counter-reset:step;
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:1.75rem;
-}
-
-/* list items */
-.hiw-list li{
-  position:relative;
-  padding-left:3.5rem;
-  padding-bottom:1rem;
-  font-size:1rem;
-  line-height:1.75;
-  color:#e2e8f0;                               /* higher contrast */
-  border-bottom:1px dashed rgba(255,255,255,.1);
-}
-.hiw-list li:last-child{border-bottom:none}
-
-/* number badge */
-.hiw-list li::before{
-  counter-increment:step;
-  content:counter(step);
-  position:absolute;
-  left:0;
-  top:.1rem;
-  width:2.25rem;
-  height:2.25rem;
-  font-size:.9rem;
-  font-weight:700;
-  color:#fff;
-  background-color:var(--hiw-circle-idle);
-  opacity:.9;                                  /* softer */
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 2px 4px rgba(0,0,0,.35);
-  transition:background-color .3s ease,opacity .3s ease;
-}
-.hiw-list li:hover::before{
-  background-color:var(--hiw-circle-hover);
-  opacity:1;
-  cursor:default;
-}
-
-/* action label */
-.hiw-list .label{
-  font-weight:700;
-  color:#fff;
-  margin-right:.75rem;                         /* extra separation */
-}
-
-/* dark-mode tweaks */
-.dark .how-it-works{background-color:rgba(17,24,39,.9)}
-.dark .hiw-list li   {color:#cbd5e1}
-.dark .hiw-list .label{color:#fff}
-
-/* reduced-motion safeguard */
-@media (prefers-reduced-motion:reduce){
-  .hiw-list li::before{transition:none !important}
-}
-
-
-
-
-/*—— Before / After Showcase ————————————————————————*/
-.before-after {
+.how-it-works {
+  max-width: var(--max-width-section);
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-xl);
+  background-color: var(--card-bg);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: var(--space-xl);
+  transition: transform var(--dur-med), box-shadow var(--dur-med); /* added for hover effect */
+}
+
+.how-it-works:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), inset 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+.how-it-works h2 {
+  margin: 0;
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: var(--letter-tight);
+  color: var(--clr-white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding-bottom: var(--space-md);
+}
+
+.hiw-list {
+  counter-reset: step;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.hiw-list li {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: #E5E7EB;
+  border-bottom: 1px dashed rgba(255,255,255,0.15);
+}
+
+.hiw-list li:last-child {
+  border-bottom: none;
+}
+
+.hiw-list li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--clr-white);
+  background-color: var(--hiw-circle-idle);
+  opacity: 0.95;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+
+.hiw-list li:hover::before {
+  background-color: var(--hiw-circle-hover);
+  opacity: 1;
+}
+
+.hiw-list .label {
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-right: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.dark .how-it-works {
+  background-color: rgba(17,24,39,0.9);
+}
+
+.dark .hiw-list li {
+  color: #CBD5E1;
+}
+
+.dark .hiw-list .label {
+  color: var(--clr-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hiw-list li::before,
+  .how-it-works,
+  .how-it-works * {
+    transition: none !important;
+  }
+}
+
+
+
+/*================================================================
+BEFORE / AFTER SHOWCASE
+================================================================*/
+
+/* Section Title Utility (Reusable) */
+.section-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: var(--letter-tight);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+/*─────────────────────────────────────────────────────────────────────────
+  BEFORE / AFTER CARD LAYOUT
+──────────────────────────────────────────────────────────────────────────*/
+.before-after {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity var(--dur-med), transform var(--dur-med);
+  display: flex;
+  gap: var(--space-xl);
   justify-content: center;
   align-items: stretch;
-  padding: 3rem;
-  max-width: 90ch;
+  padding: var(--space-2xl);
+  max-width: var(--max-width-section);
   margin-inline: auto;
 }
+
+.before-after[data-revealed],
+.before-after.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .before-after .card {
   flex: 1;
-  padding: 2rem;
+  padding: var(--space-xl);
   border-left: 4px solid currentColor;
   backdrop-filter: blur(8px);
 }
+
 .before-after .card.before {
-  color: rgba(239,68,68,0.8);
-  background-color: rgba(239,68,68,0.05);
+  color: rgba(239, 68, 68, 0.8);
+  background-color: rgba(239, 68, 68, 0.05);
 }
+
 .before-after .card.after {
-  color: rgba(79,70,229,0.8);
-  background-color: rgba(79,70,229,0.05);
+  color: rgba(79, 70, 229, 0.8);
+  background-color: rgba(79, 70, 229, 0.05);
 }
+
 .before-after span.label {
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-sm);
   display: block;
 }
+
 .before-after blockquote {
   font-style: italic;
-  color: #D1D5DB;
+  color: var(--clr-gray-300);
   line-height: 1.7;
   margin: 0;
   quotes: "“" "”";
 }
-.before-after blockquote::before { content: open-quote; }
-.before-after blockquote::after  { content: close-quote; }
 
-/*—— FAQ & Proven Results ——————————————————————————*/
-/*---------------------------------------------------------------
-FAQ  —  Glass Panel
-----------------------------------------------------------------*/
+.before-after blockquote::before {
+  content: open-quote;
+}
+
+.before-after blockquote::after {
+  content: close-quote;
+}
+
+/* Reduced-motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .before-after,
+  .before-after[data-revealed],
+  .before-after.revealed {
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+/*================================================================
+FAQ & PROVEN RESULTS
+================================================================*/
+
+/*—— FAQ — Glass Panel —————————————————————————————*/
+
+/* Section container (glass panel, same styling pattern as Services/How-It-Works) */
 .faq {
-  max-width: 60ch;
-  margin-inline: auto;
-  padding: 2rem;
-  background-color: var(--card-bg);
-  backdrop-filter: blur(12px) saturate(160%);
-  border-radius: var(--radius-default);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  max-width:         var(--max-width-section);   /* match width of other cards */
+  margin-inline:     auto;
+  padding:           var(--space-2xl);
+  background-color:  var(--card-bg);
+  backdrop-filter:   blur(16px) saturate(180%);
+  border-radius:     var(--radius-default);
+  box-shadow:        var(--glass-shadow);
+  display:           flex;
+  flex-direction:    column;
+  gap:               var(--space-md);
+  opacity:           0;
+  transform:         translateY(2rem);
+  transition:        opacity var(--dur-med), transform var(--dur-med), box-shadow var(--dur-med);
 }
 
-.faq h2 {
-  margin: 0;
-  text-align: center;
-  font-weight: var(--font-weight-bold);
-  font-size: 1.75rem;
-  color: #FFFFFF;
-  letter-spacing: 0.02em;
+/* Reveal visible state */
+.faq[data-revealed],
+.faq.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* definition list */
+/* Hover “bounce”/elevation */
+.faq:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), inset 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Section title (consistent with other sections) */
+.faq h2.section-title {
+  font-size:      var(--font-size-3xl);
+  font-weight:    700;
+  color:          var(--clr-white);
+  letter-spacing: var(--letter-tight);
+  text-shadow:    0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align:     center;
+  margin-bottom:  var(--space-xl);
+}
+
+/* Center all FAQ text inside the <dl> */
 .faq dl {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1.5rem;
+  margin:     0;
+  padding:    0;
+  display:    grid;
+  gap:        var(--space-lg);
+  text-align: center;
 }
 
+/* FAQ Question (dt) styling */
 .faq dt {
-  font-weight: var(--font-weight-bold);
-  color: #FFFFFF;
-  margin: 0 0 0.5rem 0;
+  font-size:      var(--font-size-lg);
+  font-weight:    700;
+  color:          var(--clr-white);
+  margin-bottom:  var(--space-xs);
 }
 
+/* FAQ Answer (dd) styling */
 .faq dd {
-  margin: 0;
-  color: #D1D5DB;
-  line-height: 1.7;
+  color:         var(--clr-gray-300);
+  font-size:     var(--font-size-md);
+  line-height:   1.75;
+  margin-bottom: var(--space-sm);
 }
 
-/*---------------------------------------------------------------
-PROVEN RESULTS  —  Glass Panel
-----------------------------------------------------------------*/
+/* Insert dividers between answers for visual flow */
+.faq dd:not(:last-child) {
+  position:       relative;
+  padding-bottom: var(--space-md);
+}
+
+.faq dd:not(:last-child)::after {
+  content:    "";
+  position:   absolute;
+  bottom:     0;
+  left:       10%;
+  width:      80%;
+  height:     1px;
+  background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+              );
+}
+
+/* Hover state for questions (dt) */
+.faq dt:hover {
+  cursor: default;
+  color:   var(--clr-indigo-300);
+  transition: color var(--dur-fast);
+}
+
+/* Dark‐mode adjustments */
+.dark .faq {
+  background-color: rgba(17, 24, 39, 0.9);
+}
+
+.dark .faq dt {
+  color: var(--clr-white);
+}
+
+.dark .faq dd {
+  color: #CBD5E1;
+}
+
+/* Reduced‐motion support—disable transitions if the user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .faq,
+  .faq:hover,
+  .faq dt:hover {
+    transform:  none !important;
+    transition: none !important;
+    opacity:    1 !important;
+  }
+}
+
+
+
+/*—— Proven Results — —————————————————————————————————————*/
 .proven-results {
-  max-width: 60ch;
+  max-width: var(--max-width-section);
   margin-inline: auto;
-  padding: 2rem;
+  padding: var(--space-2xl);
   background-color: var(--card-bg);
-  backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(180%);
   border-radius: var(--radius-default);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--glass-shadow);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.proven-results h2 {
-  margin: 0;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-weight: var(--font-weight-bold);
-  font-size: 1.75rem;
-  color: #FFFFFF;
-  letter-spacing: 0.02em;
 }
 
-/* responsive two-column list */
 .proven-results ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
-  display: grid;
-  gap: 1rem 2rem;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .proven-results ul { grid-template-columns: 1fr 1fr; }
+  padding: 0;
+  margin: 0 auto;
+  max-width: 60ch;
+  display: block;
+  text-align: center;
 }
 
 .proven-results li {
-  position: relative;
-  padding-left: 1.75rem;
-  font-size: 1rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-md);
   line-height: 1.6;
-  color: #D1D5DB;
-  transition: color var(--dur-fast);
-}
-
-.proven-results li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  font-size: 1rem;
-  color: var(--clr-indigo-500);
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.30));
+  color: var(--clr-gray-300);
+  text-align: center;
+  padding-left: 0;
+  transition: color var(--dur-fast), text-shadow var(--dur-fast);
 }
 
 .proven-results li:hover {
-  color: #FFFFFF;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.40);
+  color: var(--clr-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/*---------------------------------------------------------------
-Dark-mode overrides
-----------------------------------------------------------------*/
-.dark .faq dt,
-.dark .proven-results h2 { color: #FFFFFF; }
+.dark .proven-results li {
+  color: #CBD5E1;
+}
 
-.dark .faq dd,
-.dark .proven-results li { color: #CBD5E1; }
-
-/*---------------------------------------------------------------
-Reduced Motion
-----------------------------------------------------------------*/
-@media (prefers-reduced-motion: reduce) {
-  .faq dl,
-  .proven-results ul { gap: 1.25rem; }
+.dark .proven-results li:hover {
+  color: var(--clr-white);
 }
 
 
 
-/*—— Who-This-Helps Grid ——————————————————————————*/
 
-/*─ Wrapper ──────────────────────────────────────────────*/
+
+/*================================================================
+WHO-THIS-HELPS GRID
+================================================================*/
+
 .who-this-helps {
-  max-width: 65ch;
+  max-width: var(--max-width-section);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--space-2xl);
   border-radius: var(--radius-default);
   background-color: var(--card-bg);
   backdrop-filter: blur(12px) saturate(160%);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  box-shadow: var(--glass-shadow);
 }
 
-/*─ Heading ──────────────────────────────────────────────*/
 .who-this-helps h2 {
-  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--clr-white);
   text-align: center;
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #ffffff;
+  margin-bottom: var(--space-xl);
 }
 
-/*─ Grid ────────────────────────────────────────────────*/
 .who-this-helps ul {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-sm) var(--space-xl);
 }
 
-/*─ Item ────────────────────────────────────────────────*/
 .who-this-helps li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #d1d5db;
+  color: var(--clr-gray-300);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
   transition: color var(--dur-fast);
 }
-.who-this-helps li:hover { color: #ffffff; }
 
-.who-this-helps li span.label {
-  font-weight: 600;
-  color: #ffffff;
+.who-this-helps li:hover {
+  color: var(--clr-white);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/*─ Checkmark (pseudo-SVG via data URI) ─────────────────*/
-.who-this-helps .checkmark {
-  width: 1.2rem;
-  height: 1.2rem;
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E")
-            center / contain no-repeat;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35));
-  opacity: 0.95;
-}
-
-/* dark-mode icon tint */
-.dark .who-this-helps .checkmark {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23637bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-}
-
-/*─ Dark-Mode Container & Text ──────────────────────────*/
-.dark .who-this-helps            { background-color: rgba(17,24,39,0.85); }
-.dark .who-this-helps li         { color: #cbd5e1; }
-.dark .who-this-helps li:hover   { color: #ffffff; }
-
-/*─ Responsive tweaks ───────────────────────────────────*/
 @media (max-width: var(--bp-md)) {
-  .who-this-helps        { padding: 1.5rem; }
-  .who-this-helps ul     { grid-template-columns: 1fr; gap: 1rem; }
+  .who-this-helps ul {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .who-this-helps {
+    padding: var(--space-xl);
+  }
 }
 
-/*─ Reduced Motion ─────────────────────────────────────*/
 @media (prefers-reduced-motion: reduce) {
-  .who-this-helps li,
-  .who-this-helps li:hover { transition: none !important; }
+  .who-this-helps li:hover {
+    transition: none !important;
+  }
 }
+
+
+
+
+/*===============================
+  SERVICES SECTION — FIXED HEADER HEIGHT
+===============================*/
+
+.services-section {
+  max-width: var(--max-width-section);
+  margin: 0 auto;
+  padding-block: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to bottom, var(--clr-gray-700), var(--clr-gray-900));
+  box-shadow: var(--shadow-card-hover);
+}
+
+.services-section h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: var(--letter-tight);
+  color: var(--clr-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.services-section .services-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* ensure equal card heights */
+  gap: var(--space-xl);
+  margin-inline: auto;
+}
+
+.services-section .card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px) saturate(180%);
+  transition: transform var(--dur-med), box-shadow var(--dur-med);
+  cursor: default;
+}
+
+.services-section .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), inset 0 1px 6px rgba(255, 255, 255, 0.2);
+}
+
+.services-section .card h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: var(--letter-normal);
+  margin: 0 0 var(--space-xs);
+  line-height: 1.2;
+  min-height: calc( (var(--font-size-xl) * 1.2) * 2 ); 
+  /* reserves space for two lines of heading */
+}
+
+.services-section .card .price {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--clr-indigo-300);
+  margin: 0 0 var(--space-xs);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.services-section .card p {
+  font-size: var(--font-size-md);
+  color: var(--clr-gray-300);
+  line-height: 1.5;
+  letter-spacing: var(--letter-normal);
+  margin: 0;
+  text-align: left;
+  opacity: 0.9;
+  flex: 1; /* ensures cards align in height */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-section .card,
+  .services-section .card:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: var(--bp-md)) {
+  .services-section .services-container {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .services-section .card {
+    padding: var(--space-lg);
+  }
+}
+

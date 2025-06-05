@@ -20,30 +20,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
 
-  <!-- 🌐 Project‐scoped CSS (variables first, overrides last) -->
-  <link rel="stylesheet" href="css/root-variables.css">   <!-- custom-properties -->
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/typography.css">
-  <link rel="stylesheet" href="css/buttons.css">
-  <link rel="stylesheet" href="css/cards-sections.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/parallax.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <link rel="stylesheet" href="css/accessibility.css">
+    <!-- 🌐 Project‐scoped CSS (variables first, overrides last) -->
+    <link rel="stylesheet" href="css/root-variables.css">   <!-- custom-properties -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/cards-sections.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/parallax.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/accessibility.css">
 
-  <!-- JS utilities -->
-  <script defer src="https://cdn.tailwindcss.com"></script>
-  <script defer src="js/ax-core.js"></script>     <!-- dark-mode toggle, nav, reveal, parallax -->
-  <script defer src="js/cta.js"></script>      <!-- sticky CTA + checkout -->
+    <!-- JS utilities -->
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="js/ax-core.js"></script>     <!-- dark-mode toggle, nav, reveal, parallax -->
+    <script defer src="js/cta.js"></script>         <!-- sticky CTA + checkout -->
 
-  <!-- Analytics -->
-  <script defer data-domain="apexium.xyz"
-          src="https://plausible.io/js/script.js"></script>
-</head>
+    <!-- Analytics -->
+    <script defer data-domain="apexium.xyz"
+            src="https://plausible.io/js/script.js"></script>
+    </head>
 
-<body>
+    <body>
+
+    <!---- APEXIUM • HEADER COMPONENT v2.1 ---->
+    <header class="site-header" role="banner">
+        <!-- Skip-link for keyboard / screen-reader users -->
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="header-inner">
+        <!-- Brand / Logo -->
+        <a href="/" class="logo" aria-label="Apexium home">Apexium</a>
+
+        <!-- Mobile hamburger -->
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+            <span class="sr-only">Menu</span>
+            <span aria-hidden="true"></span>
+        </button>
+
+        <!-- Primary navigation (desktop shows by default, mobile hidden via CSS) -->
+        <nav id="primaryNav" class="main-nav" aria-label="Primary">
+            <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#before-after">Before / After</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#cta">Start Now</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+  <main id="main" class="mt-16">
+
+
+
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- HERO -->
@@ -79,134 +111,156 @@
   </div>
 
   <main id="main" class="mt-16">
-
+   <div class="divider"></div>
     <!-- Quick Intro -->
-    <section data-reveal class="quick-intro max-w-3xl mx-auto px-6 py-12 mb-16">
-      <h2 class="text-3xl font-bold mb-4 text-white">Quick Intro</h2>
-      <p class="text-lg text-gray-300">
-        I'm Aaron. I simplify complex writing into concise, clear language. You only pay when measurable clarity is delivered.
-      </p>
+    <section class="quick-intro max-w-3xl mx-auto px-8 py-16 mb-16">
+    <h2 class="section-title" data-reveal>Quick Intro</h2>
+    <p class="text-lg text-gray-300">
+        I'm Aaron. I simplify complex writing into concise, clear language. Only pay when measurable clarity is delivered.
+    </p>
     </section>
 
+
     <div class="divider"></div>
+
 
     <!-- Who This Helps -->
 
     <section id="who-this-helps"
-            data-reveal
-            class="who-this-helps max-w-3xl mx-auto px-6 py-12 mb-16 rounded-lg
-                    backdrop-blur-md bg-gray-900/80 shadow-lg">
-
+            class="who-this-helps max-w-3xl mx-auto px-6 py-12 mb-16 rounded-lg backdrop-blur-md bg-gray-900/80 shadow-lg">
     <h2 class="text-center text-3xl font-semibold text-white mb-8">
         Who&nbsp;This&nbsp;Helps
     </h2>
 
-    <!-- Note: role="list" sets proper semantics without default bullets -->
-    <ul role="list" class="grid gap-y-6 gap-x-10 sm:grid-cols-2">
-
-        <!-- 1 -->
-        <li class="flex items-start gap-3">
-        <span class="checkmark" aria-hidden="true"></span>
-        <span class="text-gray-300">Solo founders refining product messages</span>
-        </li>
-
-        <!-- 2 -->
-        <li class="flex items-start gap-3">
-        <span class="checkmark" aria-hidden="true"></span>
-        <span class="text-gray-300">Consultants clarifying abstract services</span>
-        </li>
-
-        <!-- 3 -->
-        <li class="flex items-start gap-3">
-        <span class="checkmark" aria-hidden="true"></span>
-        <span class="text-gray-300">Writers simplifying dense drafts</span>
-        </li>
-
-        <!-- 4 -->
-        <li class="flex items-start gap-3">
-        <span class="checkmark" aria-hidden="true"></span>
-        <span class="text-gray-300">Builders sharpening investor pitches</span>
-        </li>
-
-        <!-- 5 (spans full width on small screens) -->
-        <li class="flex items-start gap-3 sm:col-span-2">
-        <span class="checkmark" aria-hidden="true"></span>
-        <span class="text-gray-300">Anyone unsure how to explain their value</span>
-        </li>
-
+    <ul role="list" class="grid gap-y-4 gap-x-8 grid-cols-1 sm:grid-cols-2">
+        <li class="text-white font-medium">Solo founders refining product messages</li>
+        <li class="text-white font-medium">Consultants clarifying abstract services</li>
+        <li class="text-white font-medium">Writers simplifying dense drafts</li>
+        <li class="text-white font-medium">Builders sharpening investor pitches</li>
+        <li class="text-white font-medium sm:col-span-2">Anyone unsure how to explain their value</li>
     </ul>
     </section>
-
 
     <div class="divider"></div>
 
     <!-- Services -->
-    <section id="services" data-reveal class="max-w-3xl mx-auto px-6 py-12 mb-16">
-      <h2 class="text-3xl font-bold mb-8 text-white text-center">Services</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        <div class="card text-center md:text-left">
-          <h3 class="text-xl font-semibold text-white mb-2">Rewrite Kernel · $297</h3>
-          <p class="text-gray-300">One page (≤ 500 words). Delivered within 48 hours.</p>
+    <section
+    id="services"
+    data-reveal
+    class="services-section max-w-3xl mx-auto px-6 py-16 mb-20"
+    >
+    <h2 class="text-white">Our Services</h2>
+
+    <div class="services-container">
+
+        <!-- Rewrite Kernel -->
+        <div class="card text-left">
+        <div class="card-header">
+            <h3>Rewrite Kernel</h3>
+            <span class="price">$297</span>
         </div>
-        <div class="card text-center md:text-left">
-          <h3 class="text-xl font-semibold text-white mb-2">Deep Audit & Rewrite · $997</h3>
-          <p class="text-gray-300">Three pages, structural edits, enhanced clarity. Delivered within 5 days.</p>
+        <p>
+            Professionally refined single‐page rewrite (≤500 words). Guaranteed
+            clarity delivered within 48 hours.
+        </p>
         </div>
-        <div class="card text-center md:text-left">
-          <h3 class="text-xl font-semibold text-white mb-2">Full System Map · $7,500</h3>
-          <p class="text-gray-300">Extensive documents or full sites rewritten comprehensively. Timeline set collaboratively.</p>
+
+        <!-- Deep Audit & Rewrite -->
+        <div class="card text-left">
+        <div class="card-header">
+            <h3>Deep Audit &amp; Rewrite</h3>
+            <span class="price">$997</span>
         </div>
-      </div>
+        <p>
+            Comprehensive audit and structural rewrite of three pages. Enhanced
+            clarity delivered confidently within 5 days.
+        </p>
+        </div>
+
+        <!-- Full System Map -->
+        <div class="card text-left">
+        <div class="card-header">
+            <h3>Full System Map</h3>
+            <span class="price">$7,500</span>
+        </div>
+        <p>
+            Full‐site or extensive documentation rewritten comprehensively. Timeline
+            set collaboratively to ensure maximum precision and clarity.
+        </p>
+        </div>
+
+    </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Before / After -->
+    <section id="before-after" data-revealed class="before-after max-w-3xl mx-auto px-6 py-12 mb-16 rounded-lg backdrop-blur-md bg-gray-900/80 shadow-lg">
+    <h2 class="text-center text-3xl font-bold text-white mb-8">Before / After</h2>
+    <div class="grid gap-8 md:grid-cols-2">
+        <div class="p-8 bg-gray-800 rounded-xl shadow-md">
+        <p class="font-semibold text-red-400 mb-2">Before</p>
+        <blockquote class="italic text-gray-300 leading-relaxed">
+            Our platform streamlines cross-functional collaboration by enabling teams to surface relevant knowledge…
+        </blockquote>
+        </div>
+        <div class="p-8 bg-gray-800 rounded-xl border-l-4 border-indigo-500 shadow-xl">
+        <p class="font-semibold text-indigo-400 mb-2">After</p>
+        <blockquote class="font-medium text-white leading-relaxed">
+            One workspace. Teams find information, collaborate instantly, and finish faster.
+        </blockquote>
+        </div>
+    </div>
     </section>
 
     <div class="divider"></div>
 
     <!-- How It Works -->
 
-    <section id="how-it-works" class="how-it-works">
-    <h2>How It Works</h2>
+    <section id="how-it-works" data-reveal class="how-it-works max-w-3xl mx-auto px-6 py-12 mb-16 rounded-lg backdrop-blur-md bg-gray-900/80 shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-white mb-8">How It Works</h2>
     <ol class="hiw-list">
-        <li><span class="label">Submit</span> Paste or email your document.</li>
-        <li><span class="label">Receive</span> Tracked changes and a summary.</li>
-        <li><span class="label">Revise</span> One revision included.</li>
-        <li><span class="label">Approve</span> Confirm improvement, then pay.</li>
+        <li>
+        <span class="label text-white font-semibold uppercase mr-2">Submit</span>
+        <span class="text-gray-300">Paste or email your document.</span>
+        </li>
+        <li>
+        <span class="label text-white font-semibold uppercase mr-2">Receive</span>
+        <span class="text-gray-300">Tracked changes and a summary.</span>
+        </li>
+        <li>
+        <span class="label text-white font-semibold uppercase mr-2">Revise</span>
+        <span class="text-gray-300">One revision included.</span>
+        </li>
+        <li>
+        <span class="label text-white font-semibold uppercase mr-2">Approve</span>
+        <span class="text-gray-300">Confirm improvement, then pay.</span>
+        </li>
     </ol>
     </section>
 
 
-
-
-    <div class="divider"></div>
-
-    <!-- Before / After -->
-    <section data-reveal class="max-w-3xl mx-auto px-6 py-16 space-y-8">
-      <h2 class="text-3xl font-bold text-center text-gray-100">Before / After</h2>
-      <div class="grid gap-8 md:grid-cols-2">
-        <div class="p-8 bg-gray-800 rounded-xl shadow-md">
-          <p class="font-semibold text-red-400 mb-2">Before</p>
-          <blockquote class="italic text-gray-300 leading-relaxed">“Our platform streamlines cross-functional collaboration by enabling teams to surface relevant knowledge…”</blockquote>
-        </div>
-        <div class="p-8 bg-gray-800 rounded-xl border-l-4 border-indigo-500 shadow-xl">
-          <p class="font-semibold text-indigo-400 mb-2">After</p>
-          <blockquote class="font-medium text-white leading-relaxed">“One workspace. Teams find information, collaborate instantly, finish faster.”</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
+   <div class="divider"></div>
 
     <!-- FAQ -->
-    <section id="faq" data-reveal class="faq glass-panel max-w-3xl mx-auto px-6 py-12 mb-16">
-    <h2 class="text-3xl font-bold mb-8 text-white text-center">FAQ</h2>
-    <dl class="text-gray-300">
-        <div class="mb-6">
+
+    <section
+    id="faq"
+    data-reveal
+    class="faq max-w-3xl mx-auto px-6 py-8 mb-16 rounded-lg backdrop-blur-md bg-gray-900/80 shadow-lg"
+    >
+    <h2 class="text-3xl font-bold text-white text-center mb-8">FAQ</h2>
+    <dl class="text-gray-300 mx-auto text-center max-w-[60ch] space-y-8">
+        <div>
         <dt class="font-semibold text-white mb-2">Voice authenticity?</dt>
-        <dd>Matched exactly or adjusted on request.</dd>
+        <dd class="mb-4">Matched exactly or adjusted on request.</dd>
         </div>
-        <div class="mb-6">
+
+        <div>
         <dt class="font-semibold text-white mb-2">Submission?</dt>
-        <dd>Paste text or email.</dd>
+        <dd class="mb-4">Paste text or email.</dd>
         </div>
+
         <div>
         <dt class="font-semibold text-white mb-2">Unsatisfied?</dt>
         <dd>One revision included. Pay only after measurable clarity improvement.</dd>
@@ -218,24 +272,27 @@
     <div class="divider"></div>
 
     <!-- Proven Results -->
-    <section data-reveal class="proven-results glass-panel max-w-3xl mx-auto px-6 py-12 mb-16">
-    <h2 class="text-3xl font-bold mb-8 text-white text-center">
-        Proven Results
-    </h2>
-    <ul>
-        <li class="mb-6 text-gray-300">
-        100,000+ words rewritten across diverse industries
-        </li>
-        <li class="mb-6 text-gray-300">
-        Daily structured practice in logic and writing
-        </li>
-        <li class="text-gray-300">
-        Transparent, detailed change logs for every project
-        </li>
-    </ul>
+    <!-- Make “Proven Results” identical in structure and styling to FAQ -->
+    <section id="proven-results" data-reveal
+            class="faq max-w-3xl mx-auto px-6 py-8 mb-16 rounded-lg backdrop-blur-md bg-gray-900/80 shadow-lg">
+    <h2 class="text-3xl font-bold mb-8 text-white text-center">Proven Results</h2>
+    <dl class="text-gray-300 mx-auto text-center" style="max-width: 60ch;">
+        <div class="mb-6">
+        <dt class="font-semibold text-white mb-2">100,000+ words rewritten across industries</dt>
+        <dd class="hidden"></dd>
+        </div>
+        <div class="mb-6">
+        <dt class="font-semibold text-white mb-2">Daily structured logic &amp; writing practice</dt>
+        <dd class="hidden"></dd>
+        </div>
+        <div>
+        <dt class="font-semibold text-white mb-2">Clear, detailed change logs every project</dt>
+        <dd class="hidden"></dd>
+        </div>
+    </dl>
     </section>
-
     <div class="divider"></div>
+
 
     <!-- ───────────────── CONTACT / FINAL CTA ────────────────── -->
     <section id="contact"
@@ -270,7 +327,6 @@
     </p>
 
     </section>
-
 
   </main>
 

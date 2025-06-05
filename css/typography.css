@@ -10,25 +10,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-block-end:   1rem;
   line-height:        var(--lh-heading);
   letter-spacing:     var(--letter-tight);
-  color: #FFFFFF; /* Ensure headings are white for glass panels */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 p, li, dd, dt, blockquote, pre {
   margin-block-start: 0.75rem;
   margin-block-end:   0.75rem;
   line-height:        1.65;
   letter-spacing:     var(--letter-normal);
-  color: #D1D5DB; /* Body text in light gray */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Ensure smooth anchor scrolling offset */
-:is(h1, h2, h3, h4, p, li, dd, dt, blockquote, pre) {
+:is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
   scroll-margin-top: 2rem;
   transition: margin 0.2s ease-out, opacity 0.2s ease-out;
 }
 
-/* Responsive rhythm for screens ≤ 640px */
+/* Responsive rhythm for ≤640 px */
 @media (max-width: 640px) {
   h1, h2, h3, h4, h5, h6 {
     margin-block-start: 1.25rem;
@@ -42,7 +38,7 @@ p, li, dd, dt, blockquote, pre {
 
 /* Reduced-motion: drop transitions */
 @media (prefers-reduced-motion: reduce) {
-  :is(h1, h2, h3, h4, p, li, dd, dt, blockquote, pre) {
+  :is(h1,h2,h3,h4,p,li,dd,dt,blockquote,pre) {
     transition: none;
   }
 }
@@ -51,8 +47,8 @@ p, li, dd, dt, blockquote, pre {
 Hierarchical Margin Utility
 ------------------------------------------------------------*/
 .typography-anchor { --margin-unit: var(--spacing-unit); }
-h1 { margin-block-end: calc(var(--margin-unit) * 2); }
-h2 { margin-block-end: calc(var(--margin-unit) * 1.75); }
+h1 { margin-block-end: calc(var(--margin-unit) * 2);      }
+h2 { margin-block-end: calc(var(--margin-unit) * 1.75);   }
 h3, h4 { margin-block-end: calc(var(--margin-unit) * 1.5); }
 p, li, dd, dt, blockquote, pre {
   margin-block-end: var(--margin-unit);
@@ -72,7 +68,7 @@ h1, h2, h3, h4, p, li, dd, dt {
   opacity: 0.96;
   transition: opacity 0.2s ease-out;
 }
-:is(h1, h2, h3, h4, p, li, dd, dt):hover {
+:is(h1,h2,h3,h4,p,li,dd,dt):hover {
   opacity: 1;
 }
 
@@ -85,28 +81,20 @@ Readable Body Width
 }
 
 /*------------------------------------------------------------
-Section Heading & Body Tint (for dark “glass” containers)
+Section Heading & Body Tint (dark glass cards)
 ------------------------------------------------------------*/
 section {
   letter-spacing: 0.02em;
   line-height: 1.75;
 }
-
-/* Headings within sections remain white */
-section h2,
-section h3 {
+h2, h3 {
   letter-spacing: -0.015em;
-  color: #FFFFFF;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  color: white;
 }
-
-/* Body text within sections */
-section p,
-section li,
-section dd,
-section dt {
+p, li, dd, dt {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
   color: #D1D5DB;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /*------------------------------------------------------------
