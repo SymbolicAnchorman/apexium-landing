@@ -1,49 +1,130 @@
-/*============================================================
-PRIMARY HERO CTA – Semantic Precision & Authority (Greene)
-------------------------------------------------------------*/
+/*====================================================================== 
+  HERO.CSS  ── Apexium v3
+  ----------------------------------------------------------------------
+  Contains ONLY hero‑section and hero‑CTA styles.
+======================================================================*/
+
+/*==============================
+  HERO SECTION
+==============================*/
+
+#hero {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 7rem 1rem;
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+/* restored subtle lift on hover */
+#hero:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* animated background wash */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right,
+              rgba(99,102,241,0.15), transparent);
+  transform: scale(1.05);
+  animation: pulseOverlay 10s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes pulseOverlay {
+  0%   { opacity: .75; }
+  100% { opacity: 1;   }
+}
+
+#hero > * { position: relative; z-index: 1; }
+
+#hero h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,.5);
+  transition: text-shadow .3s, transform .3s;
+}
+
+#hero h1:hover {
+  text-shadow: 0 4px 8px rgba(0,0,0,.6);
+  transform: translateY(-2px) scale(1.01);
+}
+
+#hero p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 2rem;
+  letter-spacing: .015em;
+  transition: color .3s, transform .3s;
+}
+
+#hero p:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 40rem) {
+  #hero h1 { font-size: 2.4rem; }
+  #hero p  { font-size: 1.05rem; }
+}
+
+/*==============================
+  CTA BUTTONS
+==============================*/
+
 .btn-primary {
-  background: linear-gradient(145deg, var(--clr-indigo-500), var(--clr-purple-600));
+  background: linear-gradient(145deg,
+              var(--clr-indigo-500), var(--clr-purple-600));
   color: var(--clr-white);
-  border-radius: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  border-radius: .5rem;
+  padding: .8rem 1.5rem;
   font-weight: 600;
-  box-shadow: 0 3px 8px rgba(79,70,229,0.25);
+  box-shadow: 0 3px 8px rgba(79,70,229,.25);
   transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    background 0.15s ease-out;
+    transform   .15s ease-out,
+    box-shadow  .15s ease-out,
+    background  .15s ease-out;
+  cursor: pointer;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(79,70,229,0.3);
-  background: linear-gradient(145deg, var(--clr-purple-600), var(--clr-indigo-500));
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(145deg,
+              var(--clr-purple-600), var(--clr-indigo-500));
+  box-shadow:
+    0 8px 20px rgba(79,70,229,.35),
+    0 0 0 4px rgba(99,102,241,.10);
 }
 
 .btn-primary:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 6px rgba(79,70,229,0.2);
+  transform: translateY(0) scale(.97);
+  box-shadow: 0 2px 6px rgba(79,70,229,.2);
 }
 
-/*============================================================
-GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wathan)
-------------------------------------------------------------*/
 .btn-glow {
   background-color: var(--clr-indigo-600);
   color: var(--clr-white);
-  border-radius: 9999px; /* pill shape */
+  border-radius: 9999px;
   padding: 1.25rem 4rem;
   font-weight: 700;
   position: relative;
   overflow: hidden;
-  text-shadow: none; /* sharp typography, cognitive clarity */
-  box-shadow: 0 2px 6px rgba(79,70,229,0.15); /* subtle clarity shadow */
-  pointer-events: auto; /* ensure interactive functionality */
+  box-shadow: 0 2px 6px rgba(79,70,229,.15);
   transition:
-    transform 0.15s cubic-bezier(0.22,1,0.36,1),
-    box-shadow 0.15s cubic-bezier(0.22,1,0.36,1),
-    background-color 0.15s ease-out;
+    transform      .15s cubic-bezier(.22,1,.36,1),
+    box-shadow     .15s cubic-bezier(.22,1,.36,1),
+    background-color .15s ease-out;
   will-change: transform, box-shadow;
 }
 
@@ -55,31 +136,28 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  transition:
-    opacity 0.2s ease-out,
-    transform 0.2s ease-out;
+  transition: opacity .2s, transform .2s;
 }
 
-/* Subtle Aura – Minimal Neurological Load (Schoger) */
 .btn-glow::before {
   box-shadow:
-    0 0 8px rgba(79,70,229,0.2),
-    inset 0 0 4px rgba(255,255,255,0.05);
+    0 0 12px rgba(79,70,229,.30),
+    inset 0 0 6px rgba(255,255,255,.10);
   transform: scale(1.05);
 }
 
-/* Minimal Outline Cue – Visibility without Visual Noise (Dean, Rauch) */
 .btn-glow::after {
-  border: 1px solid rgba(79,70,229,0.2);
-  transform: scale(0.95);
+  border: 1px solid rgba(79,70,229,.25);
+  transform: scale(.95);
 }
 
-/* Interactive Hover / Focus State – Clear Semantic Feedback (Greene, Wathan) */
 .btn-glow:hover,
 .btn-glow:focus-visible {
-  transform: translateY(-1px) scale(1.02);
+  transform: translateY(-2px) scale(1.03);
   background-color: var(--clr-indigo-700);
-  box-shadow: 0 4px 10px rgba(79,70,229,0.25);
+  box-shadow:
+    0 6px 16px rgba(79,70,229,.30),
+    inset 0 0 8px rgba(255,255,255,.08);
 }
 
 .btn-glow:hover::before,
@@ -90,202 +168,25 @@ GLOW CTA – Neurological Clarity & Minimal Cognitive Load (Schoger, Rauch, Wath
   transform: scale(1);
 }
 
-/* Active Interaction – Predictable Semantic State (Greene, Wathan) */
 .btn-glow:active {
-  transform: translateY(0) scale(0.97);
+  transform: translateY(0) scale(.95);
   box-shadow:
-    0 2px 5px rgba(79,70,229,0.2),
-    inset 0 0 4px rgba(0,0,0,0.05);
+    0 2px 5px rgba(79,70,229,.20),
+    inset 0 0 4px rgba(0,0,0,.05);
 }
 
-/*============================================================
-REDUCED MOTION – Universally Respected Accessibility (Dean)
-------------------------------------------------------------*/
+/*==============================
+  ACCESSIBILITY: Reduced Motion
+==============================*/
 @media (prefers-reduced-motion: reduce) {
-  .btn,
-  .btn-glow,
+  #hero,
+  #hero::before,
   .btn-primary,
+  .btn-glow,
   .btn-glow::before,
   .btn-glow::after {
+    animation: none !important;
     transition: none !important;
     transform: none !important;
-    animation: none !important;
-  }
-}
-
-/*============================================================
-Semantic Purity & Dialectical Meta-Integration — Expert Consensus
-------------------------------------------------------------*/
-/*
-🔹 Strategic Minimalism & Authority (Robert Greene)
-  — Removed unnecessary visual complexity; strict semantic clarity in interactive states.
-
-🔹 Neurological Visual Precision (Steve Schoger)
-  — Reduced shadows and blur effects; ensured cognitive immediacy and legibility.
-
-🔹 Pragmatic Iterative Clarity & Minimalism (Guillermo Rauch)
-  — Incrementally refined interaction feedback; minimized cognitive load through methodical iterations.
-
-🔹 Systematic Abstraction & Structural Clarity (Adam Wathan)
-  — Explicit, predictable interaction states defined through clear utility classes; robust maintainability.
-
-🔹 Empirical Verification & Accessibility Rigour (Brian Dean)
-  — Contrast and legibility tested and verified via Chrome DevTools; structured and explicit accessibility compliance ensured.
-
-✅ Final Unified Dialectical Resolution:
-This CSS output represents the definitive synthesis of strategic authority, neurological minimalism, iterative pragmatic clarity, systematic structural clarity, and empirical accessibility validation. All experts agree—this maximally integrated solution achieves semantic purity and cognitive efficiency for your buttons UI.
-*/
-/*============================================================
-CARDS & SECTION CONTAINERS
-============================================================*/
-
-/*------------------------------------------------------------
-Universal Glassy Section / Card Surface
-------------------------------------------------------------*/
-section,
-.card {
-  background-color: rgba(17, 24, 39, 0.9);                /* deep translucent */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.40),
-              inset 0 1px 4px rgba(255,255,255,0.10);
-  backdrop-filter: blur(12px) saturate(160%);
-  transition:
-    transform   0.2s cubic-bezier(0.22,1,0.36,1),
-    box-shadow  0.2s cubic-bezier(0.22,1,0.36,1);
-  will-change: transform, box-shadow, opacity;
-}
-
-/* Elevate on hover */
-section:hover,
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(79,70,229,0.25),
-              inset 0 2px 6px rgba(255,255,255,0.15);
-}
-
-/*------------------------------------------------------------
-Card Component
-------------------------------------------------------------*/
-.card {
-  padding: 2.5rem;
-  border-left: 5px solid rgba(99,102,241,0.50);
-  margin-block: 2.5rem;
-}
-
-/* Typography inside card */
-.card h2 {
-  margin-bottom: 1rem;
-  color: #FFFFFF;
-  font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.50);
-}
-.card p {
-  color: #D1D5DB;
-  line-height: 1.7;
-  letter-spacing: 0.015em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.30);
-}
-
-/*------------------------------------------------------------
-Divider with Flare & Pulse
-------------------------------------------------------------*/
-.divider {
-  width: clamp(40%, 4vw + 50%, 80%);
-  height: 1px;
-  margin: 4rem auto;
-  position: relative;
-  opacity: var(--op-med);
-  transform-origin: center;
-  background: linear-gradient(
-    to right,
-    rgba(79,70,229,0) 0%,
-    rgba(79,70,229,0.2) 50%,
-    rgba(79,70,229,0) 100%);
-  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1),
-              opacity   0.4s ease-out;
-}
-
-/* Halo ends */
-.divider::before,
-.divider::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 25%;
-  height: 100%;
-  background: radial-gradient(ellipse at center,
-              rgba(79,70,229,0.15), transparent 70%);
-  transition: all 0.5s ease-in-out;
-  pointer-events: none;
-}
-.divider::before { left: -30%; }
-.divider::after  { right: -30%; }
-
-/* Hover flare */
-.divider:hover::before,
-.divider:hover::after {
-  width: 35%;
-  background: radial-gradient(ellipse at center,
-              rgba(79,70,229,0.25), transparent 80%);
-}
-.divider:hover {
-  opacity: 0.8;
-  transform: scaleX(1.05);
-}
-
-/* Active section modifier */
-.divider[data-active-section] {
-  opacity: 0.9;
-  transform: scaleX(1.05);
-  background: linear-gradient(
-    to right,
-    rgba(79,70,229,0.1),
-    rgba(79,70,229,0.5) 50%,
-    rgba(79,70,229,0.1));
-}
-
-/* Depth variants */
-.divider[data-depth="subtle"] { height: 0.5px; opacity: 0.4; }
-.divider[data-depth="bold"]   { height: 2px;   opacity: 0.9; }
-
-/* Pulse option */
-@keyframes dividerPulse {
-  0%   { transform: scaleX(1); }
-  50%  { transform: scaleX(1.02); }
-  100% { transform: scaleX(1); }
-}
-.divider[data-pulse] {
-  animation: dividerPulse 4s infinite ease-in-out;
-}
-
-/*------------------------------------------------------------
-Quick-Intro Block
-------------------------------------------------------------*/
-.quick-intro {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #E5E7EB;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.30);
-  line-height: 1.65;
-  max-width: 55ch;
-  margin-inline: auto;
-  padding: 2rem;
-  background-color: rgba(17,24,39,0.90);
-  border-radius: 0.75rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.40),
-              inset 0 1px 4px rgba(255,255,255,0.10);
-}
-
-/*------------------------------------------------------------
-Reduced-Motion Safety
-------------------------------------------------------------*/
-@media (prefers-reduced-motion: reduce) {
-  section:hover,
-  .card:hover,
-  .divider,
-  .divider::before,
-  .divider::after {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
   }
 }

@@ -787,13 +787,17 @@ WHO-THIS-HELPS GRID
   SERVICES SECTION — FIXED HEADER HEIGHT
 ===============================*/
 
+/*===============================
+ SERVICES SECTION — FIXED & MINIMIZED
+===============================*/
+
 .services-section {
-  max-width: var(--max-width-section);
+  max-width: 56rem; /* adjusted to match other sections precisely */
   margin: 0 auto;
   padding-block: var(--space-xl);
   border-radius: var(--radius-lg);
-  background: linear-gradient(to bottom, var(--clr-gray-700), var(--clr-gray-900));
-  box-shadow: var(--shadow-card-hover);
+  background: none; /* Removed gradient for unified appearance */
+  box-shadow: none; /* Matches other card styles */
 }
 
 .services-section h2 {
@@ -809,12 +813,13 @@ WHO-THIS-HELPS GRID
 .services-section .services-container {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* ensure equal card heights */
+  align-items: stretch;
   gap: var(--space-xl);
   margin-inline: auto;
 }
 
 .services-section .card {
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: var(--space-xl) var(--space-lg);
@@ -838,12 +843,10 @@ WHO-THIS-HELPS GRID
   letter-spacing: var(--letter-normal);
   margin: 0 0 var(--space-xs);
   line-height: 1.2;
-  min-height: calc( (var(--font-size-xl) * 1.2) * 2 ); 
-  /* reserves space for two lines of heading */
+  min-height: calc((var(--font-size-xl) * 1.2) * 2);
 }
 
 .services-section .card .price {
-  display: block;
   font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--clr-indigo-300);
@@ -856,10 +859,8 @@ WHO-THIS-HELPS GRID
   color: var(--clr-gray-300);
   line-height: 1.5;
   letter-spacing: var(--letter-normal);
-  margin: 0;
-  text-align: left;
+  flex: 1;
   opacity: 0.9;
-  flex: 1; /* ensures cards align in height */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -879,4 +880,3 @@ WHO-THIS-HELPS GRID
     padding: var(--space-lg);
   }
 }
-
