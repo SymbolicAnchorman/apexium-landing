@@ -44,7 +44,8 @@ CARDS-SECTIONS.CSS  •  SURFACE MODULES, FLOW, INTERACTION
 .faq:hover,
 .proven-results:hover,
 .how-it-works:hover,
-.before-after .card:hover,
+.before-after:hover,
+.services-section.card:hover,
 .who-this-helps:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover), inset 0 2px 6px rgba(255,255,255,0.15);

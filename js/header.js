@@ -1,13 +1,17 @@
 /*==========================================================
-HEADER • NAV TOGGLE  •  v2.1
+HEADER NAV TOGGLE — Optimized and Integrated
 ==========================================================*/
-const navToggle = document.querySelector('.nav-toggle');
-const primaryNav = document.getElementById('primary-nav');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('primaryNav');
 
-if (navToggle && primaryNav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = navToggle.classList.toggle('open');
-    primaryNav.classList.toggle('mobile-hidden', !isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-}
+  if (!toggle || !menu) return;
+
+  const handleToggle = () => {
+    const isOpen = menu.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  };
+
+  toggle.addEventListener('click', handleToggle);
+});
