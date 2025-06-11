@@ -16,49 +16,39 @@
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  /* ── DISABLE BUTTON & REDIRECT ─────────────────────────────── */
-  function handleClick(btn) {
-    if (!btn) return;
-    if (btn.dataset.busy === '1') return;                // Already processing
+/* ── DISABLE BUTTON & REDIRECT ─────────────────────────────── */
+function handleClick(btn) {
+  if (!btn || btn.dataset.busy === '1') return;          // Already processing
 
-    const href = btn.dataset.href || '';
-    if (!href || href === 'YOUR_STRIPE_CHECKOUT_URL') {
-      log.warn('CTA missing valid data-href:', btn);
-      return;
-    }
-
-    btn.dataset.busy = '1';
-    btn.setAttribute('aria-disabled', 'true');
-    btn.classList.add('opacity-60', 'cursor-not-allowed');
-    btn.textContent = 'Requesting…';
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 500);
+  const href = btn.dataset.href;                         // ← no placeholder check
+  if (!href) {
+    log.warn('CTA missing data-href:', btn);
+    return;
   }
 
-  /* ── INITIALIZE ALL CTA BUTTONS ───────────────────────────── */
-  function initCTAs() {
-    const selectors = '[data-ax-cta], #heroCTA, #finalCTA';
-    const buttons = $$(selectors);
+  btn.dataset.busy = '1';
+  btn.setAttribute('aria-disabled', 'true');
+  btn.classList.add('opacity-60', 'cursor-not-allowed');
+  btn.textContent = 'Redirecting…';
 
-    if (!buttons.length) {
-      log.warn('No CTA buttons found with selector:', selectors);
-      return;
-    }
+  setTimeout(() => { window.location.href = href; }, 500);
+}
 
-    buttons.forEach(btn => {
-      // Ensure each button has a data-href attribute
-      if (!btn.dataset.href) {
-        btn.dataset.href = 'YOUR_STRIPE_CHECKOUT_URL';
-        log.warn('Assigned placeholder href to CTA:', btn);
-      }
-
-      btn.addEventListener('click', () => handleClick(btn), { once: true });
-    });
-
-    log.info('CTA buttons bound:', { count: buttons.length });
+/* ── INITIALIZE ALL CTA BUTTONS ───────────────────────────── */
+function initCTAs() {
+  const buttons = $$('[data-ax-cta]');                   // tighten selector
+  if (!buttons.length) {
+    log.warn('No CTA buttons found');
+    return;
   }
+
+  buttons.forEach(btn => {
+    if (!btn.dataset.href) btn.dataset.href = '/form.html';  // default to form
+    btn.addEventListener('click', () => handleClick(btn), { once: true });
+  });
+
+  log.info('CTA buttons bound:', { count: buttons.length });
+}
 
   /* ── STICKY CTA SHOW / HIDE ────────────────────────────────── */
   function initStickyCTA() {

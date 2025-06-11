@@ -1,0 +1,9 @@
+PR_dep = https://buy.stripe.com/4gM5kCclf6VxfUmc4a2VG00
+CA_dep = https://buy.stripe.com/cNi5kC84Zgw70Zs4BI2VG01
+CBP_dep = https://buy.stripe.com/14A3cu84Z6Vx9vY2tA2VG02
+
+
+
+PR_bal = https://buy.stripe.com/eVq00igBv5Rt9vY9W22VG03
+CA_bal = https://buy.stripe.com/4gMbJ04SN1BdaA2gkq2VG04
+CBP_bal = https://buy.stripe.com/eVq6oG5WR6Vx23w8RY2VG05

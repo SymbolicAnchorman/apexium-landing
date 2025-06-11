@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>APEXIUM Intake</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0D1117;
+      --panel:#161B22;
+      --text:#fff;
+      --radius:12px;
+      --shadow:0 12px 28px rgba(0,0,0,.45);
+      font-family:'Inter',sans-serif;
+    }
+
+    /* full-screen dark canvas */
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:24px;
+      box-sizing:border-box;
+    }
+
+    /* glassy card */
+    .form-wrapper{
+      width:100%;
+      max-width:600px;
+      background:var(--panel);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:32px 24px;
+    }
+
+    /* iframe fits card */
+    iframe{
+      border:0;
+      width:100%;
+      height:900px;   /* tall enough for full form, no internal scroll */
+    }
+
+    /* subtle fade-in */
+    .form-wrapper{opacity:0;animation:f 0.6s ease-out forwards}
+    @keyframes f{to{opacity:1}}
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <iframe
+      src="https://www.cognitoforms.com/f/dDEs6HOXNkisP485IusQdw/1"
+      allow="payment">
+    </iframe>
+    <script src="https://www.cognitoforms.com/f/iframe.js" defer></script>
+  </div>
+
+</body>
+</html>
