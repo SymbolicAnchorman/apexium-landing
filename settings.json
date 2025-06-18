@@ -1,0 +1,29 @@
+// ───────────────────────────────────────────────────────────────────────────────
+//  APEXIUM ∴ LOCAL DEV  Σ  settings.json
+//  “favicon‑morphogenesis, cache‑obliteration, zero‑ambiguity”
+// ───────────────────────────────────────────────────────────────────────────────
+{
+  /* Live Server ‑ canonical, MIME‑correct, zero‑lag */
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.wait": 100,                      // ms; debounce for saves
+  "liveServer.settings.mimeTypes": {
+    ".svg": "image/svg+xml",                            // 🡐 fixes favicon.svg
+    ".webmanifest": "application/manifest+json"         // future PWA hook
+  },
+
+  /* Edit‑rigour ‑ deterministic formatting */
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "afterDelay",
+
+  /* Cache‑bust oracle ‑ bump this when icons / meta images change */
+  "apexium.cacheVersion": "2",                          // ⇡ any integer
+
+  /* Path intel for quick‑jump */
+  "files.associations": {
+    "*.webmanifest": "json"
+  }
+}
